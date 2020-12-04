@@ -210,6 +210,15 @@
             <e p="UnityReferenceHelper.cs" t="Include" />
           </e>
         </e>
+        <e p="Scripts" t="Include">
+          <e p="Core" t="Include">
+            <e p="GameManager.cs" t="Include" />
+            <e p="MovingObject.cs" t="Include" />
+          </e>
+          <e p="Player" t="Include">
+            <e p="playerController.cs" t="Include" />
+          </e>
+        </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
             <e p="Fonts" t="Include">
