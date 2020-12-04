@@ -218,6 +218,9 @@
           <e p="Player" t="Include">
             <e p="playerController.cs" t="Include" />
           </e>
+          <e p="Units" t="Include">
+            <e p="Unit.cs" t="Include" />
+          </e>
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">

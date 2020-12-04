@@ -121,37 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &362915959
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 362915960}
-  m_Layer: 0
-  m_Name: Player Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &362915960
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 362915959}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1007606193}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,12 +204,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1007606193 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4839237536044093107, guid: 1d0158c298cf108429ab0850a2da8b3f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2295776800391342311}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1072771321
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3cc7bb3fee39d46985d1aa89a713ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnDelay: 0.1
   playerTurn: 1
 --- !u!4 &1304227823
 Transform:
@@ -408,7 +372,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 362915960}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1007606189, guid: 1d0158c298cf108429ab0850a2da8b3f, type: 3}
       propertyPath: moveTime
@@ -417,7 +381,11 @@ PrefabInstance:
     - target: {fileID: 1007606189, guid: 1d0158c298cf108429ab0850a2da8b3f, type: 3}
       propertyPath: movePoint
       value: 
-      objectReference: {fileID: 362915960}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007606189, guid: 1d0158c298cf108429ab0850a2da8b3f, type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3013879545484515514, guid: 1d0158c298cf108429ab0850a2da8b3f,
         type: 3}
       propertyPath: m_Name
@@ -451,12 +419,12 @@ PrefabInstance:
     - target: {fileID: 4839237536044093107, guid: 1d0158c298cf108429ab0850a2da8b3f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4839237536044093107, guid: 1d0158c298cf108429ab0850a2da8b3f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4839237536044093107, guid: 1d0158c298cf108429ab0850a2da8b3f,
         type: 3}
@@ -486,7 +454,7 @@ PrefabInstance:
     - target: {fileID: 4839237536044093107, guid: 1d0158c298cf108429ab0850a2da8b3f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4839237536044093107, guid: 1d0158c298cf108429ab0850a2da8b3f,
         type: 3}

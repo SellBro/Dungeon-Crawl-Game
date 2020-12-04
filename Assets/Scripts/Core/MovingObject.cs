@@ -8,19 +8,23 @@ namespace RPG.Core
 {
     public abstract class MovingObject : MonoBehaviour
     {
-        [SerializeField] private float moveTime = 0.1f;
+       
         [SerializeField] private LayerMask blockingLayer;
-        [SerializeField] private Transform movePoint;
+        [SerializeField] private bool isPlayer = false;
+
+        public float moveTime = 0.1f;
 
         private AIDestinationSetter _aiDestinationSetter;
+        private AIPath _aiPath;
         private BoxCollider2D _boxCollider;
         private Rigidbody2D _rigidbody;
 
         protected virtual void Start()
         {
+            _aiDestinationSetter = GetComponent<AIDestinationSetter>();
+            _aiPath = GetComponent<AIPath>();
             _boxCollider = GetComponent<BoxCollider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
-            _aiDestinationSetter = GetComponent<AIDestinationSetter>();
         }
 
         protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
@@ -44,11 +48,16 @@ namespace RPG.Core
         protected IEnumerator SmoothMovement(Vector3 destination)
         {
             float sqrRemainingDistance = (transform.position - destination).sqrMagnitude;
-            if(movePoint != null) movePoint.transform.position = destination;
+
+            if (isPlayer)
+            {
+                _aiDestinationSetter.enabled = false;
+                _aiPath.enabled = false;
+            }
+            
 
             while (sqrRemainingDistance > float.Epsilon)
             {
-                if(movePoint != null) _aiDestinationSetter.target = movePoint;
                 Vector3 newPosition =
                     Vector3.MoveTowards(_rigidbody.position, destination, moveTime * Time.deltaTime);
                 _rigidbody.MovePosition(newPosition);
@@ -56,7 +65,11 @@ namespace RPG.Core
                 yield return null;
             }
             
-            if(movePoint != null) _aiDestinationSetter.target = null;
+            if (isPlayer)
+            {
+                _aiDestinationSetter.enabled = true;
+                _aiPath.enabled = true;
+            }
         }
 
         protected virtual void AttemptMove <T> (int xDir, int yDir)
