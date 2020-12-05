@@ -11,13 +11,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AI/TurnBasedAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/BlockManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Pathfinders/ABPath.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/526469D5-A48C-43EE-BD9A-F19F8745AFA1/9f/f18dbf67/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/TestUnit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -26,10 +29,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MovingObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/playerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/TestUnit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Path.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+        <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -72,6 +78,7 @@
       <updated>1606558740982</updated>
       <workItem from="1606558765316" duration="1376000" />
       <workItem from="1607088334906" duration="7580000" />
+      <workItem from="1607165203263" duration="15537000" />
     </task>
     <servers />
   </component>
@@ -85,7 +92,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
