@@ -79,7 +79,7 @@ namespace RPG.Core
             {
                 Debug.Log(unit.name);
                 unit.Act();
-                yield return new WaitForSeconds(turnDelay);
+                yield return new WaitForSeconds(turnDelay/10);
             }
 
             playerTurn = true;

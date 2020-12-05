@@ -28,14 +28,14 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/MovingObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/playerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/TestUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Path.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
       </list>
     </option>
   </component>
@@ -78,7 +78,7 @@
       <updated>1606558740982</updated>
       <workItem from="1606558765316" duration="1376000" />
       <workItem from="1607088334906" duration="7580000" />
-      <workItem from="1607165203263" duration="15537000" />
+      <workItem from="1607165203263" duration="19537000" />
     </task>
     <servers />
   </component>

@@ -6,42 +6,50 @@ using RPG.Core;
 
 namespace RPG.Player
 {
-    public class PlayerController : MovingObject
+    public class PlayerController : MonoBehaviour
     {
-        protected override void Start()
-        {
-            // Custom Start
-            base.Start();
-        }
-
+        [SerializeField] private float speed = 10;
+        
         private void Update()
         {
-            if (!GameManager.Instance.playerTurn) return;
-
-            int horizontal = Mathf.FloorToInt(Input.GetAxisRaw("Horizontal"));
-            int vertical = Mathf.FloorToInt(Input.GetAxisRaw("Vertical"));
-            if (horizontal != 0)
-                vertical = 0;
-
-            if (horizontal != 0 || vertical != 0)
+            if (GameManager.Instance.playerTurn)
             {
-                AttemptMove<Collider2D>(horizontal,vertical);
+                GetInput();
             }
         }
 
-        protected override void AttemptMove<T>(int xDir, int yDir)
+        private void GetInput()
         {
-            // Custom AttemptMove
-            base.AttemptMove<T>(xDir, yDir);
-
-            RaycastHit2D hit;
-
-            GameManager.Instance.playerTurn = false;
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Vector3 destination = new Vector3(transform.position.x, transform.position.y + 1);
+                StartCoroutine(SmoothMovement(destination));
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                Vector3 destination = new Vector3(transform.position.x, transform.position.y - 1);
+                StartCoroutine(SmoothMovement(destination));
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                Vector3 destination = new Vector3(transform.position.x - 1, transform.position.y);
+                StartCoroutine(SmoothMovement(destination));
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                Vector3 destination = new Vector3(transform.position.x + 1, transform.position.y);
+                StartCoroutine(SmoothMovement(destination));
+            }
         }
 
-        protected override void OnCantMove<T>(T component)
+        private IEnumerator SmoothMovement(Vector3 destination)
         {
-            Collider2D collider = component as Collider2D;
+            while (transform.position != destination)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+                GameManager.Instance.playerTurn = false;
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 }

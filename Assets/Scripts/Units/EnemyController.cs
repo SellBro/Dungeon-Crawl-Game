@@ -9,12 +9,15 @@ using RPG.Core;
 
 namespace RPG.units
 {
-    public class EnemyController : MonoBehaviour, IComparable 
+    public class EnemyController : MonoBehaviour, IComparable
     {
-        private SingleNodeBlocker _blocker;
-
+        [SerializeField] private float speed = 5;
         
-
+        private SingleNodeBlocker _blocker;
+        
+        private bool shouldMove = false;
+        private Vector3 destination;
+        
         [HideInInspector] public float distanceToPlayer;
         
         public Transform target;
@@ -30,18 +33,38 @@ namespace RPG.units
             GameManager.Instance.AddUnitToList(this);
         }
 
+        private void Update()
+        {
 
+            if (shouldMove)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+            }
+        }
 
         public void Move()
         {
             _blocker.Unblock();
             var path = GameManager.Instance.ConstuctPath(transform, target);//_seeker.GetCurrentPath();
-
-            Vector3 destination = path.vectorPath[1];
-
-            transform.position = destination;
+            _blocker.BlockAt(path.vectorPath[1]);
+            destination = path.vectorPath[1];
+            
+            StartCoroutine(SmoothMovement(destination));
+            
             distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
-            _blocker.BlockAtCurrentPosition();
+        }
+
+        private IEnumerator SmoothMovement(Vector3 point)
+        {
+            shouldMove = true;
+            
+            while (transform.position != point)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+            
+            shouldMove = false;
+            distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
         }
 
         public int CompareTo(object obj)
@@ -54,7 +77,9 @@ namespace RPG.units
 
         public void Act()
         {
-            if (distanceToPlayer <= 1.1)
+            distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
+            
+            if (distanceToPlayer <= 1.2)
             {
                 Debug.Log("Attack");
             }
