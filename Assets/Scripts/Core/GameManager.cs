@@ -18,7 +18,7 @@ namespace RPG.Core
         public BlockManager blockManager;
         public List<SingleNodeBlocker> obstacles;
 
-        BlockManager.TraversalProvider traversalProvider;
+        private BlockManager.TraversalProvider traversalProvider;
         
         
         
@@ -77,7 +77,6 @@ namespace RPG.Core
             
             foreach(EnemyController unit in _units)
             {
-                Debug.Log(unit.name);
                 unit.Act();
                 yield return new WaitForSeconds(turnDelay/10);
             }
