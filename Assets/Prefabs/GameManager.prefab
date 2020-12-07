@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5141087561340728579}
   - component: {fileID: 2911076220524352097}
   - component: {fileID: 7459326542377675456}
+  - component: {fileID: 1155852581}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -117,3 +118,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
+--- !u!114 &1155852581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141087561340728576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf7afd1d538d5e4c856016b5d67bbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonSize: 32
+  numberOfIterations: 3
+  corridorThickness: 4
+  shouldDebugDrawBsp: 0
+  map: {fileID: 0}
+  wallTile: {fileID: 11400000, guid: b0ea6bc247f253443911ac3d43d773d0, type: 2}
+  obstacleMap: {fileID: 0}

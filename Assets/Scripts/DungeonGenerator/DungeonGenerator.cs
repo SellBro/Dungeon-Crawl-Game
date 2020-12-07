@@ -10,7 +10,7 @@ namespace Roguelike.DungeonGenerator
 {
     public class DungeonGenerator : MonoBehaviour
     {
-        public const int MIN_ROOM_DELTA = 3;
+        public const int MIN_ROOM_DELTA = 2;
 
         public int dungeonSize;
 
@@ -26,33 +26,39 @@ namespace Roguelike.DungeonGenerator
 
         
         [SerializeField] private Tilemap obstacleMap;
-        [SerializeField]
-        private TileBase tlTile;
-        [SerializeField]
-        private TileBase tmTile;
-        [SerializeField]
-        private TileBase trTile;
-        [SerializeField]
-        private TileBase mlTile;
-        [SerializeField]
-        private TileBase mmTile;
-        [SerializeField]
-        private TileBase mrTile;
-        [SerializeField]
-        private TileBase blTile;
-        [SerializeField]
-        private TileBase bmTile;
-        [SerializeField]
-        private TileBase brTile;
-        
-
 
         private BspTree tree;
+
+        [Header("Tiles")] 
+        [SerializeField] private Tile[] floorTile;
+        [SerializeField] private TileBase tlTile;
+        [SerializeField] private TileBase tmTile;
+        [SerializeField] private TileBase trTile;
+        [SerializeField] private TileBase mlTile;
+        [SerializeField] private TileBase mmTile;
+        [SerializeField] private TileBase mrTile;
+        [SerializeField] private TileBase blTile;
+        [SerializeField] private TileBase bmTile;
+        [SerializeField] private TileBase brTile;
+        [Header("Corner Tiles")]
+        //[SerializeField] private TileBase leftUp;
+        [SerializeField] private TileBase leftDown;
+        //[SerializeField] private TileBase rightUp;
+        [SerializeField] private TileBase rightDown;
 
 
         private void Start()
         {
             GenerateDungeon();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Debug.Log("Generate");
+                GenerateDungeon();
+            }
         }
 
         public void GenerateDungeon()
@@ -62,7 +68,7 @@ namespace Roguelike.DungeonGenerator
             GenerateRoomsInsideContainers ();
             GenerateCorridors ();
             FillRoomsOnTilemap ();
-            //PaintTilesAccordingToTheirNeighbors ();
+            PaintTilesAccordingToTheirNeighbors ();
         }
         
         private void InitReferences () {
@@ -127,7 +133,8 @@ namespace Roguelike.DungeonGenerator
             }
         }
         
-        private TileBase GetTileByNeihbors (int i, int j) {
+        private TileBase GetTileByNeihbors (int i, int j)
+        {
             var mmGridTile = map.GetTile (new Vector3Int (i, j, 0));
             if (mmGridTile == null) return null; // you shouldn't repaint a n
 
@@ -157,16 +164,21 @@ namespace Roguelike.DungeonGenerator
             if (mlGridTile != null && tmGridTile == null && mrGridTile == null) return trTile;
             if (tmGridTile != null && bmGridTile != null && mrGridTile == null) return mrTile;
             if (tmGridTile != null && bmGridTile == null && mrGridTile == null) return brTile;
+            
+            // corners
+            if (bmGridTile != null && mrGridTile != null && tlGridTile == null) return tmTile;
+            if (bmGridTile != null && mlGridTile != null && blGridTile == null) return leftDown;
+            if (tmGridTile != null && mrGridTile != null && trGridTile == null) return tmTile;
+            if (bmGridTile != null && mrGridTile != null && brGridTile == null) return rightDown;
 
-            return mmTile; // default case
+            return mmTile;
         }
 
         private void PaintTilesAccordingToTheirNeighbors () {
-            for (int i = MIN_ROOM_DELTA; i < dungeonSize; i++) {
-                for (int j = MIN_ROOM_DELTA; j < dungeonSize; j++) {
+            for (int i = 0; i < dungeonSize; i++) {
+                for (int j = 0; j < dungeonSize; j++) {
                     var tile = GetTileByNeihbors (i, j);
                     if (tile != null) {
-                        //map.SetTile(new Vector3Int(i, j, 0), null);
                         map.SetTile(new Vector3Int(i, j, 0), tile);
                     }
                 }
@@ -233,18 +245,18 @@ namespace Roguelike.DungeonGenerator
             var node = new BspTree (container);
             if (numberOfIterations == 0) return node;
 
-            var splittedContainers = SplitContainer (container);
+            var splittedContainers = SplitContainer (container,numberOfIterations);
             node.left = Split (numberOfIterations - 1, splittedContainers[0]);
             node.right = Split (numberOfIterations - 1, splittedContainers[1]);
 
             return node;
         }
 
-        private static RectInt[] SplitContainer(RectInt container)
+        private static RectInt[] SplitContainer(RectInt container, int num)
         {
             RectInt c1, c2;
-
-            if (UnityEngine.Random.Range(0f, 1f) > 0.5f)
+            // UnityEngine.Random.Range(0f, 1f) > 0.5f
+            if (num % 2 == 0)
             {
                 // Vertical
                 c1 = new RectInt(container.x, container.y, container.width,
@@ -278,10 +290,10 @@ namespace Roguelike.DungeonGenerator
             if (node.left == null && node.right == null) {
                 var randomX = UnityEngine.Random.Range(DungeonGenerator.MIN_ROOM_DELTA, node.container.width / 4);
                 var randomY = UnityEngine.Random.Range(DungeonGenerator.MIN_ROOM_DELTA, node.container.height / 4);
-                int roomX = node.container.x + randomX;
-                int roomY = node.container.y + randomY;
-                int roomW = node.container.width - (int) (randomX * UnityEngine.Random.Range(1f, 2f));
-                int roomH = node.container.height - (int) (randomY * UnityEngine.Random.Range(1f, 2f));
+                int roomX = node.container.x + randomX - 2;
+                int roomY = node.container.y + randomY - 2;
+                int roomW = node.container.width - (int) (randomX * UnityEngine.Random.Range(1f, 2f)) + 2;
+                int roomH = node.container.height - (int) (randomY * UnityEngine.Random.Range(1f, 2f)) + 2;
                 node.room = new RectInt(roomX, roomY, roomW, roomH);
             } else {
                 if (node.left != null) GenerateRoomsInsideContainersNode(node.left);

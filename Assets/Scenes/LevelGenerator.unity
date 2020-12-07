@@ -211,6 +211,90 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1932030220}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: obstacleMap
+      value: 
+      objectReference: {fileID: 1776492455}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: shouldDebugDrawBsp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: dungeonSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: numberOfIterations
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: corridorThickness
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: tlTile
+      value: 
+      objectReference: {fileID: 11400000, guid: c492bf29a8ce4c04e96b78be5faabf8b,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: tmTile
+      value: 
+      objectReference: {fileID: 11400000, guid: dee639174cb33114b97ab8347c32444a,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: trTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ee0515b8ac6e0b47a707d2691a099a6,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: mlTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 37b894bd0d45ac04d8a85eac4400abf3,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: mmTile
+      value: 
+      objectReference: {fileID: 11400000, guid: e10eda40a00a1bb4a8ed890e234fb488,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: mrTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e1cb02306239b140978e58253d6fa32,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: blTile
+      value: 
+      objectReference: {fileID: 11400000, guid: b61609db78bd28a4f81ea7d3c2a1495b,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: bmTile
+      value: 
+      objectReference: {fileID: 11400000, guid: e03f5090e4d542b408f9aacfb9517aac,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: brTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 486283ae400671840bca4be302812d23,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: leftUp
+      value: 
+      objectReference: {fileID: 11400000, guid: cff6a683192d50e428c29ede4dd8c978,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: leftDown
+      value: 
+      objectReference: {fileID: 11400000, guid: 72c7bb7c998761a48a8c7a91a2350324,
+        type: 2}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: rightDown
+      value: 
+      objectReference: {fileID: 11400000, guid: b670fa9df945fb14ab0959b0247c9d5f,
+        type: 2}
     - target: {fileID: 5141087561340728576, guid: 76c85ef4bead9bc438b2b033fe31aad6,
         type: 3}
       propertyPath: m_Name
@@ -273,40 +357,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
---- !u!1 &1155852580 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5141087561340728576, guid: 76c85ef4bead9bc438b2b033fe31aad6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1155852579}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1155852581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155852580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf7afd1d538d5e4c856016b5d67bbf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dungeonSize: 32
-  numberOfIterations: 3
-  corridorThickness: 4
-  shouldDebugDrawBsp: 0
-  map: {fileID: 1932030220}
-  wallTile: {fileID: 11400000, guid: b0ea6bc247f253443911ac3d43d773d0, type: 2}
-  obstacleMap: {fileID: 1776492455}
-  tlTile: {fileID: 11400000, guid: 7a2d99eb4a7b8dc4886b9318c112e376, type: 2}
-  tmTile: {fileID: 11400000, guid: b5625ab2de8eaa249ae58b0e79a6740f, type: 2}
-  trTile: {fileID: 11400000, guid: 5931f48cb86992842ae22b0bc1f0a825, type: 2}
-  mlTile: {fileID: 11400000, guid: 4910b68efc0b36842aa2e0c1b7a8893d, type: 2}
-  mmTile: {fileID: 11400000, guid: 792c38d4133bded4b8b6391399c064f4, type: 2}
-  mrTile: {fileID: 11400000, guid: 613969056f882d24c8005f450b69479a, type: 2}
-  blTile: {fileID: 11400000, guid: 2916e6c1632ccdf4d8c1e394bdd7ee31, type: 2}
-  bmTile: {fileID: 11400000, guid: 84dc317c194de004b9e2c484a9be5125, type: 2}
-  brTile: {fileID: 11400000, guid: af5af4e5eb220bc4c8d2366e9dca85f3, type: 2}
 --- !u!1839735485 &1776492455 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 9119663498132352489, guid: 912acb27a4f7fc24ea46176b03b2348a,
