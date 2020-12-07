@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -12,6 +13,8 @@ namespace Roguelike.DungeonGenerator
 
         public int dungeonSize;
 
+        [SerializeField] private int sight;
+
         [Range(1, 6)] 
         [SerializeField] private int numberOfIterations;
         
@@ -24,14 +27,15 @@ namespace Roguelike.DungeonGenerator
 
         
         [SerializeField] private Tilemap obstacleMap;
+        [SerializeField] private Tilemap fogOfWarMap;
         [SerializeField] private GameObject player;
 
         private BspTree tree;
-        
+        private bool[,] dungeon;
         private AstarPath _astarPath;
 
         [Header("Tiles")] 
-        [SerializeField] private Tile[] floorTile;
+        [SerializeField] private TileBase[] floorTile;
         [SerializeField] private TileBase tlTile;
         [SerializeField] private TileBase tmTile;
         [SerializeField] private TileBase trTile;
@@ -46,14 +50,32 @@ namespace Roguelike.DungeonGenerator
         [SerializeField] private TileBase leftDown;
         //[SerializeField] private TileBase rightUp;
         [SerializeField] private TileBase rightDown;
+        
+        [SerializeField] private TileBase fogOfWarTile;
 
 
         private void Start()
         {
             _astarPath = GetComponent<AstarPath>();
+            dungeon = new bool[dungeonSize,dungeonSize];
             GenerateDungeon();
             CalculatePath();
+            CreateFogOfWar();
             SpawnPlayer();
+        }
+
+        private void Update()
+        {
+            UpdateFogOfWar();
+        }
+
+        private void UpdateFogOfWar()
+        {
+            for (int i = -sight + (int)player.transform.position.x; i < sight + (int)player.transform.position.x; i++) {
+                for (int j = -sight + (int)player.transform.position.y; j < sight + (int)player.transform.position.y; j++) {
+                    fogOfWarMap.SetTile(new Vector3Int(i, j, 0), null);
+                }
+            }
         }
 
         public void CalculatePath()
@@ -70,8 +92,20 @@ namespace Roguelike.DungeonGenerator
                     {
                         GameObject pl = Instantiate(player);
                         pl.transform.position = new Vector3(i + 0.5f, j + 0.5f);
+                        player = pl;
                         return;
                     }
+                }
+            }
+        }
+
+        public void CreateFogOfWar()
+        {
+            for (int i = 0; i < dungeonSize; i++) 
+            {
+                for (int j = 0; j < dungeonSize; j++) 
+                {
+                    fogOfWarMap.SetTile(new Vector3Int(i, j, 0), fogOfWarTile);
                 }
             }
         }
@@ -188,11 +222,15 @@ namespace Roguelike.DungeonGenerator
             return mmTile;
         }
 
-        private void PaintTilesAccordingToTheirNeighbors () {
-            for (int i = 0; i < dungeonSize; i++) {
-                for (int j = 0; j < dungeonSize; j++) {
+        private void PaintTilesAccordingToTheirNeighbors () 
+        {
+            for (int i = 0; i < dungeonSize; i++) 
+            {
+                for (int j = 0; j < dungeonSize; j++) 
+                {
                     var tile = GetTileByNeihbors (i, j);
-                    if (tile != null) {
+                    if (tile != null)
+                    {
                         if (tile != mmTile)
                         {
                             obstacleMap.SetTile(new Vector3Int(i, j, 0), tile);
@@ -200,7 +238,9 @@ namespace Roguelike.DungeonGenerator
                         }
                         else
                         {
-                            map.SetTile(new Vector3Int(i, j, 0), tile);
+                            int rand = Random.Range(0, floorTile.Length);
+                            map.SetTile(new Vector3Int(i, j, 0), floorTile[rand]);
+                            dungeon[i, j] = true;
                         }
                     }
                 }

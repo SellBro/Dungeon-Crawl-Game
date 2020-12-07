@@ -28,22 +28,22 @@ namespace RPG.Player
 
         private void GetInput()
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKey(KeyCode.W))
             {
                 Vector3 destination = new Vector3(transform.position.x, transform.position.y + 1);
                 StartCoroutine(SmoothMovement(destination,transform.up));
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S))
             {
                 Vector3 destination = new Vector3(transform.position.x, transform.position.y - 1);
                 StartCoroutine(SmoothMovement(destination,-transform.up));
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A))
             {
                 Vector3 destination = new Vector3(transform.position.x - 1, transform.position.y);
                 StartCoroutine(SmoothMovement(destination,-transform.right));
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D))
             {
                 Vector3 destination = new Vector3(transform.position.x + 1, transform.position.y);
                 StartCoroutine(SmoothMovement(destination,transform.right));
