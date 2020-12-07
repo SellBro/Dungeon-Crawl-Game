@@ -11,15 +11,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AI/TurnBasedAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/BlockManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/526469D5-A48C-43EE-BD9A-F19F8745AFA1/9f/f18dbf67/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/TestUnit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/DungeonGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/526469D5-A48C-43EE-BD9A-F19F8745AFA1/9f/f18dbf67/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/TestUnit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -36,6 +37,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelGenerator/BST/BinarySearchTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelGenerator/LevelGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/DungeonGeneratorEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/DungeonGenerator.cs" />
       </list>
     </option>
   </component>
@@ -80,6 +85,7 @@
       <workItem from="1607088334906" duration="7580000" />
       <workItem from="1607165203263" duration="19537000" />
       <workItem from="1607193174114" duration="1209000" />
+      <workItem from="1607321504305" duration="16033000" />
     </task>
     <servers />
   </component>

@@ -215,6 +215,9 @@
             <e p="GameManager.cs" t="Include" />
             <e p="MovingObject.cs" t="Include" />
           </e>
+          <e p="DungeonGenerator" t="Include">
+            <e p="DungeonGenerator.cs" t="Include" />
+          </e>
           <e p="Player" t="Include">
             <e p="playerController.cs" t="Include" />
           </e>
