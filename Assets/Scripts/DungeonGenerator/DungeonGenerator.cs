@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 using Tile = UnityEngine.WSA.Tile;
 
@@ -26,8 +24,11 @@ namespace Roguelike.DungeonGenerator
 
         
         [SerializeField] private Tilemap obstacleMap;
+        [SerializeField] private GameObject player;
 
         private BspTree tree;
+        
+        private AstarPath _astarPath;
 
         [Header("Tiles")] 
         [SerializeField] private Tile[] floorTile;
@@ -49,15 +50,29 @@ namespace Roguelike.DungeonGenerator
 
         private void Start()
         {
+            _astarPath = GetComponent<AstarPath>();
             GenerateDungeon();
+            CalculatePath();
+            SpawnPlayer();
         }
 
-        private void Update()
+        public void CalculatePath()
         {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                Debug.Log("Generate");
-                GenerateDungeon();
+            _astarPath.Scan();
+        }
+        
+        public void SpawnPlayer()
+        {
+            for (int i = 0; i < dungeonSize; i++) {
+                for (int j = 0; j < dungeonSize; j++) {
+                    var tile = GetTileByNeihbors (i, j);
+                    if (tile == mmTile)
+                    {
+                        GameObject pl = Instantiate(player);
+                        pl.transform.position = new Vector3(i + 0.5f, j + 0.5f);
+                        return;
+                    }
+                }
             }
         }
 
@@ -87,7 +102,6 @@ namespace Roguelike.DungeonGenerator
             // For each parent
             // Find their center
             // Find a direction and connect these centers
-            Debug.Log("Pizda");
             GenerateCorridorsNode (tree);
         }
 
@@ -179,7 +193,15 @@ namespace Roguelike.DungeonGenerator
                 for (int j = 0; j < dungeonSize; j++) {
                     var tile = GetTileByNeihbors (i, j);
                     if (tile != null) {
-                        map.SetTile(new Vector3Int(i, j, 0), tile);
+                        if (tile != mmTile)
+                        {
+                            obstacleMap.SetTile(new Vector3Int(i, j, 0), tile);
+                            map.SetTile(new Vector3Int(i, j, 0), tile);
+                        }
+                        else
+                        {
+                            map.SetTile(new Vector3Int(i, j, 0), tile);
+                        }
                     }
                 }
             }

@@ -34,13 +34,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Path.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelGenerator/BST/BinarySearchTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelGenerator/LevelGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/DungeonGeneratorEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/DungeonGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -89,7 +89,7 @@
       <workItem from="1607343654953" duration="963000" />
       <workItem from="1607356647394" duration="46000" />
       <workItem from="1607356738312" duration="83000" />
-      <workItem from="1607360148878" duration="3688000" />
+      <workItem from="1607360148878" duration="7458000" />
     </task>
     <servers />
   </component>
@@ -110,5 +110,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="616" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1607367449822">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="616" y="213" width="670" height="676" key="search.everywhere.popup/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1607367449822" />
   </component>
 </project>
