@@ -11,9 +11,10 @@ namespace Roguelike.DungeonGenerator
     {
         public bool generateDungeon = true;
         
-        public const int MIN_ROOM_DELTA = 2;
+        public static int MIN_ROOM_DELTA = 3;
         
-        public int dungeonSize;
+        public int dungeonWidth;
+        public int dungeonHeight;
 
         [SerializeField] private int sight;
 
@@ -59,7 +60,19 @@ namespace Roguelike.DungeonGenerator
         private void Start()
         {
             _astarPath = GetComponent<AstarPath>();
-            dungeon = new bool[dungeonSize,dungeonSize];
+            
+
+            int rand = Random.Range(0, 2);
+
+            if (rand == 1)
+            {
+                int temp = dungeonWidth;// * 2/3;
+                dungeonWidth = dungeonHeight;
+                dungeonHeight = temp;
+            }
+
+            dungeon = new bool[dungeonWidth,dungeonHeight];
+            
             if (generateDungeon)
             {
                 GenerateDungeon();
@@ -90,8 +103,8 @@ namespace Roguelike.DungeonGenerator
         
         public void SpawnPlayer()
         {
-            for (int i = 0; i < dungeonSize; i++) {
-                for (int j = 0; j < dungeonSize; j++) {
+            for (int i = 0; i < dungeonWidth; i++) {
+                for (int j = 0; j < dungeonHeight; j++) {
                     var tile = GetTileByNeihbors (i, j);
                     if (tile == mmTile)
                     {
@@ -106,9 +119,9 @@ namespace Roguelike.DungeonGenerator
 
         public void CreateFogOfWar()
         {
-            for (int i = 0; i < dungeonSize; i++) 
+            for (int i = 0; i < dungeonWidth; i++) 
             {
-                for (int j = 0; j < dungeonSize; j++) 
+                for (int j = 0; j < dungeonHeight; j++) 
                 {
                     fogOfWarMap.SetTile(new Vector3Int(i, j, 0), fogOfWarTile);
                 }
@@ -130,7 +143,7 @@ namespace Roguelike.DungeonGenerator
         }
         
         private void GenerateContainersUsingBsp () {
-            tree = BspTree.Split (numberOfIterations, new RectInt (0, 0, dungeonSize, dungeonSize));
+            tree = BspTree.Split (numberOfIterations, new RectInt (0, 0, dungeonWidth, dungeonHeight));
         }
         
         private void GenerateRoomsInsideContainers () {
@@ -229,9 +242,9 @@ namespace Roguelike.DungeonGenerator
 
         private void PaintTilesAccordingToTheirNeighbors () 
         {
-            for (int i = 0; i < dungeonSize; i++) 
+            for (int i = 0; i < dungeonWidth; i++) 
             {
-                for (int j = 0; j < dungeonSize; j++) 
+                for (int j = 0; j < dungeonHeight; j++) 
                 {
                     var tile = GetTileByNeihbors (i, j);
                     if (tile != null)
@@ -323,7 +336,7 @@ namespace Roguelike.DungeonGenerator
         {
             RectInt c1, c2;
             // UnityEngine.Random.Range(0f, 1f) > 0.5f
-            if (num % 2 == 0)
+            if (num % 2 == 1)
             {
                 // Vertical
                 c1 = new RectInt(container.x, container.y, container.width,
@@ -357,10 +370,10 @@ namespace Roguelike.DungeonGenerator
             if (node.left == null && node.right == null) {
                 var randomX = UnityEngine.Random.Range(DungeonGenerator.MIN_ROOM_DELTA, node.container.width / 4);
                 var randomY = UnityEngine.Random.Range(DungeonGenerator.MIN_ROOM_DELTA, node.container.height / 4);
-                int roomX = node.container.x + randomX - 2;
-                int roomY = node.container.y + randomY - 2;
-                int roomW = node.container.width - (int) (randomX * UnityEngine.Random.Range(1f, 2f)) + 2;
-                int roomH = node.container.height - (int) (randomY * UnityEngine.Random.Range(1f, 2f)) + 2;
+                int roomX = node.container.x + randomX;
+                int roomY = node.container.y + randomY;
+                int roomW = Mathf.Max(4,node.container.width - (int) (randomX * UnityEngine.Random.Range(1f, 3f)));
+                int roomH = Mathf.Max(4,node.container.height - (int) (randomY * UnityEngine.Random.Range(1f, 3f)));
                 node.room = new RectInt(roomX, roomY, roomW, roomH);
             } else {
                 if (node.left != null) GenerateRoomsInsideContainersNode(node.left);

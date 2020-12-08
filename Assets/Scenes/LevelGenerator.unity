@@ -148,7 +148,19 @@ PrefabInstance:
       objectReference: {fileID: 1105944628}
     - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
       propertyPath: generateDungeon
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: numberOfIterations
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: dungeonWidth
+      value: 92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155852581, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: dungeonHeight
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 5141087561340728576, guid: 76c85ef4bead9bc438b2b033fe31aad6,
         type: 3}
@@ -248,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 4121263161749832223, guid: 912acb27a4f7fc24ea46176b03b2348a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9119663498235257263, guid: 912acb27a4f7fc24ea46176b03b2348a,
         type: 3}
