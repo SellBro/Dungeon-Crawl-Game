@@ -49,6 +49,7 @@ MonoBehaviour:
   turnDelay: 0.1
   blockManager: {fileID: 7459326542377675456}
   obstacles: []
+  player: {fileID: 0}
   playerTurn: 1
 --- !u!114 &2911076220524352097
 MonoBehaviour:
@@ -64,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAQIeyfx4A1SQIAAO0EAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VEtv2zAM/iuBzssQB03b7LalbbpDH2hW9OILI9GxEFky9GiSFvnvo2Q7djPsZJrfR/Ljw/5kUrsauTd2aaV4MALZjxGLNvs26sF73MPG6JX8wI7zJoUvIwkS5wW8NOTPYpgzFXor+U+9UZE8IWfQsjC2uhUbXBjnHbkLUA4JssbHaE2uzxHb02M8jyEHsqZX0fogaz4ZHcnkqD3antoRO1rDCporqGoUUXJPzq5bdtbQNDXTMqJwbpSSrlXC/KFOnb7AIfYpJFBXqXTklig3pY8Kh4FPReHQt3IsHG6kpeE0Gdkv00ysArdtNL2DCrHGdHaZ9DRJH/7Bx1mCC2uq+65uNok1fCn5lhRycH4w0qH75qvwoHegtrBW+FaifjRLa4IWBHobYmhwOL3pX0+tLUrk297fSD1zhvr/i4k9HFP3+4WS1TpC3y8ax0qZNOu0drS0ld8kOB2Fa1OQN6p4dfgHNsPraYE7aZ0nqO1SR3lrE2yksjsy4uR58AtjNSZvq7lGDcofnimLP9/gGTaoeobcQfxM2tot1l3/WUhy9/zJ5Ax6NrvTrlxpdg/oyqfgldTYi47AI41pYbRuDmw4ki5sFWwBfBC2CVJ8vSwmOBSzWTa95iLLcD4bX8C8KAoAmKyv5pdYsHR6UlOfoJ4boe14aGm6T67pzLq/x2hpoU7HLizslvKjMoORS12YFbeI+qnJcBKOlorQByluhaQBrdB7qdO62WfOlOFbFPkpUZ46vd17C3mfJWe1fDc+enK2SL+LnB3Z8S9QSwMEFAAACAgAABAh7MBnDAdtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tFJKcmKaqamhkUVyiqFhqqWprkmiZVpaWmJiokGSuaVZappSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAABAh7J/HgDVJAgAA7QQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAABAh7MBnDAdtAAAAeAAAAAkAJAAAAAAAAAAAAAAAlgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABOAwAAAAA=
+    dataString: UEsDBBQAAAgIAAAQIeyrib6gWgIAAPwEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMly4jAQ/RVK5yFlkziEuc0AIXPIUiFTufgipDZWIUsuLQGS4t+nJdvYYU40r193v17kLyKUrYE5bVZG8EfNgfwckWCTH6Pe+QAHutVqLT6h47wL7spAopHzSp3QiKchzOoKnBHsl9rKQE4Q9EoU2lRLvoW5ts4iXFBpAV1GuxCtEPoakQP+jGch5IjWZBqsT7RmyeiEJgPlwPTUSdYxs5bY8LxiklY18CC6p2dd4qyhKWynZQTpTEspbKuFuGMde32lx9ApFxT7isUDtwSxLV2oPAx8LgoLrm3a0ONCGBxPk5H81s3MKmp3jaYPKj1E9bdRT5P08T//OI3uwujqoaubJqGGKwXboUJGrRsMdQgvvgv3ak/ljm4kvJegnvTKaK84Op3xIdRbmCz6v+fW5iWwXY83Ui9AX/ez7kadXk3v7tLr2e31cpxM2y2Fhk5xFIe5FNUm8K9uGmAtdRx8vAIwuKI/qD7eiG3zIhok/bXwRrfDY2od98JYh662ZRW0brQ3gUru0QhrYN7NtVEQ0baBGhSV7viCWdzlOi98g6oXnnsaXk1bu/V1j+EiJMI9P0kuXC96f16cLfX+EWz57J0UCnrRwfGEY5prpZprG46kC1t7U1A2CNt6wb+fGeGMFlmWTu4YT1OYZeMbOiuKglKabKazWyhIvEOhsE8qXxqh7XhwaapPrvDmuo/JaGVoHS+fG7pfic9KD0YuVKHXzACo5ybDWTgYLIKvky+5wAGtwTmh4rrJV06kZjvg+TlRHjtdHpyheZ8lJ7X40C4gOZnHr0dOTuT0D1BLAwQUAAAICAAAECHswGcMB20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0UkpyYpqpqaGRRXKKoWGqpamuSaJlWlpaYmKiQZK5pVlqmlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAECHsq4m+oFoCAAD8BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAECHswGcMB20AAAB4AAAACQAkAAAAAAAAAAAAAACnAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAF8DAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -130,10 +131,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf7afd1d538d5e4c856016b5d67bbf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonSize: 32
+  generateDungeon: 1
+  dungeonSize: 40
+  sight: 4
   numberOfIterations: 3
   corridorThickness: 4
   shouldDebugDrawBsp: 0
   map: {fileID: 0}
   wallTile: {fileID: 11400000, guid: b0ea6bc247f253443911ac3d43d773d0, type: 2}
   obstacleMap: {fileID: 0}
+  fogOfWarMap: {fileID: 0}
+  player: {fileID: 2568394342127918841, guid: 1d0158c298cf108429ab0850a2da8b3f, type: 3}
+  floorTile:
+  - {fileID: 11400000, guid: e10eda40a00a1bb4a8ed890e234fb488, type: 2}
+  - {fileID: 11400000, guid: 0f6a9dacee6a56c4186fcbb939375033, type: 2}
+  - {fileID: 11400000, guid: 2351c2beb46733e41833cff06e0e496b, type: 2}
+  - {fileID: 11400000, guid: 31de5704c8d60e04cb6f4392056991dd, type: 2}
+  - {fileID: 11400000, guid: eca2a39ed3413f348b7caacd3b0f1c44, type: 2}
+  - {fileID: 11400000, guid: 37e1026c64504b84eabcc310cc5cf0e8, type: 2}
+  tlTile: {fileID: 11400000, guid: c492bf29a8ce4c04e96b78be5faabf8b, type: 2}
+  tmTile: {fileID: 11400000, guid: dee639174cb33114b97ab8347c32444a, type: 2}
+  trTile: {fileID: 11400000, guid: 7ee0515b8ac6e0b47a707d2691a099a6, type: 2}
+  mlTile: {fileID: 11400000, guid: 37b894bd0d45ac04d8a85eac4400abf3, type: 2}
+  mmTile: {fileID: 11400000, guid: e10eda40a00a1bb4a8ed890e234fb488, type: 2}
+  mrTile: {fileID: 11400000, guid: 8e1cb02306239b140978e58253d6fa32, type: 2}
+  blTile: {fileID: 11400000, guid: b61609db78bd28a4f81ea7d3c2a1495b, type: 2}
+  bmTile: {fileID: 11400000, guid: e03f5090e4d542b408f9aacfb9517aac, type: 2}
+  brTile: {fileID: 11400000, guid: 486283ae400671840bca4be302812d23, type: 2}
+  leftDown: {fileID: 11400000, guid: 72c7bb7c998761a48a8c7a91a2350324, type: 2}
+  rightDown: {fileID: 11400000, guid: b670fa9df945fb14ab0959b0247c9d5f, type: 2}
+  fogOfWarTile: {fileID: 11400000, guid: 0da8a6c88a642a74fbac4c3bd38261be, type: 2}

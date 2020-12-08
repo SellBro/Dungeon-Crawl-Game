@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8667497953804903890}
   - component: {fileID: 3726080333404688563}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,9 +99,10 @@ GameObject:
   - component: {fileID: 2325205598234874211}
   - component: {fileID: 2325205598234874210}
   - component: {fileID: 3051421487552767120}
-  m_Layer: 0
+  - component: {fileID: 5141403613661583179}
+  m_Layer: 9
   m_Name: Enemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,6 +296,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5141403613661583179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2325205598234874209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b7a12649ce610449acc729f73884e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 100
+  damage: 10
 --- !u!1 &2325205598766175845
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2325205598766175846}
   - component: {fileID: 2325205598766175847}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

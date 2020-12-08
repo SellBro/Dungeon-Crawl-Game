@@ -6,9 +6,11 @@ using UnityEngine;
 using UnityEngine.Playables;
 
 using RPG.Core;
+using RPG.Units;
 
 namespace RPG.units
 {
+    [RequireComponent(typeof(Unit))]
     public class EnemyController : MonoBehaviour, IComparable
     {
         [SerializeField] private float speed = 5;
@@ -22,8 +24,11 @@ namespace RPG.units
         
         public Transform target;
 
+        private Unit _unit;
+
         private void Start()
         {
+            _unit = GetComponent<Unit>();
             _blocker = GetComponent<SingleNodeBlocker>();
             
             distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
@@ -81,12 +86,18 @@ namespace RPG.units
             
             if (distanceToPlayer <= 1.2)
             {
-                Debug.Log("Attack");
+                Attack();
             }
             else
             {
                 Move();
             }
+        }
+
+        private void Attack()
+        {
+            GameObject player = GameManager.Instance.player;
+            player.GetComponent<Unit>().TakeDamage(_unit.GetDamage());
         }
     }
 }

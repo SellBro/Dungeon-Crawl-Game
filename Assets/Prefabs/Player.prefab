@@ -622,6 +622,7 @@ GameObject:
   - component: {fileID: 754272061501546481}
   - component: {fileID: 2568394342127918842}
   - component: {fileID: 3895419804571611231}
+  - component: {fileID: 7536258808013166838}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -708,6 +709,9 @@ MonoBehaviour:
   whatIsBlocked:
     serializedVersion: 2
     m_Bits: 256
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!95 &3895419804571611231
 Animator:
   serializedVersion: 3
@@ -727,6 +731,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7536258808013166838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568394342127918841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b7a12649ce610449acc729f73884e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 100
+  damage: 20
 --- !u!1 &3584014816611917211
 GameObject:
   m_ObjectHideFlags: 0

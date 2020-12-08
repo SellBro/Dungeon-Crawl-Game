@@ -19,8 +19,8 @@ namespace RPG.Core
         public List<SingleNodeBlocker> obstacles;
 
         private BlockManager.TraversalProvider traversalProvider;
-        
-        
+
+        [HideInInspector] public GameObject player;
         
         public static GameManager Instance = null;
         

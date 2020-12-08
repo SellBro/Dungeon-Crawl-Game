@@ -9,8 +9,10 @@ namespace Roguelike.DungeonGenerator
 {
     public class DungeonGenerator : MonoBehaviour
     {
+        public bool generateDungeon = true;
+        
         public const int MIN_ROOM_DELTA = 2;
-
+        
         public int dungeonSize;
 
         [SerializeField] private int sight;
@@ -58,10 +60,13 @@ namespace Roguelike.DungeonGenerator
         {
             _astarPath = GetComponent<AstarPath>();
             dungeon = new bool[dungeonSize,dungeonSize];
-            GenerateDungeon();
-            CalculatePath();
-            CreateFogOfWar();
-            SpawnPlayer();
+            if (generateDungeon)
+            {
+                GenerateDungeon();
+                CalculatePath();
+                CreateFogOfWar();
+                SpawnPlayer();
+            }
         }
 
         private void Update()
