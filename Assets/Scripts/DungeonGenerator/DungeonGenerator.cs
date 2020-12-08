@@ -29,8 +29,12 @@ namespace Roguelike.DungeonGenerator
         [SerializeField] private TileBase wallTile;
 
         
+        [Range(0, 100)] 
+        [SerializeField] private int spawnBreakableChance;
+        
         [SerializeField] private Tilemap obstacleMap;
         [SerializeField] private Tilemap fogOfWarMap;
+        [SerializeField] private Tilemap breakable;
         [SerializeField] private GameObject player;
 
         private BspTree tree;
@@ -55,6 +59,7 @@ namespace Roguelike.DungeonGenerator
         [SerializeField] private TileBase rightDown;
         
         [SerializeField] private TileBase fogOfWarTile;
+        [SerializeField] private TileBase[] breakableTiles;
 
 
         private void Start()
@@ -78,6 +83,11 @@ namespace Roguelike.DungeonGenerator
                 GenerateDungeon();
                 CalculatePath();
                 CreateFogOfWar();
+
+                AnalyzeDungeon();
+
+                SpawnBreakable();
+                
                 SpawnPlayer();
             }
         }
@@ -96,17 +106,56 @@ namespace Roguelike.DungeonGenerator
             }
         }
 
-        public void CalculatePath()
+        private void CalculatePath()
         {
             _astarPath.Scan();
         }
-        
-        public void SpawnPlayer()
+
+        private void AnalyzeDungeon()
         {
             for (int i = 0; i < dungeonWidth; i++) {
                 for (int j = 0; j < dungeonHeight; j++) {
                     var tile = GetTileByNeihbors (i, j);
                     if (tile == mmTile)
+                    {
+                        dungeon[i, j] = false;
+                    }
+                    else
+                    {
+                        dungeon[i, j] = true;
+                    }
+                }
+            }
+        }
+
+        private Vector2Int GetRandomPosition()
+        {
+            int randomX = Random.Range(0, dungeonWidth);
+            int randomY = Random.Range(0, dungeonHeight);
+            var tile = GetTileByNeihbors (dungeonWidth, dungeonHeight);
+            while (tile != mmTile && dungeon[randomX, randomY] == true)
+            {
+                randomX = Random.Range(0, dungeonWidth);
+                randomY = Random.Range(0, dungeonHeight);
+                tile = GetTileByNeihbors (dungeonWidth, dungeonHeight);
+            }
+            
+            return new Vector2Int(randomX,randomY);
+        }
+        
+        private void SpawnPlayer()
+        {
+            Vector2Int pos = GetRandomPosition();
+            
+            GameObject pl = Instantiate(player);
+            pl.transform.position = new Vector3(pos.x + 0.5f, pos.y + 0.5f);
+            player = pl;
+
+
+            /*for (int i = 0; i < dungeonWidth; i++) {
+                for (int j = 0; j < dungeonHeight; j++) {
+                    var tile = GetTileByNeihbors (i, j);
+                    if (tile == mmTile && dungeon[i,j] == false)
                     {
                         GameObject pl = Instantiate(player);
                         pl.transform.position = new Vector3(i + 0.5f, j + 0.5f);
@@ -114,10 +163,24 @@ namespace Roguelike.DungeonGenerator
                         return;
                     }
                 }
+            }*/
+        }
+
+        private void SpawnBreakable()
+        {
+            for (int i = 0; i < dungeonWidth; i++) {
+                for (int j = 0; j < dungeonHeight; j++) {
+                    var tile = GetTileByNeihbors (i, j);
+                    if (tile == mmTile && dungeon[i,j] == false && Random.Range(0,100) > 100 - spawnBreakableChance)
+                    {
+                        breakable.SetTile(new Vector3Int(i,j,0), breakableTiles[Random.Range(0,breakableTiles.Length)]);
+                        dungeon[i, j] = true;
+                    }
+                }
             }
         }
 
-        public void CreateFogOfWar()
+        private void CreateFogOfWar()
         {
             for (int i = 0; i < dungeonWidth; i++) 
             {
@@ -128,7 +191,7 @@ namespace Roguelike.DungeonGenerator
             }
         }
 
-        public void GenerateDungeon()
+        private void GenerateDungeon()
         {
             InitReferences ();
             GenerateContainersUsingBsp ();

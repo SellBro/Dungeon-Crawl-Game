@@ -132,15 +132,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generateDungeon: 1
-  dungeonSize: 40
+  dungeonWidth: 92
+  dungeonHeight: 64
   sight: 4
-  numberOfIterations: 3
+  numberOfIterations: 5
   corridorThickness: 4
   shouldDebugDrawBsp: 0
   map: {fileID: 0}
   wallTile: {fileID: 11400000, guid: b0ea6bc247f253443911ac3d43d773d0, type: 2}
+  spawnBreakableChance: 5
   obstacleMap: {fileID: 0}
   fogOfWarMap: {fileID: 0}
+  breakable: {fileID: 0}
   player: {fileID: 2568394342127918841, guid: 1d0158c298cf108429ab0850a2da8b3f, type: 3}
   floorTile:
   - {fileID: 11400000, guid: e10eda40a00a1bb4a8ed890e234fb488, type: 2}
@@ -164,3 +167,6 @@ MonoBehaviour:
   leftDown: {fileID: 11400000, guid: 72c7bb7c998761a48a8c7a91a2350324, type: 2}
   rightDown: {fileID: 11400000, guid: b670fa9df945fb14ab0959b0247c9d5f, type: 2}
   fogOfWarTile: {fileID: 11400000, guid: 0da8a6c88a642a74fbac4c3bd38261be, type: 2}
+  breakableTiles:
+  - {fileID: 11400000, guid: 46bd8a5122d86e2468ddb4df1cb1a045, type: 2}
+  - {fileID: 11400000, guid: b4bbb6c6028251a4fb3df28200281d68, type: 2}
