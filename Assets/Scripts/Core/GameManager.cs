@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using Pathfinding;
+using RPG.DungeonGenerator;
 using RPG.units;
 using UnityEngine;
-
-using RPG.Units;
+using Random = UnityEngine.Random;
 
 namespace RPG.Core
 {
@@ -21,7 +20,7 @@ namespace RPG.Core
         public int level = 1;
         
         
-        [HideInInspector] public GameObject player;
+         public GameObject player;
         [SerializeField] private float turnDelay = 0.1f;
         
         
@@ -29,6 +28,8 @@ namespace RPG.Core
         private List<EnemyController> _units;
         private bool _unitsMoving;
 
+        public Vector2 spawn;
+        
         private void Awake()
         {
             if (Instance == null)
@@ -44,6 +45,12 @@ namespace RPG.Core
             InitGame();
         }
 
+
+        private void Start()
+        {
+            StartCoroutine(GenerateDungeon());
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space)) playerTurn = false;
@@ -51,6 +58,27 @@ namespace RPG.Core
             if (playerTurn || _unitsMoving) return;
 
             StartCoroutine(MoveUnits());
+        }
+
+        public IEnumerator GenerateDungeon()
+        {
+            yield return StartCoroutine(LevelGeneration.Instance.GenerateLevel());
+            SpawnPlayer();
+        }
+
+        private void SpawnPlayer()
+        {
+            int x = Random.Range(1, 16);
+            int y = Random.Range(1, 15);
+            int num = Random.Range(0, LevelGeneration.DungeonRooms.Count);
+            while (!LevelGeneration.DungeonRooms[num].IsTileEmpty(x, y))
+            {
+                x = Random.Range(1, 16);
+                y = Random.Range(1, 15);
+            }
+
+            spawn = LevelGeneration.DungeonRooms[num].position;
+            Instantiate(player, new Vector2(spawn.x + x + 0.5f, spawn.y + y + 0.5f), Quaternion.identity);
         }
 
         public void AddUnitToList(EnemyController unit)

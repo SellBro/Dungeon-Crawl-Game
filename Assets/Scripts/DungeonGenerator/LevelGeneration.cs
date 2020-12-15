@@ -8,8 +8,10 @@ namespace RPG.DungeonGenerator
 {
     public class LevelGeneration : MonoBehaviour
     {
-	    public static List<GameObject> DungeonRooms;
+	    public static LevelGeneration Instance = null;
 	    
+	    public static List<RoomManager> DungeonRooms;
+
 	    [Header("Tiles")]
 	    [SerializeField] private GameObject[] T;
 	    [SerializeField] private GameObject[] B;
@@ -46,30 +48,34 @@ namespace RPG.DungeonGenerator
 
         private void Awake()
         {
-	        DungeonRooms = new List<GameObject>();
+	        Instance = this;
         }
 
-        void Start () {
-			_worldSize = new Vector2(worldX,worldY);
-			// Make sure we don't try to make more rooms than can fit in our grid
-			if (_numberOfRooms >= (_worldSize.x * 2) * (_worldSize.y * 2))
-			{ 
-				_numberOfRooms = Mathf.RoundToInt((_worldSize.x * 2) * (_worldSize.y * 2));
-			}
-			// Define grid size
-			_gridSizeX = Mathf.RoundToInt(_worldSize.x);
-			_gridSizeY = Mathf.RoundToInt(_worldSize.y);
+        public IEnumerator GenerateLevel()
+        {
+	        DungeonRooms = new List<RoomManager>();
+	        
+	        _worldSize = new Vector2(worldX,worldY);
+	        // Make sure we don't try to make more rooms than can fit in our grid
+	        if (_numberOfRooms >= (_worldSize.x * 2) * (_worldSize.y * 2))
+	        { 
+		        _numberOfRooms = Mathf.RoundToInt((_worldSize.x * 2) * (_worldSize.y * 2));
+	        }
+	        // Define grid size
+	        _gridSizeX = Mathf.RoundToInt(_worldSize.x);
+	        _gridSizeY = Mathf.RoundToInt(_worldSize.y);
 			
-			// Lays out the actual map
-			CreateRooms(); 
-			// Assigns the doors where rooms would connect
-			SetRoomDoors();
-			// Instantiates objects to make up a map
-			DrawMap(); 
-		}
-		
-		
-		void CreateRooms(){
+	        // Lays out the actual map
+	        CreateRooms(); 
+	        // Assigns the doors where rooms would connect
+	        SetRoomDoors();
+	        // Instantiates objects to make up a map
+	        DrawMap();
+	        yield return null;
+        }
+        
+
+        void CreateRooms(){
 			// Setup
 			_rooms = new Room[_gridSizeX * 2,_gridSizeY * 2];
 			_rooms[_gridSizeX,_gridSizeY] = new Room(Vector2.zero, 1);
@@ -103,8 +109,8 @@ namespace RPG.DungeonGenerator
 					}
 					while(NumberOfNeighbors(checkPos, _takenPositions) > 1 && iterations < 100);
 					
-					if (iterations >= 50)
-						print("error: could not create with fewer neighbors than : " + NumberOfNeighbors(checkPos, _takenPositions));
+					//if (iterations >= 50)
+						//print("error: could not create with fewer neighbors than : " + NumberOfNeighbors(checkPos, _takenPositions));
 					
 				}
 				
@@ -212,7 +218,7 @@ namespace RPG.DungeonGenerator
 			// Break loop if it takes too long: this loop isn't guaranteed to find solution, which is fine for this
 			if (inc >= 100)
 			{ 
-				print("Error: could not find position with only one neighbor");
+				//print("Error: could not find position with only one neighbor");
 			}
 			return checkingPos;
 		}
@@ -264,8 +270,8 @@ namespace RPG.DungeonGenerator
 				// Create map obj and assign its variables
 				var r = Instantiate(PickObject(room), drawPos, Quaternion.identity);
 				r.gameObject.transform.parent = mapRoot;
-				
-				DungeonRooms.Add(r);
+				RoomManager manager = r.gameObject.GetComponent<RoomManager>();
+				DungeonRooms.Add(manager);
 			}
 		}
 		
