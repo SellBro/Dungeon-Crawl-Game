@@ -8,6 +8,7 @@ namespace RPG.DungeonGenerator
 {
     public class LevelGeneration : MonoBehaviour
     {
+
 	    public GameObject[] T;
 	    public GameObject[] B;
 	    public GameObject[] R;
@@ -158,8 +159,10 @@ namespace RPG.DungeonGenerator
 			
 				Debug.Log("Rooms");
 				Vector2 drawPos = room.gridPos;
+				
 				drawPos.x *= 16;//aspect ratio of map sprite
 				drawPos.y *= 15;
+				
 				//create map obj and assign its variables
 				var r = Instantiate(PickObject(room), drawPos, Quaternion.identity);
 				r.gameObject.transform.parent = mapRoot;
