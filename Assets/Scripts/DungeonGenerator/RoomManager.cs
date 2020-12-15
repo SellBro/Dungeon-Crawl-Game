@@ -11,7 +11,7 @@ namespace RPG.DungeonGenerator
         [SerializeField] private Tilemap obstacleMap;
         [SerializeField] private Tilemap groundMap;
 
-        public bool[,] _tiles = new bool[16,15];
+        private bool[,] _tiles = new bool[16,15];
 
         private void Start()
         {
@@ -21,6 +21,7 @@ namespace RPG.DungeonGenerator
                 return;
             }
 
+            // Fill bool array; True - empty space
             for (int i = 0; i < 16; i++)
             {
                 for (int j = 0; j < 15; j++)

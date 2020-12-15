@@ -216,7 +216,9 @@
             <e p="MovingObject.cs" t="Include" />
           </e>
           <e p="DungeonGenerator" t="Include">
-            <e p="DungeonGenerator.cs" t="Include" />
+            <e p="Full Random" t="Include">
+              <e p="DungeonGenerator.cs" t="Include" />
+            </e>
             <e p="LevelGeneration.cs" t="Include" />
             <e p="Room.cs" t="Include" />
             <e p="RoomManager.cs" t="Include" />

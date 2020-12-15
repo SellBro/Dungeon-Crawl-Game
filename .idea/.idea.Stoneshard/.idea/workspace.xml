@@ -19,7 +19,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/DungeonGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/526469D5-A48C-43EE-BD9A-F19F8745AFA1/9f/f18dbf67/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -32,14 +31,12 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/MovingObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/playerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/TestUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Path.cs" />
         <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelGenerator/BST/BinarySearchTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelGenerator/LevelGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/DungeonGeneratorEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
@@ -48,9 +45,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Destroyer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/MapSpriteSelector.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Room.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Room.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" />
       </list>
     </option>
   </component>
@@ -107,6 +106,7 @@
       <workItem from="1607868342874" duration="8002000" />
       <workItem from="1608024617459" duration="7114000" />
       <workItem from="1608033349247" duration="1983000" />
+      <workItem from="1608038027962" duration="1603000" />
     </task>
     <servers />
   </component>

@@ -8,7 +8,10 @@ namespace RPG.DungeonGenerator
     {
         public Vector2 gridPos;
         public int type;
-        public bool doorTop, doorBot, doorLeft, doorRight;
+        public bool doorTop;
+        public bool doorBot;
+        public bool doorLeft;
+        public bool doorRight;
 
         public Room(Vector2 _gridPos, int _type)
         {

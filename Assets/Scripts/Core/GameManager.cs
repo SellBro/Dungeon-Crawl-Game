@@ -12,20 +12,20 @@ namespace RPG.Core
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private float turnDelay = 0.1f;
-
-
-        public BlockManager blockManager;
-        public List<SingleNodeBlocker> obstacles;
-
-        private BlockManager.TraversalProvider traversalProvider;
-
-        [HideInInspector] public GameObject player;
-        
         public static GameManager Instance = null;
         
+        public BlockManager blockManager;
+        public List<SingleNodeBlocker> obstacles;
+        
         public bool playerTurn = true;
-
+        public int level = 1;
+        
+        
+        [HideInInspector] public GameObject player;
+        [SerializeField] private float turnDelay = 0.1f;
+        
+        
+        private BlockManager.TraversalProvider traversalProvider;
         private List<EnemyController> _units;
         private bool _unitsMoving;
 

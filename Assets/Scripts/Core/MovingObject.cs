@@ -8,12 +8,13 @@ namespace RPG.Core
 {
     public abstract class MovingObject : MonoBehaviour
     {
-       
+        public float moveTime = 0.1f;
+        
+        
         [SerializeField] private LayerMask blockingLayer;
         [SerializeField] private bool isPlayer = false;
-
-        public float moveTime = 0.1f;
-
+        
+        
         private AIDestinationSetter _aiDestinationSetter;
         private AIPath _aiPath;
         private BoxCollider2D _boxCollider;
