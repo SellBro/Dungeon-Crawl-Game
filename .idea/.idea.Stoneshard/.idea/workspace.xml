@@ -12,14 +12,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AI/TurnBasedAI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomTemplates.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/BlockManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/MapSpriteSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Destroyer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/DungeonGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -52,6 +49,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Destroyer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/MapSpriteSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Room.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
       </list>
     </option>
@@ -68,6 +66,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -106,7 +105,8 @@
       <workItem from="1607422809089" duration="1954000" />
       <workItem from="1607439195770" duration="5711000" />
       <workItem from="1607868342874" duration="8002000" />
-      <workItem from="1608024617459" duration="6377000" />
+      <workItem from="1608024617459" duration="7114000" />
+      <workItem from="1608033349247" duration="1505000" />
     </task>
     <servers />
   </component>
@@ -129,6 +129,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="461" y="202" key="SettingsEditor" timestamp="1608032863495">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="461" y="202" key="SettingsEditor/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1608032863495" />
     <state x="616" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1607367449822">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>

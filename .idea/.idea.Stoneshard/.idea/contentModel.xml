@@ -216,13 +216,10 @@
             <e p="MovingObject.cs" t="Include" />
           </e>
           <e p="DungeonGenerator" t="Include">
-            <e p="Destroyer.cs" t="Include" />
             <e p="DungeonGenerator.cs" t="Include" />
             <e p="LevelGeneration.cs" t="Include" />
-            <e p="MapSpriteSelector.cs" t="Include" />
             <e p="Room.cs" t="Include" />
-            <e p="RoomSpawner.cs" t="Include" />
-            <e p="RoomTemplates.cs" t="Include" />
+            <e p="RoomManager.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
             <e p="playerController.cs" t="Include" />
