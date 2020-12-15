@@ -13,8 +13,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AI/TurnBasedAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomTemplates.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Room.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/BlockManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/MapSpriteSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Destroyer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -47,6 +50,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomTemplates.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Destroyer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/MapSpriteSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Room.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
       </list>
     </option>
   </component>
@@ -100,6 +106,7 @@
       <workItem from="1607422809089" duration="1954000" />
       <workItem from="1607439195770" duration="5711000" />
       <workItem from="1607868342874" duration="8002000" />
+      <workItem from="1608024617459" duration="6377000" />
     </task>
     <servers />
   </component>
