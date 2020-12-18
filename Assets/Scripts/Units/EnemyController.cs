@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
-using UnityEngine.Playables;
 
 using RPG.Core;
 using RPG.Units;
@@ -14,6 +12,7 @@ namespace RPG.units
     public class EnemyController : MonoBehaviour, IComparable
     {
         [SerializeField] private float speed = 5;
+        [SerializeField] private float agroDistance = 8;
         
         private SingleNodeBlocker _blocker;
         
@@ -30,33 +29,35 @@ namespace RPG.units
         {
             _unit = GetComponent<Unit>();
             _blocker = GetComponent<SingleNodeBlocker>();
+            _blocker.manager = GameManager.Instance.blockManager;
             
-            distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
-            
-            _blocker.BlockAtCurrentPosition();
+            if (target != null)
+            {
+                distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
+            }
 
+            target = GameManager.Instance.player.transform;
             GameManager.Instance.AddUnitToList(this);
         }
 
         private void Update()
         {
-
             if (shouldMove)
             {
                 transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
             }
         }
 
-        public void Move()
+        private void Move()
         {
             _blocker.Unblock();
             var path = GameManager.Instance.ConstuctPath(transform, target);//_seeker.GetCurrentPath();
             _blocker.BlockAt(path.vectorPath[1]);
             destination = path.vectorPath[1];
-            
+
             StartCoroutine(SmoothMovement(destination));
             
-            distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
+            distanceToPlayer = CalculateTargetDistance();
         }
 
         private IEnumerator SmoothMovement(Vector3 point)
@@ -69,7 +70,6 @@ namespace RPG.units
             }
             
             shouldMove = false;
-            distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
         }
 
         public int CompareTo(object obj)
@@ -82,15 +82,18 @@ namespace RPG.units
 
         public void Act()
         {
-            distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
+            if(target == null) return;
+
+            distanceToPlayer = CalculateTargetDistance();
             
             if (distanceToPlayer <= 1.2)
             {
                 Attack();
             }
-            else
+            else if(distanceToPlayer <= agroDistance)
             {
                 Move();
+                Debug.Log(_blocker.lastBlocked);
             }
         }
 
@@ -98,6 +101,11 @@ namespace RPG.units
         {
             GameObject player = GameManager.Instance.player;
             player.GetComponent<Unit>().TakeDamage(_unit.GetDamage());
+        }
+
+        private float CalculateTargetDistance()
+        {
+            return Vector3.Distance(transform.position, target.transform.position);
         }
     }
 }

@@ -117,3 +117,10 @@ MonoBehaviour:
   mapRoot: {fileID: 6779329662964114474}
   roomSizeX: 16
   roomSizeY: 15
+  boxGenerationChance: 3
+  maxBoxNumberPerRoom: 2
+  boxPrefab: {fileID: 2629113794485184007, guid: 3ed1b698e64180c47926b11a760391d8,
+    type: 3}
+  enemies:
+  - {fileID: 2325205598234874209, guid: 34c28de7e9e9b294a8b7e6c339547947, type: 3}
+  maxEnemiesPerRoom: 8

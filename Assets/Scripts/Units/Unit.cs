@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RPG.Units
 {
-    public class Unit : MonoBehaviour
+    public class Unit : MonoBehaviour, IDamageable
     {
         [SerializeField] private int maxHealth;
         [SerializeField] private int damage;

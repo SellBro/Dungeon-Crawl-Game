@@ -83,17 +83,12 @@ namespace RPG.Player
 
             if (hitEnemy.transform == null) return false;
             
-            if (hitEnemy.transform.gameObject.CompareTag("Enemy"))
-            {
-                Unit enemy = hitEnemy.transform.gameObject.GetComponent<Unit>();
-                Attack(enemy);
-                return true;
-            }
-
-            return false;
+            IDamageable enemy = hitEnemy.transform.gameObject.GetComponent<IDamageable>();
+            Attack(enemy);
+            return true;
         }
 
-        private void Attack(Unit enemy)
+        private void Attack(IDamageable enemy)
         {
             enemy.TakeDamage(_unit.GetDamage());
             GameManager.Instance.playerTurn = false;

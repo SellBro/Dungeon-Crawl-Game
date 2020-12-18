@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using RPG.DungeonGenerator;
+using RPG.Player;
 using RPG.units;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -20,10 +21,10 @@ namespace RPG.Core
         public int level = 1;
         
         
-         public GameObject player;
+        public GameObject player;
         [SerializeField] private float turnDelay = 0.1f;
-        
-        
+
+        //private AstarPath _astarPath;
         private BlockManager.TraversalProvider traversalProvider;
         private List<EnemyController> _units;
         private bool _unitsMoving;
@@ -38,9 +39,10 @@ namespace RPG.Core
                 Destroy(gameObject);
             
             DontDestroyOnLoad(gameObject);
-            
-            traversalProvider = new BlockManager.TraversalProvider(blockManager, BlockManager.BlockMode.OnlySelector, obstacles);
-            
+
+            AstarPath.active = GetComponent<AstarPath>();
+            blockManager = GetComponent<BlockManager>();
+
             _units = new List<EnemyController>();
             InitGame();
         }
@@ -60,10 +62,23 @@ namespace RPG.Core
             StartCoroutine(MoveUnits());
         }
 
-        public IEnumerator GenerateDungeon()
+        private IEnumerator GenerateDungeon()
         {
             yield return StartCoroutine(LevelGeneration.Instance.GenerateLevel());
             SpawnPlayer();
+            yield return null;
+            
+            yield return StartCoroutine(LevelGeneration.Instance.FillRooms());
+
+            AstarPath.active.Scan();
+            
+            foreach (var unit in _units)
+            {
+                SingleNodeBlocker unitNode = unit.GetComponent<SingleNodeBlocker>();
+                obstacles.Add(unitNode);
+            }
+            
+            traversalProvider = new BlockManager.TraversalProvider(blockManager, BlockManager.BlockMode.OnlySelector, obstacles);
         }
 
         private void SpawnPlayer()
@@ -78,7 +93,8 @@ namespace RPG.Core
             }
 
             spawn = LevelGeneration.DungeonRooms[num].position;
-            Instantiate(player, new Vector2(spawn.x + x + 0.5f, spawn.y + y + 0.5f), Quaternion.identity);
+            player = Instantiate(player, new Vector2(spawn.x + x + 0.5f, spawn.y + y + 0.5f), Quaternion.identity);
+            LevelGeneration.DungeonRooms[num].hasSpawnedPlayer = true;
         }
 
         public void AddUnitToList(EnemyController unit)
@@ -106,7 +122,7 @@ namespace RPG.Core
             foreach(EnemyController unit in _units)
             {
                 unit.Act();
-                yield return new WaitForSeconds(turnDelay/10);
+                yield return null;
             }
 
             playerTurn = true;
@@ -133,6 +149,10 @@ namespace RPG.Core
 
             return path;
         }
-        
+
+        public void AddSelfToObstacle(SingleNodeBlocker node)
+        {
+            obstacles.Add(node);
+        }
     }
 }

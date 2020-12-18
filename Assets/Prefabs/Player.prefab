@@ -185,7 +185,7 @@ MonoBehaviour:
     m_Bits: 256
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
 --- !u!95 &3895419804571611231
 Animator:
   serializedVersion: 3

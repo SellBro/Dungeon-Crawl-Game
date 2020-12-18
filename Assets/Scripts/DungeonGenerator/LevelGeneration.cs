@@ -38,6 +38,16 @@ namespace RPG.DungeonGenerator
 	    [SerializeField] private int roomSizeX = 16;
 	    [SerializeField] private int roomSizeY = 15;
 	    
+	    [Header("InRoom Generation")]
+	    [Range(1,100)]
+	    public int boxGenerationChance = 2;
+	    public int maxBoxNumberPerRoom = 2;
+	    public GameObject boxPrefab;
+	    
+	    [Header("Enemies")] 
+	    public GameObject[] enemies;
+	    public int maxEnemiesPerRoom = 8;
+	    
 	    
 	    private Vector2 _worldSize = new Vector2(3,3);
         private Room[,] _rooms;
@@ -72,6 +82,15 @@ namespace RPG.DungeonGenerator
 	        // Instantiates objects to make up a map
 	        DrawMap();
 	        yield return null;
+        }
+
+        public IEnumerator FillRooms()
+        {
+	        foreach (RoomManager room in DungeonRooms)
+	        {
+		        room.FillRoom();
+		        yield return null;
+	        }
         }
         
 

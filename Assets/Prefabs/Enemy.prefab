@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  agroDistance: 8
   distanceToPlayer: 0
   target: {fileID: 0}
 --- !u!114 &2325205598234874213
