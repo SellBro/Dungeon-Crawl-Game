@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using RPG.DungeonGenerator;
-using RPG.Player;
-using RPG.units;
+using RPG.Units;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,7 +12,7 @@ namespace RPG.Core
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance = null;
-        
+        public List<EnemyController> _units;
         public BlockManager blockManager;
         public List<SingleNodeBlocker> obstacles;
         
@@ -23,10 +22,9 @@ namespace RPG.Core
         
         public GameObject player;
         [SerializeField] private float turnDelay = 0.1f;
-
-        //private AstarPath _astarPath;
+        
         private BlockManager.TraversalProvider traversalProvider;
-        private List<EnemyController> _units;
+        
         private bool _unitsMoving;
 
         public Vector2 spawn;

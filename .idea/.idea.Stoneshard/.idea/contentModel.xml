@@ -231,7 +231,9 @@
           </e>
           <e p="Units" t="Include">
             <e p="EnemyController.cs" t="Include" />
+            <e p="EnemyUnit.cs" t="Include" />
             <e p="IDamageable.cs" t="Include" />
+            <e p="PlayerUnit.cs" t="Include" />
             <e p="TestUnit.cs" t="Include" />
             <e p="Unit.cs" t="Include" />
           </e>

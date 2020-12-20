@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using RPG.Units;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -6,9 +7,10 @@ namespace RPG.DungeonGenerator
 {
     public class RoomManager : MonoBehaviour
     {
-        [HideInInspector]
-        public bool hasSpawnedPlayer = false;
         public Vector2Int position;
+        
+        [HideInInspector] public bool hasSpawnedPlayer = false;
+        
         
         [SerializeField] private Tilemap obstacleMap;
         [SerializeField] private Tilemap groundMap;
@@ -127,7 +129,7 @@ namespace RPG.DungeonGenerator
 
                     if (rand <= LevelGeneration.Instance.boxGenerationChance && _tiles[i,j] && enemiesNumber > 0)
                     {
-                        Spaw(LevelGeneration.Instance.enemies[enemiesType], i, j);
+                        SpawnEnemy(LevelGeneration.Instance.enemies[enemiesType], i, j);
                         enemiesNumber--;
                     }
 
@@ -144,11 +146,38 @@ namespace RPG.DungeonGenerator
                 Quaternion.identity);
             _tiles[x, y] = false;
         }
-        
 
+        private void SpawnEnemy(GameObject obj, int x, int y)
+        {
+            var enemy = Instantiate(obj, new Vector3(position.x + x + 0.5f, position.y + y + 0.5f, 0),
+                Quaternion.identity);
+            _tiles[x, y] = false;
+            enemy.GetComponent<EnemyController>().SetStartingRoom(this);
+        }
+
+        public Vector2 GetRandomTile()
+        {
+            int x;
+            int y;
+            
+            for (int i = 0; i < 10;i++)
+            {
+                x = Random.Range(1, 16);
+                y = Random.Range(1, 15);
+                
+                if (IsTileEmpty(x, y))
+                {
+                    return new Vector3(position.x + x,position.y + y,0);
+                }
+            }
+            
+            return Vector2.zero;
+        }
+        
         public bool IsTileEmpty(int x, int y)
         {
             return _tiles[x, y];
         }
+
     }
 }

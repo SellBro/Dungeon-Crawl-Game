@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2325205598234874211}
   - component: {fileID: 2325205598234874210}
   - component: {fileID: 3051421487552767120}
-  - component: {fileID: 5141403613661583179}
+  - component: {fileID: 5302569877467060806}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -37,6 +37,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2325205598766175846}
+  - {fileID: 8827668047684223050}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,10 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe302a3af7b6f1b47b261a4812c9c5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPos: {fileID: 0}
+  wanderTarget: {fileID: 8827668047684223050}
+  distanceToPlayer: 0
   speed: 10
   agroDistance: 8
-  distanceToPlayer: 0
-  target: {fileID: 0}
 --- !u!114 &2325205598234874213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +216,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5141403613661583179
+--- !u!114 &5302569877467060806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,12 +225,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2325205598234874209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62b7a12649ce610449acc729f73884e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 300a93895adec6644a52ca614a845c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10
   damage: 10
-  _health: 0
+  isPeaceful: 0
 --- !u!1 &2325205598766175845
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,3 +313,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5470069024002303147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8827668047684223050}
+  m_Layer: 9
+  m_Name: WanderTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8827668047684223050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470069024002303147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2325205598234874217}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

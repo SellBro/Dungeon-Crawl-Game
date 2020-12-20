@@ -1,4 +1,5 @@
 ﻿using System;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Units
@@ -8,9 +9,10 @@ namespace RPG.Units
         [SerializeField] private int maxHealth;
         [SerializeField] private int damage;
 
-        public int _health;
 
-        private void Start()
+        private int _health;
+
+        protected virtual void Start()
         {
             _health = maxHealth;
         }
@@ -18,6 +20,17 @@ namespace RPG.Units
         public void TakeDamage(int amount)
         {
             _health = Mathf.Max(_health - amount, 0);
+
+            if (_health <= 0)
+            {
+                Die();
+            }
+                
+        }
+
+        protected virtual void Die()
+        {
+            Destroy(gameObject);
         }
 
         public void Heal(int amount)

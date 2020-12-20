@@ -4,72 +4,109 @@ using Pathfinding;
 using UnityEngine;
 
 using RPG.Core;
+using RPG.DungeonGenerator;
 using RPG.Units;
 
-namespace RPG.units
+namespace RPG.Units
 {
-    [RequireComponent(typeof(Unit))]
+    [RequireComponent(typeof(EnemyController))]
     public class EnemyController : MonoBehaviour, IComparable
     {
-        [SerializeField] private float speed = 5;
-        [SerializeField] private float agroDistance = 8;
-        
-        private SingleNodeBlocker _blocker;
-        
-        private bool shouldMove = false;
-        private Vector3 destination;
+        public Transform playerPos;
+        public Transform wanderTarget;
         
         [HideInInspector] public float distanceToPlayer;
         
-        public Transform target;
-
-        private Unit _unit;
+        [SerializeField] private float speed = 5;
+        [SerializeField] private float agroDistance = 8;
+        
+        private EnemyUnit _unit;
+        private SingleNodeBlocker _blocker;
+        
+        
+        private EnemyState _state;
+        private bool _shouldMove = false;
+        private Vector3 _destination;
+        private Vector3 _position;
+        private RoomManager _room;
+        
 
         private void Start()
         {
-            _unit = GetComponent<Unit>();
+            _unit = GetComponent<EnemyUnit>();
             _blocker = GetComponent<SingleNodeBlocker>();
             _blocker.manager = GameManager.Instance.blockManager;
+            playerPos = GameManager.Instance.player.transform;
             
-            if (target != null)
+            if (playerPos != null)
             {
-                distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
+                distanceToPlayer = Vector3.Distance(transform.position, playerPos.transform.position);
             }
-
-            target = GameManager.Instance.player.transform;
+            
+            
             GameManager.Instance.AddUnitToList(this);
         }
 
         private void Update()
         {
-            if (shouldMove)
+            if (_shouldMove)
             {
-                transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, _destination, speed * Time.deltaTime);
             }
         }
 
-        private void Move()
+        private void MoveTo(Transform target)
         {
             _blocker.Unblock();
-            var path = GameManager.Instance.ConstuctPath(transform, target);//_seeker.GetCurrentPath();
-            _blocker.BlockAt(path.vectorPath[1]);
-            destination = path.vectorPath[1];
+            var path = GameManager.Instance.ConstuctPath(transform, target);
 
-            StartCoroutine(SmoothMovement(destination));
+            if (path.error || path.vectorPath.Count <= 1)
+            {
+                _blocker.BlockAt(_position);
+                return;
+            }
+
+            _position = path.vectorPath[1];
+            _blocker.BlockAt(path.vectorPath[1]); 
+            _destination = path.vectorPath[1];
+
+            StartCoroutine(SmoothMovement(_destination));
             
             distanceToPlayer = CalculateTargetDistance();
+        }
+        
+        private void Attack()
+        {
+            GameObject player = GameManager.Instance.player;
+            player.GetComponent<Unit>().TakeDamage(_unit.GetDamage());
+        }
+
+        private void Wander()
+        {
+            Vector2 pos = _room.GetRandomTile();
+            
+            if(pos == Vector2.zero) return;
+            
+            pos.x += 0.5f;
+            pos.y += 0.5f;
+            
+            if (Mathf.Approximately(pos.x,transform.position.x) && Mathf.Approximately(pos.y,transform.position.y)) return;
+            
+            wanderTarget.position = pos;
+            
+            MoveTo(wanderTarget);
         }
 
         private IEnumerator SmoothMovement(Vector3 point)
         {
-            shouldMove = true;
+            _shouldMove = true;
             
             while (transform.position != point)
             {
                 yield return new WaitForEndOfFrame();
             }
             
-            shouldMove = false;
+            _shouldMove = false;
         }
 
         public int CompareTo(object obj)
@@ -82,30 +119,64 @@ namespace RPG.units
 
         public void Act()
         {
-            if(target == null) return;
 
             distanceToPlayer = CalculateTargetDistance();
+            SetState();
             
-            if (distanceToPlayer <= 1.2)
+            
+            switch (_state)
             {
-                Attack();
-            }
-            else if(distanceToPlayer <= agroDistance)
-            {
-                Move();
-                Debug.Log(_blocker.lastBlocked);
+                case EnemyState.Wander:
+                    Wander();
+                    break;
+                case EnemyState.Attack:
+                    Attack();
+                    break;
+                case EnemyState.Agro:
+                    MoveTo(playerPos);
+                    break;
+                case EnemyState.Idle:
+                    break;
             }
         }
 
-        private void Attack()
+        private void SetState()
         {
-            GameObject player = GameManager.Instance.player;
-            player.GetComponent<Unit>().TakeDamage(_unit.GetDamage());
+            if (distanceToPlayer <= 1.2 && !_unit.isPeaceful)
+            {
+                _state = EnemyState.Attack;
+            }
+            else if(distanceToPlayer <= agroDistance && !_unit.isPeaceful)
+            {
+                _state = EnemyState.Agro;
+            }
+            else
+            {
+                _state = EnemyState.Wander;
+            }
         }
 
         private float CalculateTargetDistance()
         {
-            return Vector3.Distance(transform.position, target.transform.position);
+            return Vector3.Distance(transform.position, playerPos.position);
         }
+
+        public void UnblockGridNode()
+        {
+            _blocker.Unblock();
+        }
+
+        public void SetStartingRoom(RoomManager room)
+        {
+            _room = room;
+        }
+    }
+
+    public enum EnemyState
+    {
+        Wander,
+        Idle,
+        Agro,
+        Attack
     }
 }
