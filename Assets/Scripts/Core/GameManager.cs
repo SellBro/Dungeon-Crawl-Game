@@ -149,10 +149,5 @@ namespace RPG.Core
 
             return path;
         }
-
-        public void AddSelfToObstacle(SingleNodeBlocker node)
-        {
-            obstacles.Add(node);
-        }
     }
 }

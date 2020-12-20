@@ -26,6 +26,7 @@
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Stoneshard</Path>
+      <Path>Temp</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>

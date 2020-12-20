@@ -10,6 +10,8 @@ TagManager:
   - SpawnPoint
   - Exit
   - Rooms
+  - Breakable
+  - Blocker
   layers:
   - Default
   - TransparentFX

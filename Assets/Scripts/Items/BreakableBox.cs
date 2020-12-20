@@ -13,8 +13,7 @@ namespace RPG.Items
         [SerializeField] private Sprite[] boxSprites;
         [SerializeField] private Sprite[] damagedBoxSprite;
         [SerializeField] private int health = 2;
-
-        private SingleNodeBlocker _blocker;
+        
         private SpriteRenderer _sr;
         
         private int _spriteNum;
@@ -22,15 +21,8 @@ namespace RPG.Items
         private void Start()
         {
             _sr = GetComponent<SpriteRenderer>();
-            
-            _blocker = GetComponent<SingleNodeBlocker>();
-            _blocker.manager = GameManager.Instance.blockManager;
-            GameManager.Instance.AddSelfToObstacle(_blocker);
-            
-            _blocker.BlockAtCurrentPosition();
-            Debug.Log(_blocker.lastBlocked);
 
-             _spriteNum = Random.Range(0, boxSprites.Length);
+            _spriteNum = Random.Range(0, boxSprites.Length);
             _sr.sprite = boxSprites[_spriteNum];
         }
 
@@ -40,7 +32,8 @@ namespace RPG.Items
             
             if (health <= 0)
             {
-                _blocker.Unblock();
+                AstarPath.active.UpdateGraphs(new Bounds(transform.position,new Vector3(0.5f,0.5f,0)));
+                Destroy(gameObject);
             }
                 
 
