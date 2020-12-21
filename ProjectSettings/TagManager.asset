@@ -12,6 +12,7 @@ TagManager:
   - Rooms
   - Breakable
   - Blocker
+  - Item
   layers:
   - Default
   - TransparentFX

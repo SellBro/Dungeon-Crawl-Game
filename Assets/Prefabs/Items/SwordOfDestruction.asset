@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbb1da758b185c49b7dabdfd7f6651e, type: 3}
   m_Name: SwordOfDestruction
   m_EditorClassIdentifier: 
+  sprite: {fileID: -8562994469813947829, guid: 4ac1ca5d708b2dc4788571dd2c0f9675, type: 3}
+  itemName: Sword
+  itemType: 2
+  isEquipped: 0
+  count: 1
   additionalDamage: 50
   additionalHealth: 50
   additionalArmour: 0

@@ -237,7 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57dc4aa7934c5a4aab4227c54117050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHand: {fileID: 11400000, guid: 50bc1245e3eb4d740ad72e0454933287, type: 2}
+  inventorySize: 3
+  inventoryManager: {fileID: 0}
+  rightHand: {fileID: 0}
   leftHand: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
   head: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
   body: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}

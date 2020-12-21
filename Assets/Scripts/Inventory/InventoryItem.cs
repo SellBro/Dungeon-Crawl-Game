@@ -11,22 +11,27 @@ namespace RPG.Inventory
     {
         [Header("UI")]
         public Sprite sprite;
-        
-        [Header("Stats")]
+
+        [Header("Stats")] 
+        public string itemName = "";
+        public InventoryItemType itemType;
+        public bool isEquipped = false;
+        public int count = 0;
         public int additionalDamage = 0;
         public int additionalHealth = 0;
         public int additionalArmour = 0;
         [TextArea(10,5)]
         public string description = "";
+    }
 
-        public void EquipItem()
-        {
-            
-        }
-        
-        public void UnEquipItem()
-        {
-            
-        }
+    public enum InventoryItemType
+    {
+        Head,
+        Body,
+        Hand,
+        Legs,
+        Ring,
+        Amulet,
+        Usable
     }
 }
