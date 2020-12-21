@@ -91,6 +91,7 @@ namespace RPG.Player
         private void Attack(IDamageable enemy)
         {
             enemy.TakeDamage(_unit.GetDamage());
+            Debug.Log(_unit.GetDamage());
             GameManager.Instance.playerTurn = false;
         }
 

@@ -223,6 +223,10 @@
             <e p="Room.cs" t="Include" />
             <e p="RoomManager.cs" t="Include" />
           </e>
+          <e p="Inventory" t="Include">
+            <e p="InventoryItem.cs" t="Include" />
+            <e p="PlayerInventory.cs" t="Include" />
+          </e>
           <e p="Items" t="Include">
             <e p="BreakableBox.cs" t="Include" />
           </e>

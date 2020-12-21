@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 2568394342127918842}
   - component: {fileID: 3895419804571611231}
   - component: {fileID: 5273038824316508293}
+  - component: {fileID: 26336762170180147}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -219,6 +220,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damage: 20
+  level: 0
+  xP: 0
+  additionalDamage: 0
+  additionalHealth: 0
+  additionalArmour: 0
+--- !u!114 &26336762170180147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568394342127918841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d57dc4aa7934c5a4aab4227c54117050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHand: {fileID: 11400000, guid: 50bc1245e3eb4d740ad72e0454933287, type: 2}
+  leftHand: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
+  head: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
+  body: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
+  legs: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
+  amulet: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
+  leftRing: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
+  rightRing: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
+  inventoryItems: []
 --- !u!1 &3584014816611917211
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,11 +17,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/BreakableBox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/IDamageable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/BlockManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/526469D5-A48C-43EE-BD9A-F19F8745AFA1/9f/f18dbf67/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/TestUnit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -49,17 +51,19 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/MovingObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/IDamagable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/IDamageable.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
         <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" />
         <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/BreakableBox.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItem.cs" />
       </list>
     </option>
   </component>
@@ -123,6 +127,7 @@
       <workItem from="1608303147943" duration="13027000" />
       <workItem from="1608461994998" duration="2319000" />
       <workItem from="1608464338373" duration="5388000" />
+      <workItem from="1608547394834" duration="2192000" />
     </task>
     <servers />
   </component>

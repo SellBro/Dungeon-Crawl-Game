@@ -6,8 +6,8 @@ namespace RPG.Units
 {
     public class Unit : MonoBehaviour, IDamageable
     {
-        [SerializeField] private int maxHealth;
-        [SerializeField] private int damage;
+        [SerializeField] protected int maxHealth;
+        [SerializeField] protected int damage;
 
 
         private int _health;
@@ -43,7 +43,7 @@ namespace RPG.Units
             return _health;
         }
         
-        public int GetDamage()
+        public virtual int GetDamage()
         {
             return damage;
         }
