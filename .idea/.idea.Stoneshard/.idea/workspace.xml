@@ -66,10 +66,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/GameSceneItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryUICell.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryUICell.cs" />
       </list>
     </option>
   </component>
@@ -137,6 +137,7 @@
       <workItem from="1608553669963" duration="369000" />
       <workItem from="1608554042965" duration="4391000" />
       <workItem from="1608558501195" duration="173000" />
+      <workItem from="1608905612646" duration="1247000" />
     </task>
     <servers />
   </component>
