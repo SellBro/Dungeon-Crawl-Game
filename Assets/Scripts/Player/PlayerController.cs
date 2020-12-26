@@ -3,15 +3,19 @@ using System.Collections;
 using UnityEngine;
 using RPG.Core;
 using RPG.Units;
+using SellBro.DungeonCrawler.Inventory;
+using UnityEditorInternal;
 
 namespace RPG.Player
 {
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float speed = 10;
+        [SerializeField] private Inventory inventory;
         [SerializeField] private LayerMask whatIsBlocked;
         [SerializeField] private LayerMask whatIsEnemy;
 
+        
         private BoxCollider2D _collider;
         private bool isFacingRight = true;
         private Unit _unit;
@@ -21,6 +25,8 @@ namespace RPG.Player
             _collider = GetComponent<BoxCollider2D>();
             _unit = GetComponent<Unit>();
             GameManager.Instance.player = this.gameObject;
+
+            inventory.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -33,6 +39,19 @@ namespace RPG.Player
 
         private void GetInput()
         {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (inventory.gameObject.activeSelf)
+                {
+                    inventory.gameObject.SetActive(false);
+                }
+                else
+                {
+                    inventory.gameObject.SetActive(true);
+                }
+            }
+            
+
             if (Input.GetKey(KeyCode.W))
             {
                 Vector3 destination = new Vector3(transform.position.x, transform.position.y + 1);

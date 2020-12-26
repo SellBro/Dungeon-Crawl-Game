@@ -224,11 +224,11 @@
             <e p="RoomManager.cs" t="Include" />
           </e>
           <e p="Inventory" t="Include">
-            <e p="GameSceneItem.cs" t="Include" />
-            <e p="InventoryItem.cs" t="Include" />
-            <e p="InventoryUICell.cs" t="Include" />
-            <e p="InventoryUIManager.cs" t="Include" />
-            <e p="PlayerInventory.cs" t="Include" />
+            <e p="Inventory.cs" t="Include" />
+            <e p="Item.cs" t="Include" />
+            <e p="ItemData.cs" t="Include" />
+            <e p="ItemDatabase.cs" t="Include" />
+            <e p="Slot.cs" t="Include" />
           </e>
           <e p="Items" t="Include">
             <e p="BreakableBox.cs" t="Include" />
