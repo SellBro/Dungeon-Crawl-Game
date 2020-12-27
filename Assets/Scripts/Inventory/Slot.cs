@@ -21,23 +21,43 @@ namespace SellBro.DungeonCrawler.Inventory
         public void OnDrop(PointerEventData eventData)
         {
             ItemData droppedItem = eventData.pointerDrag.GetComponent<ItemData>();
-            
-            Debug.Log(_inventory.items[id]);
-            
-            if (_inventory.items[id] == _inventory.empty)
+
+
+            EquipItem(droppedItem);
+        }
+
+        public void EquipItem(ItemData droppedItem)
+        {
+            if (_inventory.items[id] == _inventory.empty && (droppedItem.item.equippableItemType == slotType || slotType == EquippableItemType.None))
             {
-                Debug.Log("Moved");
                 _inventory.items[droppedItem.slot] = _inventory.empty;
                 _inventory.items[id] = droppedItem.item;
                 droppedItem.slot = id;
             }
-            else
+            else if(droppedItem.item.equippableItemType == slotType || slotType == EquippableItemType.None)
             {
-                Debug.Log("Change");
-                Transform item = transform.GetChild(0);
+                Debug.Log("Swap");
+
+                Transform item;
+                if (transform.childCount > 1)
+                {
+                    item = transform.GetChild(1);
+                }
+                else
+                {
+                    item = transform.GetChild(0);
+                }
                 item.GetComponent<ItemData>().slot = droppedItem.slot;
                 item.transform.SetParent(_inventory.slots[droppedItem.slot].transform);
                 item.transform.position = _inventory.slots[droppedItem.slot].transform.position;
+                if (droppedItem.slot < 7)
+                {
+                    item.GetComponent<ItemData>().isEquipped = true;
+                }
+                else
+                {
+                    item.GetComponent<ItemData>().isEquipped = false;
+                }
 
                 droppedItem.slot = id;
                 droppedItem.transform.SetParent(transform);
@@ -45,6 +65,15 @@ namespace SellBro.DungeonCrawler.Inventory
 
                 _inventory.items[droppedItem.slot] = item.GetComponent<ItemData>().item;
                 _inventory.items[id] = droppedItem.item;
+            }
+            
+            if (id < 7)
+            {
+                droppedItem.isEquipped = true;
+            }
+            else
+            {
+                droppedItem.isEquipped = false;
             }
         }
     }

@@ -13,6 +13,8 @@ namespace SellBro.DungeonCrawler.Inventory
         public int amount = 0;
         public int slot;
 
+        public bool isEquipped = false;
+
         private Transform originalParent;
         private Inventory _inventory;
 
@@ -42,14 +44,19 @@ namespace SellBro.DungeonCrawler.Inventory
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            transform.SetParent(_inventory.slots[slot].transform);
-            transform.position = _inventory.slots[slot].transform.position;
-            GetComponent<CanvasGroup>().blocksRaycasts = true;
+            MoveItem();
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
             _inventory.OpenDescription(this);
+        }
+
+        public void MoveItem()
+        {
+            transform.SetParent(_inventory.slots[slot].transform);
+            transform.position = _inventory.slots[slot].transform.position;
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
     }
 }

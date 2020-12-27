@@ -224,6 +224,7 @@
             <e p="RoomManager.cs" t="Include" />
           </e>
           <e p="Inventory" t="Include">
+            <e p="EquippedSlot.cs" t="Include" />
             <e p="Inventory.cs" t="Include" />
             <e p="Item.cs" t="Include" />
             <e p="ItemData.cs" t="Include" />

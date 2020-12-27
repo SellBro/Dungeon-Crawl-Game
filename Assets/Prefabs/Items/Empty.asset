@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9363265c58a8a664cad16fc15dce6b2f, type: 3}
   m_Name: Empty
   m_EditorClassIdentifier: 
-  name: Poggers
+  name: 
   description: 
   damage: 0
   armour: 0
-  amount: 1
+  amount: 0
   isStackable: 0
-  isEquippable: 0
-  sprite: {fileID: -2796838529158247967, guid: 4ab9ebfa763d4b240ad8998fa2523880, type: 3}
+  itemType: 0
+  equippableItemType: 0
+  sprite: {fileID: 0}

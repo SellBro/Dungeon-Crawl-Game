@@ -21,6 +21,7 @@ namespace SellBro.DungeonCrawler.Inventory
         public List<Item> equippedItems = new List<Item>();
         public List<GameObject> slots = new List<GameObject>();
         public List<GameObject> equippableSlots = new List<GameObject>();
+        
         public GameObject inventorySlot;
 
 
@@ -30,7 +31,13 @@ namespace SellBro.DungeonCrawler.Inventory
 
         private void Start()
         {
-            for (int i = 0; i < InvenotySize; i++)
+            for (int i = 0; i < 7; i++)
+            {
+                items.Add(empty);
+                slots[i].GetComponent<Slot>().id = i;
+            }
+            
+            for (int i = 7; i < InvenotySize + 7; i++)
             {
                 items.Add(empty);
                 slots.Add(Instantiate(inventorySlot));
@@ -47,7 +54,7 @@ namespace SellBro.DungeonCrawler.Inventory
         {
             if (item.isStackable)
             {
-                for (int i = 0; i < items.Count; i++)
+                for (int i = 7; i < items.Count; i++)
                 {
                     if (items[i].name == item.name)
                     {
@@ -60,7 +67,7 @@ namespace SellBro.DungeonCrawler.Inventory
                 }
             }
 
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 7; i < items.Count; i++)
             {
                 if (items[i] == empty)
                 {
@@ -84,6 +91,47 @@ namespace SellBro.DungeonCrawler.Inventory
         {
             descriptionPanel.SetDescription(data);
             descriptionPanel.gameObject.SetActive(true);
+        }
+        
+        public void UseButton()
+        {
+            if (descriptionPanel.descriptionData.item.itemType == ItemType.Equippable)
+            {
+                if (descriptionPanel.descriptionData.isEquipped)
+                {
+                    for (int i = 7; i < items.Count; i++)
+                    {
+                        if (items[i] == empty)
+                        {
+                            Debug.Log("Take Off");
+                            Slot slot = slots[i].GetComponent<Slot>();
+                            slot.EquipItem(descriptionPanel.descriptionData);
+                            descriptionPanel.descriptionData.MoveItem();
+                            descriptionPanel.gameObject.SetActive(false);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < 7; i++)
+                    {
+                        Slot slot = slots[i].GetComponent<Slot>();
+                        if (slot.slotType == descriptionPanel.descriptionData.item.equippableItemType)
+                        {
+                            Debug.Log("Equip");
+                            slot.EquipItem(descriptionPanel.descriptionData);
+                            descriptionPanel.descriptionData.MoveItem();
+                            descriptionPanel.gameObject.SetActive(false);
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (descriptionPanel.descriptionData.item.itemType == ItemType.Usable)
+            {
+                
+            }
         }
     }
 }

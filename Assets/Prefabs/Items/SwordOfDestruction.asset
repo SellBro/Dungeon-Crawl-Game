@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: SwordOfDestruction
   m_EditorClassIdentifier: 
   name: Suka
-  description: 
+  description: 'Maxim Pedik
+
+    Pepega'
   damage: 0
   armour: 0
   amount: 1
-  isStackable: 1
-  isEquippable: 0
+  isStackable: 0
+  itemType: 0
+  equippableItemType: 5
   sprite: {fileID: -8553596595128423742, guid: a53f0a56935ff4d4f98519d412741c6e, type: 3}
