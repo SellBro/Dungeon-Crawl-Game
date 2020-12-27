@@ -23,6 +23,7 @@
     <explicitExcludes>
       <Path>.git</Path>
       <Path>.idea</Path>
+      <Path>Animations</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Stoneshard</Path>

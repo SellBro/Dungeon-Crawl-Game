@@ -13,16 +13,25 @@ namespace SellBro.DungeonCrawler.Inventory
         public TextMeshProUGUI description;
         public TextMeshProUGUI buttonText;
         public ItemData descriptionData;
+        
 
         public void SetDescription(ItemData data)
         {
-            buttonText.transform.parent.parent.gameObject.SetActive(true);
+            if (buttonText != null)
+            {
+                buttonText.transform.parent.parent.gameObject.SetActive(true);
+            }
             descriptionData = data;
-            
-            image.sprite = data.item.sprite;
+
+            if (image != null)
+            {
+                image.sprite = data.item.sprite;
+            }
             itemName.text = data.item.name;
             description.text = data.item.description;
 
+            if (buttonText != null) return;
+            
             if (data.item.itemType == ItemType.Equippable)
             {
                 if (data.isEquipped)

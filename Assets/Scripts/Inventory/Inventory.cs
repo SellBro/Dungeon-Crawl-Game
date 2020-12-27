@@ -18,26 +18,25 @@ namespace SellBro.DungeonCrawler.Inventory
         public Item empty;
         
         public List<Item> items = new List<Item>();
-        public List<Item> equippedItems = new List<Item>();
         public List<GameObject> slots = new List<GameObject>();
-        public List<GameObject> equippableSlots = new List<GameObject>();
-        
+
         public GameObject inventorySlot;
 
 
-        private static readonly int InvenotySize = 20; 
+        public int invenotySize = 20;
+        public int inventoryOffset = 7;
         
         
 
         private void Start()
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < inventoryOffset; i++)
             {
                 items.Add(empty);
                 slots[i].GetComponent<Slot>().id = i;
             }
             
-            for (int i = 7; i < InvenotySize + 7; i++)
+            for (int i = inventoryOffset; i < invenotySize + inventoryOffset; i++)
             {
                 items.Add(empty);
                 slots.Add(Instantiate(inventorySlot));
@@ -54,7 +53,7 @@ namespace SellBro.DungeonCrawler.Inventory
         {
             if (item.isStackable)
             {
-                for (int i = 7; i < items.Count; i++)
+                for (int i = inventoryOffset; i < items.Count; i++)
                 {
                     if (items[i].name == item.name)
                     {
@@ -67,7 +66,7 @@ namespace SellBro.DungeonCrawler.Inventory
                 }
             }
 
-            for (int i = 7; i < items.Count; i++)
+            for (int i = inventoryOffset; i < items.Count; i++)
             {
                 if (items[i] == empty)
                 {
@@ -99,7 +98,7 @@ namespace SellBro.DungeonCrawler.Inventory
             {
                 if (descriptionPanel.descriptionData.isEquipped)
                 {
-                    for (int i = 7; i < items.Count; i++)
+                    for (int i = inventoryOffset; i < items.Count; i++)
                     {
                         if (items[i] == empty)
                         {
@@ -114,7 +113,7 @@ namespace SellBro.DungeonCrawler.Inventory
                 }
                 else
                 {
-                    for (int i = 0; i < 7; i++)
+                    for (int i = 0; i < inventoryOffset; i++)
                     {
                         Slot slot = slots[i].GetComponent<Slot>();
                         if (slot.slotType == descriptionPanel.descriptionData.item.equippableItemType)
