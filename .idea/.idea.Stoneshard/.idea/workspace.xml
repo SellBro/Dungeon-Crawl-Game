@@ -26,6 +26,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/Slot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/ItemData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/ItemDescription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/Item.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/526469D5-A48C-43EE-BD9A-F19F8745AFA1/9f/f18dbf67/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -70,11 +71,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryUICell.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemDatabase.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemDescription.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Slot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemData.cs" />
       </list>
     </option>
   </component>
@@ -145,6 +147,8 @@
       <workItem from="1608905612646" duration="1247000" />
       <workItem from="1608972844056" duration="1578000" />
       <workItem from="1608977255296" duration="11321000" />
+      <workItem from="1609067056939" duration="682000" />
+      <workItem from="1609067745048" duration="5940000" />
     </task>
     <servers />
   </component>

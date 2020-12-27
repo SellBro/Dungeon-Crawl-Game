@@ -228,6 +228,7 @@
             <e p="Item.cs" t="Include" />
             <e p="ItemData.cs" t="Include" />
             <e p="ItemDatabase.cs" t="Include" />
+            <e p="ItemDescription.cs" t="Include" />
             <e p="Slot.cs" t="Include" />
           </e>
           <e p="Items" t="Include">

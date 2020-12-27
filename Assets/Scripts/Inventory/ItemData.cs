@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace SellBro.DungeonCrawler.Inventory
 {
-    public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
     {
         public Item item;
         public int amount = 0;
@@ -23,7 +23,7 @@ namespace SellBro.DungeonCrawler.Inventory
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (item != null)
+            if (item !=  _inventory.empty)
             {
                 originalParent = transform.parent;
                 transform.SetParent(_inventory.transform);
@@ -34,7 +34,7 @@ namespace SellBro.DungeonCrawler.Inventory
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (item != null)
+            if (item != _inventory.empty)
             {
                 transform.position = eventData.position;
             }
@@ -45,6 +45,11 @@ namespace SellBro.DungeonCrawler.Inventory
             transform.SetParent(_inventory.slots[slot].transform);
             transform.position = _inventory.slots[slot].transform.position;
             GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            _inventory.OpenDescription(this);
         }
     }
 }
