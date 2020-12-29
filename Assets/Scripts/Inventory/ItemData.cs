@@ -14,21 +14,19 @@ namespace SellBro.DungeonCrawler.Inventory
         public int slot;
 
         public bool isEquipped = false;
+        public bool isLoot = true;
 
+        [HideInInspector]
+        public Inventory inventory;
+        
         private Transform originalParent;
-        private Inventory _inventory;
-
-        private void Start()
-        {
-            _inventory = GameObject.FindWithTag("Inventory").GetComponent<Inventory>();
-        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (item !=  _inventory.empty)
+            if (item != inventory.empty)
             {
                 originalParent = transform.parent;
-                transform.SetParent(_inventory.transform);
+                transform.SetParent(inventory.transform);
                 transform.position = eventData.position;
                 GetComponent<CanvasGroup>().blocksRaycasts = false;
             }
@@ -36,7 +34,7 @@ namespace SellBro.DungeonCrawler.Inventory
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (item != _inventory.empty)
+            if (item != inventory.empty)
             {
                 transform.position = eventData.position;
             }
@@ -49,13 +47,19 @@ namespace SellBro.DungeonCrawler.Inventory
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            _inventory.OpenDescription(this);
+            if (!isLoot)
+            {
+                inventory.OpenDescription(this);
+                return;
+            }
+            
+            inventory.TakeItem(item);
         }
 
         public void MoveItem()
         {
-            transform.SetParent(_inventory.slots[slot].transform);
-            transform.position = _inventory.slots[slot].transform.position;
+            transform.SetParent(inventory.slots[slot].transform);
+            transform.position = inventory.slots[slot].transform.position;
             GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
     }

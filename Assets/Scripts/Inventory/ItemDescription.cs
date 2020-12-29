@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,9 +15,20 @@ namespace SellBro.DungeonCrawler.Inventory
         public TextMeshProUGUI buttonText;
         public ItemData descriptionData;
         
+        private Animator anim;
+
+        private void Start()
+        {
+            anim = GetComponent<Animator>();
+        }
 
         public void SetDescription(ItemData data)
         {
+            if (anim != null)
+            {
+                OpenUI();
+            }
+            
             if (buttonText != null)
             {
                 buttonText.transform.parent.parent.gameObject.SetActive(true);
@@ -30,7 +42,7 @@ namespace SellBro.DungeonCrawler.Inventory
             itemName.text = data.item.name;
             description.text = data.item.description;
 
-            if (buttonText != null) return;
+            if (buttonText == null) return;
             
             if (data.item.itemType == ItemType.Equippable)
             {
@@ -52,6 +64,16 @@ namespace SellBro.DungeonCrawler.Inventory
             {
                 buttonText.transform.parent.parent.gameObject.SetActive(false);
             }
+        }
+
+        public void OpenUI()
+        {
+            anim.SetTrigger("Open");
+        }
+
+        public void CloseUI()
+        {
+            anim.SetTrigger("Close");
         }
     }
 }

@@ -783,6 +783,7 @@ GameObject:
   - component: {fileID: 3927898560322948276}
   - component: {fileID: 3927898560322948277}
   - component: {fileID: 1899823967339285156}
+  - component: {fileID: 1699354686834584618}
   m_Layer: 5
   m_Name: Inventory Panel
   m_TagString: Inventory
@@ -863,6 +864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd2418ff68d5b248adf517a89f31550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerInv: 0
   slotPanel: {fileID: 3927898561752406437}
   inventoryItem: {fileID: 6928807429005821661, guid: 6849a24652b08f7449ae7945f6d5bfe9,
     type: 3}
@@ -870,7 +872,6 @@ MonoBehaviour:
   pepe: {fileID: 11400000, guid: 50bc1245e3eb4d740ad72e0454933287, type: 2}
   empty: {fileID: 11400000, guid: 1bd331edd33498c4a9470a8cad81f615, type: 2}
   items: []
-  equippedItems: []
   slots:
   - {fileID: 2411669380981857537}
   - {fileID: 4309922433685210165}
@@ -879,10 +880,22 @@ MonoBehaviour:
   - {fileID: 6205814562457741354}
   - {fileID: 2299168128969293479}
   - {fileID: 3705461922283905126}
-  equippableSlots:
-  - {fileID: 2411669380981857537}
   inventorySlot: {fileID: 2936390281833390252, guid: e96a9be9b98106148b017f71a1582a80,
     type: 3}
+  invenotySize: 20
+  inventoryOffset: 7
+--- !u!225 &1699354686834584618
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927898560322948279}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &3927898560330886780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,7 +1078,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3927898560415760112}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1076,7 +1089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.6999512, y: 2.4000244}
+  m_AnchoredPosition: {x: -30.815918, y: 2.4000244}
   m_SizeDelta: {x: -61.631714, y: -59.166626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3927898560415760125
@@ -1706,7 +1719,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3927898560938760279}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1715,7 +1728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -34.51599, y: 2.4000244}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3927898560938760276
@@ -2133,7 +2146,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3927898561284532151}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2145,7 +2158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015736, y: 452}
+  m_AnchoredPosition: {x: -0.000015735626, y: 452}
   m_SizeDelta: {x: 436.06848, y: 205.93457}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3927898561327866658
@@ -2268,8 +2281,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3927898560322948279}
-        m_MethodName: SetActive
+      - m_Target: {fileID: 1699354686834584618}
+        m_MethodName: set_alpha
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1699354686834584618}
+        m_MethodName: set_blocksRaycasts
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2636,7 +2660,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3927898561960642226}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

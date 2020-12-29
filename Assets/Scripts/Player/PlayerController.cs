@@ -1,9 +1,11 @@
 ﻿
+using System;
 using System.Collections;
 using UnityEngine;
 using RPG.Core;
 using RPG.Units;
 using SellBro.DungeonCrawler.Inventory;
+using SellBro.DungeonCrawler.Items;
 using UnityEditorInternal;
 
 namespace RPG.Player
@@ -20,13 +22,17 @@ namespace RPG.Player
         private bool isFacingRight = true;
         private Unit _unit;
 
+        private void Awake()
+        {
+            inventory.isPlayerInv = true;
+        }
+
         private void Start()
         {
             _collider = GetComponent<BoxCollider2D>();
             _unit = GetComponent<Unit>();
             GameManager.Instance.player = this.gameObject;
-
-            inventory.gameObject.SetActive(false);
+            
         }
 
         private void Update()
@@ -41,13 +47,15 @@ namespace RPG.Player
         {
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-                if (inventory.gameObject.activeSelf)
+                if (inventory.GetComponent<CanvasGroup>().alpha == 1)
                 {
-                    inventory.gameObject.SetActive(false);
+                    inventory.GetComponent<CanvasGroup>().alpha = 0;
+                    inventory.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 }
                 else
                 {
-                    inventory.gameObject.SetActive(true);
+                    inventory.GetComponent<CanvasGroup>().alpha = 1;
+                    inventory.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 }
             }
             
@@ -102,9 +110,22 @@ namespace RPG.Player
 
             if (hitEnemy.transform == null) return false;
             
+            if (CheckForChests(hitEnemy)) return true;
+
             IDamageable enemy = hitEnemy.transform.gameObject.GetComponent<IDamageable>();
             Attack(enemy);
             return true;
+        }
+
+        private bool CheckForChests(RaycastHit2D hit)
+        {
+            if (hit.transform.CompareTag("Chest"))
+            {
+                hit.transform.gameObject.GetComponent<Chest>().ShowUI();
+                return true;
+            }
+
+            return false;
         }
 
         private void Attack(IDamageable enemy)
@@ -127,6 +148,11 @@ namespace RPG.Player
                     yield return new WaitForEndOfFrame();
                 }
             }
+        }
+
+        public Inventory GetPlayerInventory()
+        {
+            return inventory;
         }
     }
 }
