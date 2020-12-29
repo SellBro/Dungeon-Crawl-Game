@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-namespace SellBro.DungeonCrawler.Inventory
+namespace SellBro.Inventory
 {
     public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
     {
@@ -18,14 +14,13 @@ namespace SellBro.DungeonCrawler.Inventory
 
         [HideInInspector]
         public Inventory inventory;
-        
-        private Transform originalParent;
+
+        #region Interface Implementations
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (item != inventory.empty)
             {
-                originalParent = transform.parent;
                 transform.SetParent(inventory.transform);
                 transform.position = eventData.position;
                 GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -55,6 +50,9 @@ namespace SellBro.DungeonCrawler.Inventory
             
             inventory.TakeItem(item);
         }
+
+        #endregion
+        
 
         public void MoveItem()
         {

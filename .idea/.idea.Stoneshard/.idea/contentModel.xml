@@ -213,7 +213,6 @@
         <e p="Scripts" t="Include">
           <e p="Core" t="Include">
             <e p="GameManager.cs" t="Include" />
-            <e p="MovingObject.cs" t="Include" />
           </e>
           <e p="DungeonGenerator" t="Include">
             <e p="Full Random" t="Include">
@@ -228,7 +227,6 @@
             <e p="Inventory.cs" t="Include" />
             <e p="Item.cs" t="Include" />
             <e p="ItemData.cs" t="Include" />
-            <e p="ItemDatabase.cs" t="Include" />
             <e p="ItemDescription.cs" t="Include" />
             <e p="Slot.cs" t="Include" />
           </e>
@@ -244,7 +242,6 @@
             <e p="EnemyUnit.cs" t="Include" />
             <e p="IDamageable.cs" t="Include" />
             <e p="PlayerUnit.cs" t="Include" />
-            <e p="TestUnit.cs" t="Include" />
             <e p="Unit.cs" t="Include" />
           </e>
         </e>

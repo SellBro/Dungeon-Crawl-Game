@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace SellBro.DungeonCrawler.Inventory
+namespace SellBro.Inventory
 {
     public class Slot : MonoBehaviour, IDropHandler
     {
@@ -17,8 +14,7 @@ namespace SellBro.DungeonCrawler.Inventory
         public void OnDrop(PointerEventData eventData)
         {
             ItemData droppedItem = eventData.pointerDrag.GetComponent<ItemData>();
-
-
+            
             EquipItem(droppedItem);
         }
 
@@ -35,8 +31,6 @@ namespace SellBro.DungeonCrawler.Inventory
             }
             else if(droppedItem.item.equippableItemType == slotType || slotType == EquippableItemType.None)
             {
-                Debug.Log("Swap");
-
                 Transform item;
                 if (transform.childCount > 1)
                 {
@@ -46,9 +40,11 @@ namespace SellBro.DungeonCrawler.Inventory
                 {
                     item = transform.GetChild(0);
                 }
+                
                 item.GetComponent<ItemData>().slot = droppedItem.slot;
                 item.transform.SetParent(inventory.slots[droppedItem.slot].transform);
                 item.transform.position = inventory.slots[droppedItem.slot].transform.position;
+                
                 if (droppedItem.slot < 7)
                 {
                     item.GetComponent<ItemData>().isEquipped = true;
@@ -69,15 +65,13 @@ namespace SellBro.DungeonCrawler.Inventory
             }
             
             if(!wasEquipped) return;
-            
-            if (id < 7)
-            {
-                droppedItem.isEquipped = true;
-            }
-            else
-            {
-                droppedItem.isEquipped = false;
-            }
+
+            CheckIfEquipped(droppedItem);
+        }
+
+        private void CheckIfEquipped(ItemData droppedItem)
+        {
+            droppedItem.isEquipped = id < 7;
         }
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-namespace SellBro.DungeonCrawler.Inventory
+namespace SellBro.Inventory
 {
     public class EquippedSlot : MonoBehaviour
     {
-        public GameObject imageObj;
+        [SerializeField] private GameObject imageObj;
         
         private void FixedUpdate()
         {

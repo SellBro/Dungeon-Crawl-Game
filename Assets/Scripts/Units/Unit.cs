@@ -1,14 +1,12 @@
-﻿using System;
-using RPG.Core;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace RPG.Units
+namespace SellBro.Units
 {
     public class Unit : MonoBehaviour, IDamageable
     {
+        [Header("Unit Settings")]
         [SerializeField] protected int maxHealth;
         [SerializeField] protected int damage;
-
 
         private int _health;
 
@@ -25,7 +23,6 @@ namespace RPG.Units
             {
                 Die();
             }
-                
         }
 
         protected virtual void Die()

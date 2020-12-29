@@ -1,7 +1,7 @@
-﻿using RPG.Core;
-using UnityEngine;
+﻿using System;
+using SellBro.Core;
 
-namespace RPG.Units
+namespace SellBro.Units
 {
     public class EnemyUnit : Unit
     {
@@ -9,12 +9,11 @@ namespace RPG.Units
 
         private EnemyController _controller;
 
-        protected override void Start()
+        private void Awake()
         {
-            base.Start();
             _controller = GetComponent<EnemyController>();
         }
-        
+
         protected override void Die()
         {
             GameManager.Instance._units.Remove(_controller);

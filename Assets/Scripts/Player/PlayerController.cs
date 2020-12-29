@@ -1,38 +1,31 @@
-﻿
-using System;
-using System.Collections;
+﻿using System.Collections;
+using SellBro.Core;
+using SellBro.Items;
+using SellBro.Units;
 using UnityEngine;
-using RPG.Core;
-using RPG.Units;
-using SellBro.DungeonCrawler.Inventory;
-using SellBro.DungeonCrawler.Items;
-using UnityEditorInternal;
 
-namespace RPG.Player
+namespace SellBro.Player
 {
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float speed = 10;
-        [SerializeField] private Inventory inventory;
+        [SerializeField] private Inventory.Inventory inventory;
         [SerializeField] private LayerMask whatIsBlocked;
         [SerializeField] private LayerMask whatIsEnemy;
-
         
-        private BoxCollider2D _collider;
         private bool isFacingRight = true;
         private Unit _unit;
 
         private void Awake()
         {
+            _unit = GetComponent<Unit>();
+            
             inventory.isPlayerInv = true;
         }
 
         private void Start()
         {
-            _collider = GetComponent<BoxCollider2D>();
-            _unit = GetComponent<Unit>();
-            GameManager.Instance.player = this.gameObject;
-            
+            GameManager.Instance.player = gameObject;
         }
 
         private void Update()
@@ -58,13 +51,12 @@ namespace RPG.Player
                     inventory.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 }
             }
-            
 
             if (Input.GetKey(KeyCode.W))
             {
                 Vector3 destination = new Vector3(transform.position.x, transform.position.y + 1);
                 
-                if (CheckForEnemy(transform.up)) return;
+                if (CheckForCollisions(transform.up)) return;
                 
                 StartCoroutine(SmoothMovement(destination,transform.up));
             }
@@ -72,7 +64,7 @@ namespace RPG.Player
             {
                 Vector3 destination = new Vector3(transform.position.x, transform.position.y - 1);
                 
-                if (CheckForEnemy(-transform.up)) return;
+                if (CheckForCollisions(-transform.up)) return;
                 
                 StartCoroutine(SmoothMovement(destination,-transform.up));
             }
@@ -85,7 +77,7 @@ namespace RPG.Player
                 }
                 Vector3 destination = new Vector3(transform.position.x - 1, transform.position.y);
                 
-                if (CheckForEnemy(-transform.right)) return;
+                if (CheckForCollisions(-transform.right)) return;
                 
                 StartCoroutine(SmoothMovement(destination,-transform.right));
             }
@@ -98,13 +90,13 @@ namespace RPG.Player
                 }
                 Vector3 destination = new Vector3(transform.position.x + 1, transform.position.y);
                 
-                if (CheckForEnemy(transform.right)) return;
+                if (CheckForCollisions(transform.right)) return;
                 
                 StartCoroutine(SmoothMovement(destination,transform.right));
             }
         }
 
-        private bool CheckForEnemy(Vector3 tr)
+        private bool CheckForCollisions(Vector3 tr)
         {
             RaycastHit2D hitEnemy = Physics2D.Raycast(transform.position, tr,1.1f, whatIsEnemy);
 
@@ -150,7 +142,7 @@ namespace RPG.Player
             }
         }
 
-        public Inventory GetPlayerInventory()
+        public Inventory.Inventory GetPlayerInventory()
         {
             return inventory;
         }

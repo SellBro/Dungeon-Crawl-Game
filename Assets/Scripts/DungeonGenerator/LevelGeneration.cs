@@ -1,33 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace RPG.DungeonGenerator
+namespace SellBro.DungeonGenerator
 {
     public class LevelGeneration : MonoBehaviour
     {
 	    public static LevelGeneration Instance = null;
 	    
 	    public static List<RoomManager> DungeonRooms;
-
-	    [Header("Tiles")]
-	    [SerializeField] private GameObject[] T;
-	    [SerializeField] private GameObject[] B;
-	    [SerializeField] private GameObject[] R;
-	    [SerializeField] private GameObject[] L;
-	    [SerializeField] private GameObject[] TB;
-	    [SerializeField] private GameObject[] RL;
-	    [SerializeField] private GameObject[] TR;
-	    [SerializeField] private GameObject[] TL;
-	    [SerializeField] private GameObject[] BR;
-	    [SerializeField] private GameObject[] BL;
-	    [SerializeField] private GameObject[] TBL;
-	    [SerializeField] private GameObject[] TRL;
-	    [SerializeField] private GameObject[] TBR;
-	    [SerializeField] private GameObject[] BRL;
-	    [SerializeField] private GameObject[] TBRL;
 
 	    [Header("Settings")] 
 	    [Range(1, 10)] 
@@ -48,6 +30,22 @@ namespace RPG.DungeonGenerator
 	    public GameObject[] enemies;
 	    public int maxEnemiesPerRoom = 8;
 	    
+	    [Header("Tiles")]
+	    [SerializeField] private GameObject[] T;
+	    [SerializeField] private GameObject[] B;
+	    [SerializeField] private GameObject[] R;
+	    [SerializeField] private GameObject[] L;
+	    [SerializeField] private GameObject[] TB;
+	    [SerializeField] private GameObject[] RL;
+	    [SerializeField] private GameObject[] TR;
+	    [SerializeField] private GameObject[] TL;
+	    [SerializeField] private GameObject[] BR;
+	    [SerializeField] private GameObject[] BL;
+	    [SerializeField] private GameObject[] TBL;
+	    [SerializeField] private GameObject[] TRL;
+	    [SerializeField] private GameObject[] TBR;
+	    [SerializeField] private GameObject[] BRL;
+	    [SerializeField] private GameObject[] TBRL;
 	    
 	    private Vector2 _worldSize = new Vector2(3,3);
         private Room[,] _rooms;
@@ -138,8 +136,7 @@ namespace RPG.DungeonGenerator
 				_takenPositions.Insert(0,checkPos);
 			}	
 		}
-		
-		
+        
 		Vector2 NewPosition()
 		{
 			int x = 0;
@@ -180,7 +177,6 @@ namespace RPG.DungeonGenerator
 			
 			return checkingPos;
 		}
-		
 		
 		/// Method differs from the above in the two commented ways
 		Vector2 SelectiveNewPosition()
@@ -242,7 +238,6 @@ namespace RPG.DungeonGenerator
 			return checkingPos;
 		}
 		
-		
 		int NumberOfNeighbors(Vector2 checkingPos, List<Vector2> usedPositions)
 		{
 			// Start at zero, add 1 for each side there is already a room
@@ -269,7 +264,6 @@ namespace RPG.DungeonGenerator
 			return ret;
 		}
 		
-		
 		void DrawMap()
 		{
 			foreach (Room room in _rooms)
@@ -293,7 +287,6 @@ namespace RPG.DungeonGenerator
 				DungeonRooms.Add(manager);
 			}
 		}
-		
 		
 		void SetRoomDoors()
 		{
@@ -350,7 +343,6 @@ namespace RPG.DungeonGenerator
 				}
 			}
 		}
-	
 		
 		GameObject PickObject(Room room)
 		{ 

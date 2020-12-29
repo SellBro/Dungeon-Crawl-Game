@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace SellBro.DungeonCrawler.Inventory
+namespace SellBro.Inventory
 {
     [CreateAssetMenu(fileName = "Item", menuName = "Add Item/Item", order = 1)]
     public class Item : ScriptableObject
     {
         public string name;
-        [TextArea(10, 15)] public string description;
+        [TextArea(10, 15)] 
+        public string description;
 
         public int damage;
         public int armour;
@@ -20,7 +18,6 @@ namespace SellBro.DungeonCrawler.Inventory
         public EquippableItemType equippableItemType = EquippableItemType.None;
 
         public Sprite sprite;
-        
     }
     
     public enum ItemType

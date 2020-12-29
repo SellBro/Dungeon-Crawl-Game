@@ -1,11 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
-using Tile = UnityEngine.WSA.Tile;
 
-namespace Roguelike.DungeonGenerator
+namespace SellBro.DungeonGenerator.Full_Random
 {
     public class DungeonGenerator : MonoBehaviour
     {

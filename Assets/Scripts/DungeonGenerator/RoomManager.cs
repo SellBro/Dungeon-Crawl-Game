@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using RPG.Units;
+﻿using SellBro.Core;
+using SellBro.Units;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace RPG.DungeonGenerator
+namespace SellBro.DungeonGenerator
 {
     public class RoomManager : MonoBehaviour
     {
@@ -11,13 +11,10 @@ namespace RPG.DungeonGenerator
         
         [HideInInspector] public bool hasSpawnedPlayer = false;
         
-        
         [SerializeField] private Tilemap obstacleMap;
         [SerializeField] private Tilemap groundMap;
 
         private bool[,] _tiles = new bool[17,16];
-
-        
 
         private void Start()
         {
@@ -73,8 +70,7 @@ namespace RPG.DungeonGenerator
                         SpawBox(i,j);
                         boxNumber--;
                     }
-
-
+                    
                     if (boxNumber <= 0)
                         return;
                 }
@@ -132,8 +128,7 @@ namespace RPG.DungeonGenerator
                         SpawnEnemy(LevelGeneration.Instance.enemies[enemiesType], i, j);
                         enemiesNumber--;
                     }
-
-
+                    
                     if (enemiesNumber <= 0)
                         return;
                 }
@@ -143,14 +138,14 @@ namespace RPG.DungeonGenerator
         private void Spaw(GameObject obj, int x, int y)
         {
             Instantiate(obj, new Vector3(position.x + x + 0.5f, position.y + y + 0.5f, 0),
-                Quaternion.identity);
+                Quaternion.identity,transform.parent);
             _tiles[x, y] = false;
         }
 
         private void SpawnEnemy(GameObject obj, int x, int y)
         {
             var enemy = Instantiate(obj, new Vector3(position.x + x + 0.5f, position.y + y + 0.5f, 0),
-                Quaternion.identity);
+                Quaternion.identity,GameManager.Instance.unitsManager.transform.parent);
             _tiles[x, y] = false;
             enemy.GetComponent<EnemyController>().SetStartingRoom(this);
         }
@@ -178,6 +173,5 @@ namespace RPG.DungeonGenerator
         {
             return _tiles[x, y];
         }
-
     }
 }

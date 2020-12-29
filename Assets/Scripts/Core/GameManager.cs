@@ -1,33 +1,41 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
-using RPG.DungeonGenerator;
-using RPG.Units;
+using SellBro.DungeonGenerator;
+using SellBro.Units;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace RPG.Core
+namespace SellBro.Core
 {
     public class GameManager : MonoBehaviour
     {
-        public static GameManager Instance = null;
-        public List<EnemyController> _units;
-        public BlockManager blockManager;
-        public List<SingleNodeBlocker> obstacles;
+        [Header("Game Manager Settings")] 
+        [SerializeField] private bool shouldGenerateLevel = true;
         
+        [Header("Managing Components")]
+        public static GameManager Instance = null;
+        public BlockManager blockManager;
+        public GameObject unitsManager;
+        
+        [Header("Lists")]
+        public List<SingleNodeBlocker> obstacles;
+        public List<EnemyController> _units;
+        
+        [Header("Level settings")]
         public bool playerTurn = true;
         public int level = 1;
+        public Vector2 spawn;
         
-        
+        [Header("Player")]
         public GameObject player;
+        
+        [Header("Game Settings")]
         [SerializeField] private float turnDelay = 0.1f;
         
         private BlockManager.TraversalProvider traversalProvider;
-        
         private bool _unitsMoving;
-
-        public Vector2 spawn;
+        
         
         private void Awake()
         {
@@ -40,15 +48,22 @@ namespace RPG.Core
 
             AstarPath.active = GetComponent<AstarPath>();
             blockManager = GetComponent<BlockManager>();
-
             _units = new List<EnemyController>();
+            
             InitGame();
         }
 
 
         private void Start()
         {
-            StartCoroutine(GenerateDungeon());
+            if (shouldGenerateLevel)
+            {
+                StartCoroutine(GenerateDungeon());
+            }
+            else
+            {
+                GenerateTestScene();
+            }
         }
 
         private void Update()
@@ -79,11 +94,26 @@ namespace RPG.Core
             traversalProvider = new BlockManager.TraversalProvider(blockManager, BlockManager.BlockMode.OnlySelector, obstacles);
         }
 
+        private void GenerateTestScene()
+        {
+            SpawnTestPlayer();
+            AstarPath.active.Scan();
+                
+            foreach (var unit in _units)
+            {
+                SingleNodeBlocker unitNode = unit.GetComponent<SingleNodeBlocker>();
+                obstacles.Add(unitNode);
+            }
+            
+            traversalProvider = new BlockManager.TraversalProvider(blockManager, BlockManager.BlockMode.OnlySelector, obstacles);
+        }
+
         private void SpawnPlayer()
         {
             int x = Random.Range(1, 16);
             int y = Random.Range(1, 15);
             int num = Random.Range(0, LevelGeneration.DungeonRooms.Count);
+            
             while (!LevelGeneration.DungeonRooms[num].IsTileEmpty(x, y))
             {
                 x = Random.Range(1, 16);
@@ -93,6 +123,11 @@ namespace RPG.Core
             spawn = LevelGeneration.DungeonRooms[num].position;
             player = Instantiate(player, new Vector2(spawn.x + x + 0.5f, spawn.y + y + 0.5f), Quaternion.identity);
             LevelGeneration.DungeonRooms[num].hasSpawnedPlayer = true;
+        }
+
+        private void SpawnTestPlayer()
+        {
+            player = Instantiate(player, new Vector2( 0.5f, 0.5f), Quaternion.identity);
         }
 
         public void AddUnitToList(EnemyController unit)

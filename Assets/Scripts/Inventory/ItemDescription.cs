@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SellBro.DungeonCrawler.Inventory
+namespace SellBro.Inventory
 {
     public class ItemDescription : MonoBehaviour
     {
-        public Image image;
-        public TextMeshProUGUI itemName;
-        public TextMeshProUGUI description;
-        public TextMeshProUGUI buttonText;
         public ItemData descriptionData;
         
+        [SerializeField] private Image image;
+        [SerializeField] private TextMeshProUGUI itemName;
+        [SerializeField] private TextMeshProUGUI description;
+        [SerializeField] private TextMeshProUGUI buttonText;
+
         private Animator anim;
 
         private void Start()
@@ -29,10 +27,6 @@ namespace SellBro.DungeonCrawler.Inventory
                 OpenUI();
             }
             
-            if (buttonText != null)
-            {
-                buttonText.transform.parent.parent.gameObject.SetActive(true);
-            }
             descriptionData = data;
 
             if (image != null)
@@ -44,6 +38,8 @@ namespace SellBro.DungeonCrawler.Inventory
 
             if (buttonText == null) return;
             
+            buttonText.transform.parent.parent.gameObject.SetActive(true);
+            
             if (data.item.itemType == ItemType.Equippable)
             {
                 if (data.isEquipped)
@@ -54,7 +50,6 @@ namespace SellBro.DungeonCrawler.Inventory
                 {
                     buttonText.text = "Equip";
                 }
-                
             }
             else if (data.item.itemType == ItemType.Usable)
             {
@@ -66,12 +61,12 @@ namespace SellBro.DungeonCrawler.Inventory
             }
         }
 
-        public void OpenUI()
+        private void OpenUI()
         {
             anim.SetTrigger("Open");
         }
-
-        public void CloseUI()
+        
+        private void CloseUI()
         {
             anim.SetTrigger("Close");
         }

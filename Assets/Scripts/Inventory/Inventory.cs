@@ -1,32 +1,31 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using RPG.Core;
-using RPG.Player;
+﻿using System.Collections.Generic;
+using SellBro.Core;
+using SellBro.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SellBro.DungeonCrawler.Inventory
+namespace SellBro.Inventory
 {
     public class Inventory : MonoBehaviour
     {
         public bool isPlayerInv;
         
+        [Header("Spawning Objects")]
         public GameObject slotPanel;
         public GameObject inventoryItem;
-        public ItemDescription descriptionPanel;
-
+        public ItemDescription descriptionPanel; 
+        public GameObject inventorySlot;
+        
+        [Header("Test Items")]
         public Item pepe;
-
         public Item empty;
         
+        [Header("List of items")]
         public List<Item> items = new List<Item>();
         public List<GameObject> slots = new List<GameObject>();
-
-        public GameObject inventorySlot;
-
-
+        
+        [Header("Inventory Settings")]
         public int invenotySize = 20;
         public int inventoryOffset = 7;
 
@@ -34,27 +33,26 @@ namespace SellBro.DungeonCrawler.Inventory
 
         private void Start()
         {
-
             for (int i = 0; i < inventoryOffset; i++)
             {
                 items.Add(empty);
-                slots[i].GetComponent<Slot>().id = i;
-                slots[i].GetComponent<Slot>().inventory = this;
+                Slot s = slots[i].GetComponent<Slot>();
+                s.id = i;
+                s.inventory = this;
             }
-            
             for (int i = inventoryOffset; i < invenotySize + inventoryOffset; i++)
             {
                 items.Add(empty);
+                
                 slots.Add(Instantiate(inventorySlot));
                 slots[i].transform.SetParent(slotPanel.transform);
-                slots[i].GetComponent<Slot>().id = i;
-                slots[i].GetComponent<Slot>().inventory = this;
                 slots[i].GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+                
+                Slot s = slots[i].GetComponent<Slot>();
+                s.id = i;
+                s.inventory = this;
             }
-            
             AddItem(pepe);
-            
-            //AddItem(pepe);
         }
 
         public void AddItem(Item item)
@@ -78,23 +76,28 @@ namespace SellBro.DungeonCrawler.Inventory
             {
                 if (items[i] == empty)
                 {
+                    // Add items to the list
                     items[i] = item;
 
+                    // Create item GameObject
                     GameObject itemObj = Instantiate(inventoryItem);
                     itemObj.transform.SetParent(slots[i].transform);
                     itemObj.transform.position = Vector2.zero;
+                    itemObj.GetComponent<Image>().sprite = item.sprite;
+                    itemObj.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+                    itemObj.GetComponent<RectTransform>().localPosition = new Vector3(0,0,0);
+                    
+                    // Create ItemData to store item
                     ItemData itemData = itemObj.GetComponent<ItemData>();
-                    if (isPlayerInv)
-                    {
-                        itemData.isLoot = false;
-                    }
                     itemData.inventory = this;
                     itemData.amount = 1;
                     itemData.item = item;
                     itemData.slot = i;
-                    itemObj.GetComponent<Image>().sprite = item.sprite;
-                    itemObj.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
-                    itemObj.GetComponent<RectTransform>().localPosition = new Vector3(0,0,0);
+                    if (isPlayerInv)
+                    {
+                        itemData.isLoot = false;
+                    }
+                    
                     break;
                 }
             }
@@ -163,7 +166,7 @@ namespace SellBro.DungeonCrawler.Inventory
             }
         }
 
-        public void RemoveItems(int index)
+        private void RemoveItems(int index)
         {
             items[index] = empty;
             Destroy(slots[index].transform.GetChild(0).gameObject);

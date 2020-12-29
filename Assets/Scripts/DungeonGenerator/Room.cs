@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RPG.DungeonGenerator
+namespace SellBro.DungeonGenerator
 {
     public class Room
     {

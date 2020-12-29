@@ -1128,7 +1128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5681097572290984218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1749,7 +1749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4871147808904408603
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1923,7 +1923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &897387494398572216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2126,7 +2126,7 @@ GameObject:
   - component: {fileID: 18119377}
   - component: {fileID: 18119378}
   - component: {fileID: 2420290567716044697}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Chest
   m_TagString: Chest
   m_Icon: {fileID: 0}
@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3552ff89f62cdfa4da9f8846a6ba5ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 4896620075870783867}
+  uI: {fileID: 3378617041567370540}
 --- !u!1 &6192606253760466944
 GameObject:
   m_ObjectHideFlags: 0

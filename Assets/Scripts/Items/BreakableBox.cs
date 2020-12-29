@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Pathfinding;
-using RPG.Core;
+﻿using SellBro.Units;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace RPG.Items
+namespace SellBro.Items
 {
     public class BreakableBox : MonoBehaviour, IDamageable
     {
@@ -35,8 +31,7 @@ namespace RPG.Items
                 AstarPath.active.UpdateGraphs(new Bounds(transform.position,new Vector3(0.5f,0.5f,0)));
                 Destroy(gameObject);
             }
-                
-
+            
             _sr.sprite = damagedBoxSprite[_spriteNum];
         }
     }

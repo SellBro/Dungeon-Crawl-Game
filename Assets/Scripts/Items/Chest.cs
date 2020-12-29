@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace SellBro.DungeonCrawler.Items
+namespace SellBro.Items
 {
     public class Chest : MonoBehaviour
     {
