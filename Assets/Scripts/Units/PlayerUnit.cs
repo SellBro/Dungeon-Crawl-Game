@@ -6,7 +6,7 @@ namespace SellBro.Units
     public class PlayerUnit : Unit
     {
         [Header("Player Unit Settings")]
-        public int level;
+        public int level = 1;
         public int xP;
         public int additionalDamage = 0;
         public int additionalHealth = 0;

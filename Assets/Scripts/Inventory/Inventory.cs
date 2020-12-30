@@ -76,6 +76,7 @@ namespace SellBro.Inventory
             {
                 if (items[i] == empty)
                 {
+                    Debug.Log("AddItem");
                     // Add items to the list
                     items[i] = item;
 

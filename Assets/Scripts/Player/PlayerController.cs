@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using SellBro.Core;
+using SellBro.Inventory;
 using SellBro.Items;
 using SellBro.Units;
 using UnityEngine;
@@ -26,10 +27,22 @@ namespace SellBro.Player
         private void Start()
         {
             GameManager.Instance.player = gameObject;
+
+            
         }
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                Item[] items = RandomItemGenerator.Instance.GenerateStartingLoot();
+                for (int i = 0; i < items.Length; i++)
+                {
+                    Debug.Log("Item:" + items[i].name);
+                    inventory.AddItem(items[i]);
+                }
+            }
+            
             if (GameManager.Instance.playerTurn)
             {
                 GetInput();

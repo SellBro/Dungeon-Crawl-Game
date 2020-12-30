@@ -18,6 +18,19 @@ namespace SellBro.Inventory
         public EquippableItemType equippableItemType = EquippableItemType.None;
 
         public Sprite sprite;
+
+        public Item()
+        {
+            
+        }
+        
+        public Item(string name, bool isStackable = false, ItemType itemType = ItemType.Usable, EquippableItemType equippableItemType = EquippableItemType.None)
+        {
+            this.name = name;
+            this.isStackable = isStackable;
+            this.itemType = itemType;
+            this.equippableItemType = equippableItemType;
+        }
     }
     
     public enum ItemType

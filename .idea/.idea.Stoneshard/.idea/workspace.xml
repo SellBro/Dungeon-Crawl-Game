@@ -26,6 +26,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Unity/2019.4.15f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/RandomItemGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/BlockManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/Slot.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,20 +67,21 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/Chest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Room.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/EquippedSlot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemDescription.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Slot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/BreakableBox.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/RandomItemGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -156,6 +158,8 @@
       <workItem from="1609085653852" duration="2180000" />
       <workItem from="1609247526617" duration="10546000" />
       <workItem from="1609275538710" duration="2908000" />
+      <workItem from="1609315067223" duration="29000" />
+      <workItem from="1609315098088" duration="3317000" />
     </task>
     <servers />
   </component>
