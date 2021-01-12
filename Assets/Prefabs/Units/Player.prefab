@@ -221,11 +221,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damage: 20
+  xpForKill: 20
   level: 0
   xP: 0
+  xPToNextLevel: 100
   additionalDamage: 0
   additionalHealth: 0
   additionalArmour: 0
+  healthText: {fileID: 5570684131640850364}
+  xpText: {fileID: 5570684130446402932}
 --- !u!1 &3584014816611917211
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +418,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927898560330886778, guid: 3e16050db03ce924bb5415289c4eb8f4,
+        type: 3}
+      propertyPath: m_lineSpacing
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927898560330886779, guid: 3e16050db03ce924bb5415289c4eb8f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -44.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927898560330886779, guid: 3e16050db03ce924bb5415289c4eb8f4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 145.3611
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927898560330886780, guid: 3e16050db03ce924bb5415289c4eb8f4,
+        type: 3}
+      propertyPath: m_Name
+      value: XPText
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927898561822866611, guid: 3e16050db03ce924bb5415289c4eb8f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 72.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927898561822866611, guid: 3e16050db03ce924bb5415289c4eb8f4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 88.55284
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927898561822866612, guid: 3e16050db03ce924bb5415289c4eb8f4,
+        type: 3}
+      propertyPath: m_Name
+      value: HPText
       objectReference: {fileID: 0}
     - target: {fileID: 4008933246167873008, guid: 3e16050db03ce924bb5415289c4eb8f4,
         type: 3}
@@ -703,5 +742,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccd2418ff68d5b248adf517a89f31550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5570684131640850364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3927898561822866610, guid: 3e16050db03ce924bb5415289c4eb8f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 8920990248882899726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5570684130446402932 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3927898560330886778, guid: 3e16050db03ce924bb5415289c4eb8f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 8920990248882899726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

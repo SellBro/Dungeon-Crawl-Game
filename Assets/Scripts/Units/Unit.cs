@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SellBro.Core;
+using UnityEngine;
 
 namespace SellBro.Units
 {
@@ -7,15 +8,16 @@ namespace SellBro.Units
         [Header("Unit Settings")]
         [SerializeField] protected int maxHealth;
         [SerializeField] protected int damage;
+        [SerializeField] protected int xpForKill = 20;
 
-        private int _health;
+        protected int _health;
 
         protected virtual void Start()
         {
             _health = maxHealth;
         }
 
-        public void TakeDamage(int amount)
+        public virtual void TakeDamage(int amount)
         {
             _health = Mathf.Max(_health - amount, 0);
 
@@ -27,10 +29,11 @@ namespace SellBro.Units
 
         protected virtual void Die()
         {
+            GameManager.Instance.player.GetComponent<PlayerUnit>().AddXP(xpForKill);
             Destroy(gameObject);
         }
 
-        public void Heal(int amount)
+        public virtual void Heal(int amount)
         {
             _health = Mathf.Min(_health + amount, maxHealth);
         }

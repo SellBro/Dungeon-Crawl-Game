@@ -27,8 +27,6 @@ namespace SellBro.Player
         private void Start()
         {
             GameManager.Instance.player = gameObject;
-
-            
         }
 
         private void Update()
@@ -42,6 +40,8 @@ namespace SellBro.Player
                     inventory.AddItem(items[i]);
                 }
             }
+
+            OpenInventory();
             
             if (GameManager.Instance.playerTurn)
             {
@@ -51,20 +51,6 @@ namespace SellBro.Player
 
         private void GetInput()
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                if (inventory.GetComponent<CanvasGroup>().alpha == 1)
-                {
-                    inventory.GetComponent<CanvasGroup>().alpha = 0;
-                    inventory.GetComponent<CanvasGroup>().blocksRaycasts = false;
-                }
-                else
-                {
-                    inventory.GetComponent<CanvasGroup>().alpha = 1;
-                    inventory.GetComponent<CanvasGroup>().blocksRaycasts = true;
-                }
-            }
-
             if (Input.GetKey(KeyCode.W))
             {
                 Vector3 destination = new Vector3(transform.position.x, transform.position.y + 1);
@@ -106,6 +92,23 @@ namespace SellBro.Player
                 if (CheckForCollisions(transform.right)) return;
                 
                 StartCoroutine(SmoothMovement(destination,transform.right));
+            }
+        }
+
+        private void OpenInventory()
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (inventory.GetComponent<CanvasGroup>().alpha == 1)
+                {
+                    inventory.GetComponent<CanvasGroup>().alpha = 0;
+                    inventory.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                }
+                else
+                {
+                    inventory.GetComponent<CanvasGroup>().alpha = 1;
+                    inventory.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                }
             }
         }
 

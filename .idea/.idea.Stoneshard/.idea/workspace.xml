@@ -72,16 +72,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Slot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/BreakableBox.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Item.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/RandomItemGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
       </list>
     </option>
   </component>
@@ -97,7 +97,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -160,6 +160,8 @@
       <workItem from="1609275538710" duration="2908000" />
       <workItem from="1609315067223" duration="29000" />
       <workItem from="1609315098088" duration="3317000" />
+      <workItem from="1610393582634" duration="55000" />
+      <workItem from="1610449262727" duration="2489000" />
     </task>
     <servers />
   </component>
@@ -250,10 +252,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="769" y="260" key="RiderGenerateDialog/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1608986973993" />
-    <state x="461" y="202" key="SettingsEditor" timestamp="1609275682145">
+    <state x="457" y="271" key="SettingsEditor" timestamp="1610393628354">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="461" y="202" key="SettingsEditor/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1609275682145" />
+    <state x="457" y="271" key="SettingsEditor/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1610393628354" />
     <state x="616" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1607367449822">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
