@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using SellBro.Core;
 using SellBro.Inventory;
 using SellBro.Items;
@@ -12,7 +13,7 @@ namespace SellBro.Player
         [SerializeField] private float speed = 10;
         [SerializeField] private Inventory.Inventory inventory;
         [SerializeField] private LayerMask whatIsBlocked;
-        [SerializeField] private LayerMask whatIsEnemy;
+        [SerializeField] private LayerMask whatIsCollision;
         
         private bool isFacingRight = true;
         private Unit _unit;
@@ -114,10 +115,10 @@ namespace SellBro.Player
 
         private bool CheckForCollisions(Vector3 tr)
         {
-            RaycastHit2D hitEnemy = Physics2D.Raycast(transform.position, tr,1.1f, whatIsEnemy);
+            RaycastHit2D hitEnemy = Physics2D.Raycast(transform.position, tr,1.1f, whatIsCollision);
 
             if (hitEnemy.transform == null) return false;
-            
+
             if (CheckForChests(hitEnemy)) return true;
 
             IDamageable enemy = hitEnemy.transform.gameObject.GetComponent<IDamageable>();
@@ -161,6 +162,14 @@ namespace SellBro.Player
         public Inventory.Inventory GetPlayerInventory()
         {
             return inventory;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Item"))
+            {
+                inventory.AddItem(other.gameObject.GetComponent<ItemPickup>().item);
+            }
         }
     }
 }

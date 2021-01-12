@@ -55,27 +55,35 @@ namespace SellBro.Inventory
                 {
                     case 1:
                         item.sprite = headSprites[Random.Range(0, headSprites.Length)];
+                        item.name = "Helmet of " + noun[Random.Range(0, noun.Length)];
                         break;
                     case 2:
                         item.sprite = bodySprites[Random.Range(0, bodySprites.Length)];
+                        item.name = "Armour of " + noun[Random.Range(0, noun.Length)];
                         break;
                     case 3:
                         item.sprite = legSprites[Random.Range(0, legSprites.Length)];
+                        item.name = "Legs of " + noun[Random.Range(0, noun.Length)];
                         break;
                     case 4:
                         item.sprite = shieldSprites[Random.Range(0, shieldSprites.Length)];
+                        item.name = "Shield of " + noun[Random.Range(0, noun.Length)];
                         break;
                     case 5:
                         item.sprite = weaponSprites[Random.Range(0, weaponSprites.Length)];
+                        item.name = "Weapon of " + noun[Random.Range(0, noun.Length)];
                         break;
                     case 6:
                         item.sprite = ringSprites[Random.Range(0, ringSprites.Length)];
+                        item.name = "Ring of " + noun[Random.Range(0, noun.Length)];
                         break;
                     case 7:
                         item.sprite = amuletSprites[Random.Range(0, amuletSprites.Length)];
+                        item.name = "Amulet of " + noun[Random.Range(0, noun.Length)];
                         break;
                 }
 
+                item.description = "TBD";
                 item.isStackable = false;
                 items[i-1] = item;
             }

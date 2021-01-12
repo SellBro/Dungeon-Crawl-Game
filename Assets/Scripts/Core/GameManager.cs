@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Pathfinding;
 using SellBro.DungeonGenerator;
 using SellBro.Units;
@@ -12,12 +14,13 @@ namespace SellBro.Core
     {
         [Header("Game Manager Settings")] 
         [SerializeField] private bool shouldGenerateLevel = true;
+        [SerializeField] private Camera cam;
         
         [Header("Managing Components")]
         public static GameManager Instance = null;
         public BlockManager blockManager;
         public GameObject unitsManager;
-        
+
         [Header("Lists")]
         public List<SingleNodeBlocker> obstacles;
         public List<EnemyController> _units;
@@ -35,8 +38,8 @@ namespace SellBro.Core
         
         private BlockManager.TraversalProvider traversalProvider;
         private bool _unitsMoving;
-        
-        
+
+
         private void Awake()
         {
             if (Instance == null)
@@ -49,7 +52,7 @@ namespace SellBro.Core
             AstarPath.active = GetComponent<AstarPath>();
             blockManager = GetComponent<BlockManager>();
             _units = new List<EnemyController>();
-            
+
             InitGame();
         }
 
@@ -64,6 +67,8 @@ namespace SellBro.Core
             {
                 GenerateTestScene();
             }
+            
+            cam.GetComponentInChildren<CinemachineVirtualCamera>().Follow = player.transform;
         }
 
         private void Update()
@@ -73,6 +78,12 @@ namespace SellBro.Core
             if (playerTurn || _unitsMoving) return;
 
             StartCoroutine(MoveUnits());
+        }
+
+        private void LateUpdate()
+        {
+            //Camera.main.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-10);
+            cam.GetComponentInChildren<CinemachineVirtualCamera>().Follow = player.transform;
         }
 
         private IEnumerator GenerateDungeon()
