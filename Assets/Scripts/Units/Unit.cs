@@ -10,7 +10,7 @@ namespace SellBro.Units
         [SerializeField] protected int damage;
         [SerializeField] protected int xpForKill = 20;
 
-        protected int _health;
+        protected float _health;
 
         protected virtual void Start()
         {
@@ -38,7 +38,7 @@ namespace SellBro.Units
             _health = Mathf.Min(_health + amount, maxHealth);
         }
 
-        public int GetHealth()
+        public float GetHealth()
         {
             return _health;
         }

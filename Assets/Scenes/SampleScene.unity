@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &319627721 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1133873090, guid: 76c85ef4bead9bc438b2b033fe31aad6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1226569333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &429961958
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +166,12 @@ MonoBehaviour:
   - Pepega
   - Poggers
   - KekW
+  - Truth
+  - Destruction
+  - Immortality
+  - Death
+  - Life
+  - Space
   weaponSprites:
   - {fileID: 92775877384042694, guid: 8943c267c9a69e84b9815177eea452d2, type: 3}
   shieldSprites:
@@ -182,7 +194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429961958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.73485416, y: -1.8876204, z: -30.734375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -195,20 +207,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2911076220524352097, guid: 76c85ef4bead9bc438b2b033fe31aad6,
-        type: 3}
-      propertyPath: data.dataString
-      value: UEsDBBQAAAgIAAAQIezHz0JHSAIAAPAEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VEtz2jAQ/iuMzk0HmNCU3lqSkB4ITGgmF18WaY01yJJHj/DI8N+7km3s0OmJ5dtvd799yB9Malch98bOrRQLI5D9GLBosy+DzvmEB9gavZYnbDlvUvgikiBxXsBLQ/gohjlToreS/9RbFclDAoOWubHlg9jizDjvCM5BOSSXNT5Ga4I+BuxAPzfTGHIka3wXrRNZ0+HgTCZH7dF21JbY0mpW0FxBWaGIkjvyaNLSR8OaqKmdhhOlc6OUdI0W5o9V6vUFjrFTIYH6SsUjt0C5LXzU2A9c5rlD3wiycLyXlsZTZ2S/TD2zEtyuVvUOKqTi4++1oDrr4h/CzSi5c2vKp7YwNUGQLyTfkUQOzvem2ofvPysPeg9qBxuFbwXqZzO3JmhBTm9DDA0Ox/fd30tvswL5rsNrqVdgqP6/m9jDObV/mClZbqLr620NrJVJw06bR0tr+U2C0124JgWhUcWrwz+w7R9Q43iU1nlyNV3qKG9jgo1U9khGHD0PfmasxoQ2mivUoPxxRVn89QqvfL2qV55HiC+lqd342gdwFZLgjj8cXrlWZn/ZlSvMfoGuWAavpMZOdHQ805hmRuv6wvojacPWwebAe2HbIMXny2KCQz6Z0AVyMRrhdHJzC9M8zwFguLmbfsOcpdOTmvoEtaqFNuOhpekuuaYzaz8gg7mFKl27sLCfy1NpeiOXOjdrbhH1ss5wEY6WitCLFA9C0oDW6L3Uad3sI2PK8B2K7JIoS50+HLyFrMuSsUq+Gx+RjM3SFyNjZ3b+C1BLAwQUAAAICAAAECHswGcMB20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0UkpyYpqpqaGRRXKKoWGqpamuSaJlWlpaYmKiQZK5pVlqmlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAECHsx89CR0gCAADwBAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAECHswGcMB20AAAB4AAAACQAkAAAAAAAAAAAAAACVAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAE0DAAAAAA==
-      objectReference: {fileID: 0}
-    - target: {fileID: 2911076220524352097, guid: 76c85ef4bead9bc438b2b033fe31aad6,
-        type: 3}
-      propertyPath: scanOnStartup
+    - target: {fileID: 1133873091, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2911076220524352097, guid: 76c85ef4bead9bc438b2b033fe31aad6,
-        type: 3}
-      propertyPath: showGraphs
-      value: 1
+    - target: {fileID: 1133873091, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133873091, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133873091, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133873091, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133873091, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5141087561340728576, guid: 76c85ef4bead9bc438b2b033fe31aad6,
         type: 3}
@@ -272,9 +293,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5141087561340728579, guid: 76c85ef4bead9bc438b2b033fe31aad6,
         type: 3}
-      propertyPath: shouldGenerateLevel
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 319627721}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76c85ef4bead9bc438b2b033fe31aad6, type: 3}
 --- !u!1001 &1294883195

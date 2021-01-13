@@ -2,6 +2,7 @@
 using SellBro.Player;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SellBro.Units
 {
@@ -18,12 +19,15 @@ namespace SellBro.Units
         [Header("UI Objects")] 
         [SerializeField] private TextMeshProUGUI healthText;
         [SerializeField] private TextMeshProUGUI xpText;
+        [SerializeField] private Image hpBar;
 
         private PlayerController _controller;
 
         protected override void Start()
         {
             base.Start();
+
+            hpBar.fillAmount = _health / maxHealth;
             
             healthText.text = "Health - " + _health + "/" + maxHealth;
             xpText.text = "Level - " + level + " \nXP -" + xP + "/" + xPToNextLevel;
@@ -31,7 +35,7 @@ namespace SellBro.Units
 
         private void Update()
         {
-            
+            hpBar.fillAmount = _health / maxHealth;
         }
 
         public override void TakeDamage(int amount)
