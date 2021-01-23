@@ -119,7 +119,7 @@ namespace SellBro.Player
 
             if (hitEnemy.transform == null) return false;
 
-            if (CheckForChests(hitEnemy)) return true;
+            if (CheckForChests(hitEnemy) || hitEnemy.transform.CompareTag("Obstacle")) return true;
 
             IDamageable enemy = hitEnemy.transform.gameObject.GetComponent<IDamageable>();
             Attack(enemy);

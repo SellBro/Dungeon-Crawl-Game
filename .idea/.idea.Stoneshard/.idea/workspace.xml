@@ -80,10 +80,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/RandomItemGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemPickup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -166,6 +166,9 @@
       <workItem from="1610449262727" duration="2489000" />
       <workItem from="1610453137833" duration="3523000" />
       <workItem from="1610521970761" duration="1935000" />
+      <workItem from="1610632510059" duration="1630000" />
+      <workItem from="1610873050737" duration="1352000" />
+      <workItem from="1611396657934" duration="343000" />
     </task>
     <servers />
   </component>

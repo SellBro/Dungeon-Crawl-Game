@@ -945,7 +945,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.25, z: 0}
   m_MaxChunkCount: 16
@@ -2300,7 +2300,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4802821559724022618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 692517407369146400}
@@ -2807,7 +2807,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.125, z: 0}
   m_MaxChunkCount: 16
@@ -2866,8 +2866,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b19e8ece9c77794c86e3e992b7b2bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasSpawnedPlayer: 0
   position: {x: 0, y: 0}
+  hasSpawnedPlayer: 0
   obstacleMap: {fileID: 4374658565329538193}
   groundMap: {fileID: 7070060764635826454}
 --- !u!1001 &937004265993049195
