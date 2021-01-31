@@ -19,11 +19,11 @@ namespace SellBro.Core
         [Header("Managing Components")]
         public static GameManager Instance = null;
         public BlockManager blockManager;
-        public GameObject unitsManager;
+        public GameObject unitsParent;
 
         [Header("Lists")]
         public List<SingleNodeBlocker> obstacles;
-        public List<EnemyController> _units;
+        public List<EnemyController> units;
         
         [Header("Level settings")]
         public bool playerTurn = true;
@@ -51,7 +51,7 @@ namespace SellBro.Core
 
             AstarPath.active = GetComponent<AstarPath>();
             blockManager = GetComponent<BlockManager>();
-            _units = new List<EnemyController>();
+            units = new List<EnemyController>();
 
             InitGame();
         }
@@ -68,6 +68,7 @@ namespace SellBro.Core
                 GenerateTestScene();
             }
             
+            // TODO: Fix cam spawn bug 
             cam.GetComponentInChildren<CinemachineVirtualCamera>().Follow = player.transform;
         }
 
@@ -85,23 +86,34 @@ namespace SellBro.Core
             //Camera.main.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-10);
             cam.GetComponentInChildren<CinemachineVirtualCamera>().Follow = player.transform;
         }
+        
+        private void InitGame()
+        {
+            units.Clear();
+        }
 
         private IEnumerator GenerateDungeon()
         {
+            // Generate rooms
             yield return StartCoroutine(LevelGeneration.Instance.GenerateLevel());
+            // Spawn player
             SpawnPlayer();
             yield return null;
             
+            // Generate room interior and units
             yield return StartCoroutine(LevelGeneration.Instance.FillRooms());
 
+            // Create A*
             AstarPath.active.Scan();
             
-            foreach (var unit in _units)
+            // Block Nodes under Units
+            foreach (var unit in units)
             {
                 SingleNodeBlocker unitNode = unit.GetComponent<SingleNodeBlocker>();
                 obstacles.Add(unitNode);
             }
             
+            // A* var
             traversalProvider = new BlockManager.TraversalProvider(blockManager, BlockManager.BlockMode.OnlySelector, obstacles);
         }
 
@@ -110,7 +122,7 @@ namespace SellBro.Core
             SpawnTestPlayer();
             AstarPath.active.Scan();
                 
-            foreach (var unit in _units)
+            foreach (var unit in units)
             {
                 SingleNodeBlocker unitNode = unit.GetComponent<SingleNodeBlocker>();
                 obstacles.Add(unitNode);
@@ -143,12 +155,7 @@ namespace SellBro.Core
 
         public void AddUnitToList(EnemyController unit)
         {
-            _units.Add(unit);
-        }
-
-        private void InitGame()
-        {
-            _units.Clear();
+            units.Add(unit);
         }
 
         private IEnumerator MoveUnits()
@@ -156,14 +163,15 @@ namespace SellBro.Core
             _unitsMoving = true;
             yield return new WaitForSeconds(turnDelay);
             
-            if (_units.Count == 0)
+            if (units.Count == 0)
             {
                 yield return new WaitForSeconds(turnDelay);
             }
             
-            _units.Sort();
+            // Priority queue based on distance to player
+            units.Sort();
             
-            foreach(EnemyController unit in _units)
+            foreach(EnemyController unit in units)
             {
                 unit.Act();
                 yield return null;

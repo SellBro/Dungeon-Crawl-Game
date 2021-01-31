@@ -16,8 +16,9 @@ namespace SellBro.Units
 
         protected override void Die()
         {
+            // TODO: Use Action
             GameManager.Instance.player.GetComponent<PlayerUnit>().AddXP(xpForKill);
-            GameManager.Instance._units.Remove(_controller);
+            GameManager.Instance.units.Remove(_controller);
             _controller.UnblockGridNode();
             Destroy(gameObject);
         }

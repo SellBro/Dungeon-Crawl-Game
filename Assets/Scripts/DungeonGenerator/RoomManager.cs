@@ -145,7 +145,7 @@ namespace SellBro.DungeonGenerator
         private void SpawnEnemy(GameObject obj, int x, int y)
         {
             var enemy = Instantiate(obj, new Vector3(position.x + x + 0.5f, position.y + y + 0.5f, 0),
-                Quaternion.identity,GameManager.Instance.unitsManager.transform.parent);
+                Quaternion.identity,GameManager.Instance.unitsParent.transform.parent);
             _tiles[x, y] = false;
             enemy.GetComponent<EnemyController>().SetStartingRoom(this);
         }

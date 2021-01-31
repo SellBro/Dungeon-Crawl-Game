@@ -13,16 +13,16 @@ namespace SellBro.Inventory
         [SerializeField] private TextMeshProUGUI description;
         [SerializeField] private TextMeshProUGUI buttonText;
 
-        private Animator anim;
+        private Animator _anim;
 
         private void Start()
         {
-            anim = GetComponent<Animator>();
+            _anim = GetComponent<Animator>();
         }
 
         public void SetDescription(ItemData data)
         {
-            if (anim != null)
+            if (_anim != null)
             {
                 OpenUI();
             }
@@ -63,12 +63,12 @@ namespace SellBro.Inventory
 
         private void OpenUI()
         {
-            anim.SetTrigger("Open");
+            _anim.SetTrigger("Open");
         }
         
         private void CloseUI()
         {
-            anim.SetTrigger("Close");
+            _anim.SetTrigger("Close");
         }
     }
 }

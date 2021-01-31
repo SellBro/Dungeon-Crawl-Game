@@ -8,6 +8,7 @@ namespace SellBro.Inventory
         
         private void FixedUpdate()
         {
+            // TODO: should be done via Action
             if (transform.childCount > 1)
             {
                 imageObj.SetActive(false);

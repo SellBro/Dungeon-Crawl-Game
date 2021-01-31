@@ -29,7 +29,7 @@ namespace SellBro.Inventory
         public int invenotySize = 20;
         public int inventoryOffset = 7;
 
-
+        private Inventory _playerInv;
 
         private void Start()
         {
@@ -53,6 +53,8 @@ namespace SellBro.Inventory
                 s.inventory = this;
             }
             AddItem(pepe);
+            
+            _playerInv = GameManager.Instance.player.GetComponent<PlayerUIController>().GetPlayerInventory();
         }
 
         public void AddItem(Item item)
@@ -149,19 +151,17 @@ namespace SellBro.Inventory
             }
             else if (descriptionPanel.descriptionData.item.itemType == ItemType.Usable)
             {
-                
+                // TODO: Use item
             }
         }
 
         public void TakeAll()
         {
-            Inventory playerInv = GameManager.Instance.player.GetComponent<PlayerController>().GetPlayerInventory();
-
             for (int i = 0; i < items.Count;i++)
             {
                 if (items[i] != empty)
                 {
-                    playerInv.AddItem(items[i]);
+                    _playerInv.AddItem(items[i]);
                     RemoveItems(i);
                 }
             }
@@ -175,8 +175,7 @@ namespace SellBro.Inventory
 
         public void TakeItem(Item item)
         {
-            Inventory playerInv = GameManager.Instance.player.GetComponent<PlayerController>().GetPlayerInventory();
-            playerInv.AddItem(item);
+            _playerInv.AddItem(item);
             int index = items.IndexOf(item);
             RemoveItems(index);
         }

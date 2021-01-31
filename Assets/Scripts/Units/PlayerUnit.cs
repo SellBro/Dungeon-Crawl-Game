@@ -21,7 +21,7 @@ namespace SellBro.Units
         [SerializeField] private TextMeshProUGUI xpText;
         [SerializeField] private Image hpBar;
 
-        private PlayerController _controller;
+        private PlayerMovementController _controller;
 
         protected override void Start()
         {

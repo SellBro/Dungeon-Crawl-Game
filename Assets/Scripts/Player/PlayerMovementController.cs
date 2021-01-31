@@ -8,21 +8,18 @@ using UnityEngine;
 
 namespace SellBro.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerMovementController : MonoBehaviour
     {
         [SerializeField] private float speed = 10;
-        [SerializeField] private Inventory.Inventory inventory;
         [SerializeField] private LayerMask whatIsBlocked;
         [SerializeField] private LayerMask whatIsCollision;
         
-        private bool isFacingRight = true;
+        private bool _isFacingRight = true;
         private Unit _unit;
 
         private void Awake()
         {
             _unit = GetComponent<Unit>();
-            
-            inventory.isPlayerInv = true;
         }
 
         private void Start()
@@ -32,18 +29,6 @@ namespace SellBro.Player
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                Item[] items = RandomItemGenerator.Instance.GenerateStartingLoot();
-                for (int i = 0; i < items.Length; i++)
-                {
-                    Debug.Log("Item:" + items[i].name);
-                    inventory.AddItem(items[i]);
-                }
-            }
-
-            OpenInventory();
-            
             if (GameManager.Instance.playerTurn)
             {
                 GetInput();
@@ -70,10 +55,10 @@ namespace SellBro.Player
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                if (isFacingRight)
+                if (_isFacingRight)
                 {
                     transform.localScale = new Vector3(-1, 1, 1);
-                    isFacingRight = false;
+                    _isFacingRight = false;
                 }
                 Vector3 destination = new Vector3(transform.position.x - 1, transform.position.y);
                 
@@ -83,33 +68,16 @@ namespace SellBro.Player
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                if (!isFacingRight)
+                if (!_isFacingRight)
                 {
                     transform.localScale = new Vector3(1, 1, 1);
-                    isFacingRight = true;
+                    _isFacingRight = true;
                 }
                 Vector3 destination = new Vector3(transform.position.x + 1, transform.position.y);
                 
                 if (CheckForCollisions(transform.right)) return;
                 
                 StartCoroutine(SmoothMovement(destination,transform.right));
-            }
-        }
-
-        private void OpenInventory()
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                if (inventory.GetComponent<CanvasGroup>().alpha == 1)
-                {
-                    inventory.GetComponent<CanvasGroup>().alpha = 0;
-                    inventory.GetComponent<CanvasGroup>().blocksRaycasts = false;
-                }
-                else
-                {
-                    inventory.GetComponent<CanvasGroup>().alpha = 1;
-                    inventory.GetComponent<CanvasGroup>().blocksRaycasts = true;
-                }
             }
         }
 
@@ -156,19 +124,6 @@ namespace SellBro.Player
                     GameManager.Instance.playerTurn = false;
                     yield return new WaitForEndOfFrame();
                 }
-            }
-        }
-
-        public Inventory.Inventory GetPlayerInventory()
-        {
-            return inventory;
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("Item"))
-            {
-                inventory.AddItem(other.gameObject.GetComponent<ItemPickup>().item);
             }
         }
     }

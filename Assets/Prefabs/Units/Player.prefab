@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2568394342127918842}
   - component: {fileID: 3895419804571611231}
   - component: {fileID: 5273038824316508293}
+  - component: {fileID: 2318324235127347957}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -97,7 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  inventory: {fileID: 7030187774450565546}
   whatIsBlocked:
     serializedVersion: 2
     m_Bits: 256
@@ -147,6 +147,19 @@ MonoBehaviour:
   healthText: {fileID: 5570684131640850364}
   xpText: {fileID: 5570684130446402932}
   hpBar: {fileID: 2481522674742160188}
+--- !u!114 &2318324235127347957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568394342127918841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6eabb3b4468b424bb5e0265c4804ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 7030187774450565546}
 --- !u!1 &3584014816611917211
 GameObject:
   m_ObjectHideFlags: 0

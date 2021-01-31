@@ -151,7 +151,7 @@ namespace SellBro.DungeonGenerator
 				x = (int) _takenPositions[index].x;
 				y = (int) _takenPositions[index].y;
 				
-				// Randomly pick wether to look on hor or vert axis
+				// Randomly pick weather to look on hor or vert axis
 				bool UpDown = (Random.value < 0.5f);
 				// Pick whether to be positive or negative on that axis
 				bool positive = (Random.value < 0.5f);
@@ -172,7 +172,7 @@ namespace SellBro.DungeonGenerator
 				
 				checkingPos = new Vector2(x,y);
 				
-			} //make sure the position is valid
+			} // Make sure the position is valid
 			while (_takenPositions.Contains(checkingPos) || x >= _gridSizeX || x < -_gridSizeX || y >= _gridSizeY || y < -_gridSizeY); 
 			
 			return checkingPos;
@@ -233,7 +233,7 @@ namespace SellBro.DungeonGenerator
 			// Break loop if it takes too long: this loop isn't guaranteed to find solution, which is fine for this
 			if (inc >= 100)
 			{ 
-				//print("Error: could not find position with only one neighbor");
+				// print("Error: could not find position with only one neighbor");
 			}
 			return checkingPos;
 		}

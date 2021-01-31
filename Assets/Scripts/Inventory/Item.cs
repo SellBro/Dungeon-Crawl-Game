@@ -21,7 +21,7 @@ namespace SellBro.Inventory
 
         public Item()
         {
-            
+            // Default constructor
         }
         
         public Item(string name, bool isStackable = false, ItemType itemType = ItemType.Usable, EquippableItemType equippableItemType = EquippableItemType.None)
