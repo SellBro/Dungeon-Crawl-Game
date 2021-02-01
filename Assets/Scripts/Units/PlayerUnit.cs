@@ -1,6 +1,4 @@
-﻿using System;
-using SellBro.Player;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +19,6 @@ namespace SellBro.Units
         [SerializeField] private TextMeshProUGUI xpText;
         [SerializeField] private Image hpBar;
 
-        private PlayerMovementController _controller;
-
         protected override void Start()
         {
             base.Start();
@@ -33,15 +29,21 @@ namespace SellBro.Units
             xpText.text = "Level - " + level + " \nXP -" + xP + "/" + xPToNextLevel;
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            hpBar.fillAmount = _health / maxHealth;
+            EnemyUnit.EnemyDie += AddXP;
+        }
+        
+        private void OnDisable()
+        {
+            EnemyUnit.EnemyDie -= AddXP;
         }
 
         public override void TakeDamage(int amount)
         {
             base.TakeDamage(amount);
 
+            hpBar.fillAmount = _health / maxHealth;
             healthText.text = "Health - " + _health + "/" + maxHealth;
         }
 

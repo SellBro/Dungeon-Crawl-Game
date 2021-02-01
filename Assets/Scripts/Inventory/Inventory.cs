@@ -26,7 +26,7 @@ namespace SellBro.Inventory
         public List<GameObject> slots = new List<GameObject>();
         
         [Header("Inventory Settings")]
-        public int invenotySize = 20;
+        public int inventorySize = 20;
         public int inventoryOffset = 7;
 
         private Inventory _playerInv;
@@ -40,7 +40,7 @@ namespace SellBro.Inventory
                 s.id = i;
                 s.inventory = this;
             }
-            for (int i = inventoryOffset; i < invenotySize + inventoryOffset; i++)
+            for (int i = inventoryOffset; i < inventorySize + inventoryOffset; i++)
             {
                 items.Add(empty);
                 

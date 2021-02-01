@@ -7,6 +7,8 @@ namespace SellBro.Units
     {
         public bool isPeaceful = false;
 
+        public static Action<int> EnemyDie;
+        
         private EnemyController _controller;
 
         private void Awake()
@@ -16,11 +18,14 @@ namespace SellBro.Units
 
         protected override void Die()
         {
-            // TODO: Use Action
-            GameManager.Instance.player.GetComponent<PlayerUnit>().AddXP(xpForKill);
             GameManager.Instance.units.Remove(_controller);
             _controller.UnblockGridNode();
             Destroy(gameObject);
+        }
+
+        private void OnDisable()
+        {
+            EnemyDie?.Invoke(xpForKill);
         }
     }
 }

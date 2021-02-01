@@ -39,6 +39,8 @@ namespace SellBro.Core
         private BlockManager.TraversalProvider traversalProvider;
         private bool _unitsMoving;
 
+        private CinemachineVirtualCamera _cvc;
+
 
         private void Awake()
         {
@@ -69,7 +71,8 @@ namespace SellBro.Core
             }
             
             // TODO: Fix cam spawn bug 
-            cam.GetComponentInChildren<CinemachineVirtualCamera>().Follow = player.transform;
+            _cvc = GetComponentInChildren<CinemachineVirtualCamera>();
+            _cvc.Follow = player.transform;
         }
 
         private void Update()
@@ -84,7 +87,7 @@ namespace SellBro.Core
         private void LateUpdate()
         {
             //Camera.main.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-10);
-            cam.GetComponentInChildren<CinemachineVirtualCamera>().Follow = player.transform;
+            _cvc.Follow = player.transform;
         }
         
         private void InitGame()

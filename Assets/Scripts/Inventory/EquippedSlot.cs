@@ -1,14 +1,30 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace SellBro.Inventory
 {
     public class EquippedSlot : MonoBehaviour
     {
         [SerializeField] private GameObject imageObj;
-        
-        private void FixedUpdate()
+
+        public static Action DisplayImage;
+
+        private void OnEnable()
         {
-            // TODO: should be done via Action
+            DisplayImage += ShowImage;
+        }
+
+        private void OnDisable()
+        {
+            DisplayImage -= ShowImage;
+        }
+
+        /// <summary>
+        /// Disables or enables default (BG) images of items in main slots
+        /// when an item is (un)equipped.
+        /// </summary>
+        private void ShowImage()
+        {
             if (transform.childCount > 1)
             {
                 imageObj.SetActive(false);

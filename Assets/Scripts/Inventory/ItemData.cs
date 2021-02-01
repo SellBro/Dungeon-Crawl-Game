@@ -38,6 +38,8 @@ namespace SellBro.Inventory
         public void OnEndDrag(PointerEventData eventData)
         {
             MoveItem();
+            
+            EquippedSlot.DisplayImage.Invoke();
         }
 
         public void OnPointerClick(PointerEventData eventData)
