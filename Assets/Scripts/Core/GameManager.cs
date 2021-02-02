@@ -38,7 +38,7 @@ namespace SellBro.Core
         
         private BlockManager.TraversalProvider traversalProvider;
         private bool _unitsMoving;
-        
+
         private CinemachineVirtualCamera _camera;
 
 
@@ -69,10 +69,6 @@ namespace SellBro.Core
             {
                 GenerateTestScene();
             }
-            
-            // TODO: Fix cam spawn bug 
-            //_cvc = GetComponentInChildren<CinemachineVirtualCamera>();
-            //_cvc.Follow = player.transform;
         }
 
         private void Update()
@@ -84,12 +80,6 @@ namespace SellBro.Core
             StartCoroutine(MoveUnits());
         }
 
-        private void LateUpdate()
-        {
-            //Camera.main.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-10);
-            //_cvc.Follow = player.transform;
-        }
-        
         private void InitGame()
         {
             units.Clear();
@@ -148,24 +138,25 @@ namespace SellBro.Core
 
             spawn = LevelGeneration.DungeonRooms[num].position;
             
-            Vector3 spawnPos = new Vector3(spawn.x + x + 0.5f, spawn.y + y + 0.5f);
-            player = Instantiate(player, spawnPos, Quaternion.identity);
+            Vector3 movePos = new Vector3(spawn.x + x + 0.5f, spawn.y + y + 0.5f,-1);
+            player.transform.position = movePos;
             
-            SpawnCamera(spawnPos);
+            MoveCamera(movePos);
             
             LevelGeneration.DungeonRooms[num].hasSpawnedPlayer = true;
         }
 
         private void SpawnTestPlayer()
         {
-            Vector3 spawnPos = new Vector3(0.5f, 0.5f);
+            Vector3 spawnPos = new Vector3(0.5f, 0.5f,-1);
             player = Instantiate(player, spawnPos, Quaternion.identity);
-            SpawnCamera(spawnPos);
+            MoveCamera(spawnPos);
         }
 
-        private void SpawnCamera(Vector3 pos)
+        private void MoveCamera(Vector3 pos)
         {
-            _camera = Instantiate(cam, new Vector3(pos.x, pos.y,-10), Quaternion.identity).GetComponentInChildren<CinemachineVirtualCamera>();
+            _camera = Instantiate(cam, new Vector3(pos.x, pos.y, -10), Quaternion.identity)
+                .GetComponentInChildren<CinemachineVirtualCamera>();
             _camera.Follow = player.transform;
         }
 
