@@ -14,7 +14,7 @@ namespace SellBro.Core
     {
         [Header("Game Manager Settings")] 
         [SerializeField] private bool shouldGenerateLevel = true;
-        [SerializeField] private Camera cam;
+        [SerializeField] private GameObject cam;
         
         [Header("Managing Components")]
         public static GameManager Instance = null;
@@ -38,8 +38,8 @@ namespace SellBro.Core
         
         private BlockManager.TraversalProvider traversalProvider;
         private bool _unitsMoving;
-
-        private CinemachineVirtualCamera _cvc;
+        
+        private CinemachineVirtualCamera _camera;
 
 
         private void Awake()
@@ -71,8 +71,8 @@ namespace SellBro.Core
             }
             
             // TODO: Fix cam spawn bug 
-            _cvc = GetComponentInChildren<CinemachineVirtualCamera>();
-            _cvc.Follow = player.transform;
+            //_cvc = GetComponentInChildren<CinemachineVirtualCamera>();
+            //_cvc.Follow = player.transform;
         }
 
         private void Update()
@@ -87,7 +87,7 @@ namespace SellBro.Core
         private void LateUpdate()
         {
             //Camera.main.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-10);
-            _cvc.Follow = player.transform;
+            //_cvc.Follow = player.transform;
         }
         
         private void InitGame()
@@ -147,13 +147,26 @@ namespace SellBro.Core
             }
 
             spawn = LevelGeneration.DungeonRooms[num].position;
-            player = Instantiate(player, new Vector2(spawn.x + x + 0.5f, spawn.y + y + 0.5f), Quaternion.identity);
+            
+            Vector3 spawnPos = new Vector3(spawn.x + x + 0.5f, spawn.y + y + 0.5f);
+            player = Instantiate(player, spawnPos, Quaternion.identity);
+            
+            SpawnCamera(spawnPos);
+            
             LevelGeneration.DungeonRooms[num].hasSpawnedPlayer = true;
         }
 
         private void SpawnTestPlayer()
         {
-            player = Instantiate(player, new Vector2( 0.5f, 0.5f), Quaternion.identity);
+            Vector3 spawnPos = new Vector3(0.5f, 0.5f);
+            player = Instantiate(player, spawnPos, Quaternion.identity);
+            SpawnCamera(spawnPos);
+        }
+
+        private void SpawnCamera(Vector3 pos)
+        {
+            _camera = Instantiate(cam, new Vector3(pos.x, pos.y,-10), Quaternion.identity).GetComponentInChildren<CinemachineVirtualCamera>();
+            _camera.Follow = player.transform;
         }
 
         public void AddUnitToList(EnemyController unit)
