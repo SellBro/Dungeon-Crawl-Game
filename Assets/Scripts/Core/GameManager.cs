@@ -144,6 +144,8 @@ namespace SellBro.Core
             MoveCamera(movePos);
             
             LevelGeneration.DungeonRooms[num].hasSpawnedPlayer = true;
+
+            SpawnLevelEnter(num);
         }
 
         private void SpawnTestPlayer()
@@ -151,6 +153,11 @@ namespace SellBro.Core
             Vector3 spawnPos = new Vector3(0.5f, 0.5f,-1);
             player = Instantiate(player, spawnPos, Quaternion.identity);
             MoveCamera(spawnPos);
+        }
+
+        private void SpawnLevelEnter(int roomNum)
+        {
+            LevelGeneration.DungeonRooms[roomNum].SpawnEnter();
         }
 
         private void MoveCamera(Vector3 pos)

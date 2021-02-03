@@ -78,16 +78,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemDescription.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/EquippedSlot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerUIController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -177,7 +177,7 @@
       <workItem from="1612160606694" duration="1434000" />
       <workItem from="1612162119088" duration="327000" />
       <workItem from="1612275267157" duration="2525000" />
-      <workItem from="1612344211710" duration="1115000" />
+      <workItem from="1612344211710" duration="4748000" />
     </task>
     <servers />
   </component>
@@ -282,13 +282,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs</url>
-          <line>94</line>
+          <line>100</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" initialLine="94">
             <startOffsets>
-              <option value="3025" />
+              <option value="3195" />
             </startOffsets>
             <endOffsets>
-              <option value="3026" />
+              <option value="3196" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />

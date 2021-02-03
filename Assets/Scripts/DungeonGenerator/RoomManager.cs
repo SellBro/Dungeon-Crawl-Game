@@ -8,6 +8,8 @@ namespace SellBro.DungeonGenerator
     public class RoomManager : MonoBehaviour
     {
         public Vector2Int position;
+
+        public static bool IsExitSpawned = false;
         
         [HideInInspector] public bool hasSpawnedPlayer = false;
         
@@ -31,6 +33,7 @@ namespace SellBro.DungeonGenerator
 
         public void FillRoom()
         {
+            SpawnExit();
             SpawBoxes();
             SpawnEnemies();
         }
@@ -53,6 +56,57 @@ namespace SellBro.DungeonGenerator
                     }
                 }
             }
+        }
+
+        public void SpawnEnter()
+        {
+            Vector2Int tile;
+            do
+            {
+                tile = GetRandomTile();
+            } while (!IsTileEmpty(tile.x + 1 - position.x, tile.y - position.y));
+
+            SpawnEnterObject(LevelGeneration.Instance.levelStart, tile.x + 1 - position.x, tile.y - position.y);
+        }
+        
+        private void SpawnEnterObject(GameObject obj, int x, int y)
+        {
+            Instantiate(obj, new Vector3(position.x + x, position.y + y + 0.5f, 0),
+                Quaternion.identity,transform.parent);
+            _tiles[x, y] = false;
+            _tiles[x+1, y] = false;
+
+            LevelGeneration.Instance.isExitSpawned = true;
+        }
+        
+        private void SpawnExit()
+        {
+            if(LevelGeneration.Instance.isExitSpawned) return;
+
+
+            float chance = Random.Range(0, LevelGeneration.FilledRooms);
+            bool spawnChance = chance >= LevelGeneration.FilledRooms;
+
+            if (spawnChance)
+            {
+                Vector2Int tile;
+                do
+                {
+                    tile = GetRandomTile();
+                } while (!IsTileEmpty(tile.x + 1 - position.x, tile.y - position.y));
+
+                SpawnExitObject(LevelGeneration.Instance.levelEnd, tile.x + 1 - position.x, tile.y - position.y);
+            }
+        }
+        
+        private void SpawnExitObject(GameObject obj, int x, int y)
+        {
+            Instantiate(obj, new Vector3(position.x + x, position.y + y + 0.5f, 0),
+                Quaternion.identity,transform.parent);
+            _tiles[x, y] = false;
+            _tiles[x+1, y] = false;
+
+            LevelGeneration.Instance.isExitSpawned = true;
         }
 
         private void SpawBoxes()
@@ -150,7 +204,7 @@ namespace SellBro.DungeonGenerator
             enemy.GetComponent<EnemyController>().SetStartingRoom(this);
         }
 
-        public Vector2 GetRandomTile()
+        public Vector2Int GetRandomTile()
         {
             int x;
             int y;
@@ -162,15 +216,17 @@ namespace SellBro.DungeonGenerator
                 
                 if (IsTileEmpty(x, y))
                 {
-                    return new Vector3(position.x + x,position.y + y,0);
+                    return new Vector2Int(position.x + x,position.y + y);
                 }
             }
             
-            return Vector2.zero;
+            return Vector2Int.zero;
         }
         
         public bool IsTileEmpty(int x, int y)
         {
+            if (x >= _tiles.GetLength(0) || y >= _tiles.GetLength(1) || x < 0 || y < 0) return false;
+            
             return _tiles[x, y];
         }
     }

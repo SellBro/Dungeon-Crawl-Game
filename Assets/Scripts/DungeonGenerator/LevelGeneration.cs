@@ -10,6 +10,9 @@ namespace SellBro.DungeonGenerator
 	    public static LevelGeneration Instance = null;
 	    
 	    public static List<RoomManager> DungeonRooms;
+	    public static int FilledRooms = 0;
+
+	    public bool isExitSpawned = false;
 
 	    [Header("Settings")] 
 	    [Range(1, 10)] 
@@ -29,8 +32,10 @@ namespace SellBro.DungeonGenerator
 	    [Header("Enemies")] 
 	    public GameObject[] enemies;
 	    public int maxEnemiesPerRoom = 8;
-	    
-	    [Header("Tiles")]
+
+	    [Header("Tiles")] 
+	    public GameObject levelStart;
+	    public GameObject levelEnd;
 	    [SerializeField] private GameObject[] T;
 	    [SerializeField] private GameObject[] B;
 	    [SerializeField] private GameObject[] R;
@@ -87,6 +92,7 @@ namespace SellBro.DungeonGenerator
 	        foreach (RoomManager room in DungeonRooms)
 	        {
 		        room.FillRoom();
+		        FilledRooms--;
 		        yield return null;
 	        }
         }
