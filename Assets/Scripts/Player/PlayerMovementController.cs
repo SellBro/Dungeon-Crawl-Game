@@ -4,15 +4,19 @@ using SellBro.Core;
 using SellBro.Inventory;
 using SellBro.Items;
 using SellBro.Units;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace SellBro.Player
 {
     public class PlayerMovementController : MonoBehaviour
     {
         [SerializeField] private float speed = 10;
+        [SerializeField] private float agroTriggerRange = 10;
         [SerializeField] private LayerMask whatIsBlocked;
         [SerializeField] private LayerMask whatIsCollision;
+        [SerializeField] private LayerMask whatIsEnemy;
         
         private bool _isFacingRight = true;
         private Unit _unit;
@@ -108,8 +112,20 @@ namespace SellBro.Player
         private void Attack(IDamageable enemy)
         {
             enemy.TakeDamage(_unit.GetDamage());
-            Debug.Log(_unit.GetDamage());
+            AgroUnits();
             GameManager.Instance.playerTurn = false;
+        }
+
+        private void AgroUnits()
+        {
+            Collider2D[] units = Physics2D.OverlapBoxAll(transform.position, new Vector2(agroTriggerRange,agroTriggerRange), 0, whatIsEnemy);
+
+            Debug.Log(units.Length);
+            
+            foreach (var unit in units)
+            {
+                unit.GetComponent<EnemyUnit>().isPeaceful = false;
+            }
         }
 
         private IEnumerator SmoothMovement(Vector3 destination, Vector3 tr)

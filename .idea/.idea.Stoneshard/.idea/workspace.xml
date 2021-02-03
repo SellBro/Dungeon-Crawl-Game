@@ -80,7 +80,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemData.cs" />
@@ -88,6 +87,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerUIController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementController.cs" />
       </list>
     </option>
   </component>
@@ -177,6 +177,7 @@
       <workItem from="1612160606694" duration="1434000" />
       <workItem from="1612162119088" duration="327000" />
       <workItem from="1612275267157" duration="2525000" />
+      <workItem from="1612344211710" duration="1115000" />
     </task>
     <servers />
   </component>

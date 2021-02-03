@@ -98,12 +98,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  agroTriggerRange: 10
   whatIsBlocked:
     serializedVersion: 2
     m_Bits: 256
   whatIsCollision:
     serializedVersion: 2
     m_Bits: 1792
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!95 &3895419804571611231
 Animator:
   serializedVersion: 3
