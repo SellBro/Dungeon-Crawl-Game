@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Pathfinding;
 using SellBro.Core;
 using SellBro.Inventory;
 using SellBro.Items;
@@ -20,15 +21,19 @@ namespace SellBro.Player
         
         private bool _isFacingRight = true;
         private Unit _unit;
+        private SingleNodeBlocker _blocker;
 
         private void Awake()
         {
             _unit = GetComponent<Unit>();
+            _blocker = GetComponent<SingleNodeBlocker>();
         }
 
         private void Start()
         {
             GameManager.Instance.player = gameObject;
+            GameManager.Instance.AddObstacleToList(_blocker);
+            _blocker.BlockAtCurrentPosition();
         }
 
         private void Update()
@@ -130,6 +135,8 @@ namespace SellBro.Player
 
         private IEnumerator SmoothMovement(Vector3 destination, Vector3 tr)
         {
+            _blocker.Unblock();
+            
             RaycastHit2D hitBlock = Physics2D.Raycast(transform.position, tr,1.1f, whatIsBlocked);
             Debug.DrawRay(transform.position, tr, Color.red,3);
             if (hitBlock.transform == null)
@@ -141,6 +148,8 @@ namespace SellBro.Player
                     yield return new WaitForEndOfFrame();
                 }
             }
+            
+            _blocker.BlockAtCurrentPosition();
         }
     }
 }

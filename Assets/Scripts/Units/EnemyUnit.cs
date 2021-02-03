@@ -18,7 +18,7 @@ namespace SellBro.Units
 
         protected override void Die()
         {
-            GameManager.Instance.units.Remove(_controller);
+            GameManager.Instance.RemoveUnitFromList(_controller);
             _controller.UnblockGridNode();
             Destroy(gameObject);
         }

@@ -21,7 +21,6 @@ namespace SellBro.Units
         private EnemyUnit _unit;
         private SingleNodeBlocker _blocker;
         
-        
         private EnemyState _state;
         private bool _shouldMove = false;
         private Vector3 _destination;

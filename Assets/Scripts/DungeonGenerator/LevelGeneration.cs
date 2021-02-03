@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using Pathfinding;
 using SellBro.Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,9 +11,7 @@ namespace SellBro.DungeonGenerator
 	    public static LevelGeneration Instance = null;
 	    
 	    public static int FilledRooms = 0;
-
-	    private static List<RoomManager> DungeonRooms;
-
+	    
 	    [Header("Settings")] 
 	    [Range(1, 10)] 
 	    [SerializeField] private int worldX = 3;
@@ -54,9 +50,12 @@ namespace SellBro.DungeonGenerator
 	    [SerializeField] private GameObject[] BRL;
 	    [SerializeField] private GameObject[] TBRL;
 	    
+	    private List<Vector2> _takenPositions = new List<Vector2>();
+	    private List<RoomManager> _dungeonRooms;
+	    
 	    private Vector2 _worldSize = new Vector2(3,3);
         private Room[,] _rooms;
-        private List<Vector2> _takenPositions = new List<Vector2>();
+        
         private int _gridSizeX;
         private int _gridSizeY;
         private int _numberOfRooms = 20;
@@ -72,6 +71,7 @@ namespace SellBro.DungeonGenerator
         {
 	        // Generate rooms
 	        yield return StartCoroutine(GenerateLevel());
+	        
 	        // Spawn player
 	        SpawnPlayer();
 	        yield return null;
@@ -86,34 +86,34 @@ namespace SellBro.DungeonGenerator
         {
 	        int x = Random.Range(1, 16);
 	        int y = Random.Range(1, 15);
-	        int num = Random.Range(0, DungeonRooms.Count);
+	        int num = Random.Range(0, _dungeonRooms.Count);
             
-	        while (!DungeonRooms[num].IsTileEmpty(x, y))
+	        while (!_dungeonRooms[num].IsTileEmpty(x, y))
 	        {
 		        x = Random.Range(1, 16);
 		        y = Random.Range(1, 15);
 	        }
 
-	        Vector2 spawn = DungeonRooms[num].position;
+	        Vector2 spawn = _dungeonRooms[num].position;
             
 	        Vector3 movePos = new Vector3(spawn.x + x + 0.5f, spawn.y + y + 0.5f,-1);
 	        GameManager.Instance.player.transform.position = movePos;
             
 	        GameManager.Instance.MoveCamera(movePos);
             
-	        DungeonRooms[num].hasSpawnedPlayer = true;
+	        _dungeonRooms[num].hasSpawnedPlayer = true;
 
 	        SpawnLevelEnter(num);
         }
         
         private void SpawnLevelEnter(int roomNum)
         {
-	        DungeonRooms[roomNum].SpawnEnter();
+	        _dungeonRooms[roomNum].SpawnEnter();
         }
 
-        public IEnumerator GenerateLevel()
+        private IEnumerator GenerateLevel()
         {
-	        DungeonRooms = new List<RoomManager>();
+	        _dungeonRooms = new List<RoomManager>();
 	        
 	        _worldSize = new Vector2(worldX,worldY);
 	        // Make sure we don't try to make more rooms than can fit in our grid
@@ -134,18 +134,20 @@ namespace SellBro.DungeonGenerator
 	        yield return null;
         }
 
-        public IEnumerator FillRooms()
+        private IEnumerator FillRooms()
         {
-	        foreach (RoomManager room in DungeonRooms)
+	        foreach (RoomManager room in _dungeonRooms)
 	        {
 		        room.FillRoom();
 		        FilledRooms--;
 		        yield return null;
 	        }
         }
-        
 
-        void CreateRooms(){
+
+        #region MainGenMethods
+
+        private void CreateRooms(){
 			// Setup
 			_rooms = new Room[_gridSizeX * 2,_gridSizeY * 2];
 			_rooms[_gridSizeX,_gridSizeY] = new Room(Vector2.zero, 1);
@@ -190,7 +192,7 @@ namespace SellBro.DungeonGenerator
 			}	
 		}
         
-		Vector2 NewPosition()
+        private Vector2 NewPosition()
 		{
 			int x = 0;
 			int y = 0;
@@ -232,7 +234,7 @@ namespace SellBro.DungeonGenerator
 		}
 		
 		/// Method differs from the above in the two commented ways
-		Vector2 SelectiveNewPosition()
+		private Vector2 SelectiveNewPosition()
 		{
 			int index = 0;
 			int inc = 0;
@@ -291,7 +293,7 @@ namespace SellBro.DungeonGenerator
 			return checkingPos;
 		}
 		
-		int NumberOfNeighbors(Vector2 checkingPos, List<Vector2> usedPositions)
+		private int NumberOfNeighbors(Vector2 checkingPos, List<Vector2> usedPositions)
 		{
 			// Start at zero, add 1 for each side there is already a room
 			int ret = 0; 
@@ -317,7 +319,7 @@ namespace SellBro.DungeonGenerator
 			return ret;
 		}
 		
-		void DrawMap()
+		private void DrawMap()
 		{
 			foreach (Room room in _rooms)
 			{
@@ -337,11 +339,11 @@ namespace SellBro.DungeonGenerator
 				var r = Instantiate(PickObject(room), drawPos, Quaternion.identity);
 				r.gameObject.transform.parent = mapRoot;
 				RoomManager manager = r.gameObject.GetComponent<RoomManager>();
-				DungeonRooms.Add(manager);
+				_dungeonRooms.Add(manager);
 			}
 		}
 		
-		void SetRoomDoors()
+		private void SetRoomDoors()
 		{
 			for (int x = 0; x < _gridSizeX * 2; x++)
 			{
@@ -397,7 +399,7 @@ namespace SellBro.DungeonGenerator
 			}
 		}
 		
-		GameObject PickObject(Room room)
+		private GameObject PickObject(Room room)
 		{ 
 			// Picks correct sprite based on the four door bools
 			if (room.doorTop)
@@ -487,7 +489,7 @@ namespace SellBro.DungeonGenerator
 				return L[Random.Range(0,L.Length)];
 			}
 		}
-		
-		
+
+        #endregion
     }
 }

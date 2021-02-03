@@ -1,4 +1,7 @@
-﻿using SellBro.Units;
+﻿using System;
+using Pathfinding;
+using SellBro.Core;
+using SellBro.Units;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,12 +14,21 @@ namespace SellBro.Items
         [SerializeField] private int health = 2;
         
         private SpriteRenderer _sr;
+        private SingleNodeBlocker _blocker;
         
         private int _spriteNum;
 
-        private void Start()
+        private void Awake()
         {
             _sr = GetComponent<SpriteRenderer>();
+            _blocker = GetComponent<SingleNodeBlocker>();
+        }
+
+        private void Start()
+        {
+            _blocker.manager = GameManager.Instance.blockManager;
+            GameManager.Instance.AddObstacleToList(_blocker);
+            _blocker.BlockAtCurrentPosition();
 
             _spriteNum = Random.Range(0, boxSprites.Length);
             _sr.sprite = boxSprites[_spriteNum];
@@ -28,7 +40,8 @@ namespace SellBro.Items
             
             if (health <= 0)
             {
-                AstarPath.active.UpdateGraphs(new Bounds(transform.position,new Vector3(0.5f,0.5f,0)));
+                // AstarPath.active.UpdateGraphs(new Bounds(transform.position,new Vector3(0.5f,0.5f,0)));
+                _blocker.Unblock();
                 Destroy(gameObject);
             }
             

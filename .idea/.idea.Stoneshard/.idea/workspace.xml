@@ -70,24 +70,24 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Items/Chest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/Room.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Slot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Items/BreakableBox.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/RandomItemGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemPickup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemDescription.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/EquippedSlot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerUIController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Items/BreakableBox.cs" />
       </list>
     </option>
   </component>
@@ -179,6 +179,7 @@
       <workItem from="1612275267157" duration="2525000" />
       <workItem from="1612344211710" duration="4748000" />
       <workItem from="1612372645984" duration="2798000" />
+      <workItem from="1612376384751" duration="1772000" />
     </task>
     <servers />
   </component>
