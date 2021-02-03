@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
+using SellBro.Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,8 +12,9 @@ namespace SellBro.DungeonGenerator
     {
 	    public static LevelGeneration Instance = null;
 	    
-	    public static List<RoomManager> DungeonRooms;
 	    public static int FilledRooms = 0;
+
+	    private static List<RoomManager> DungeonRooms;
 
 	    [Header("Settings")] 
 	    [Range(1, 10)] 
@@ -60,6 +64,51 @@ namespace SellBro.DungeonGenerator
         private void Awake()
         {
 	        Instance = this;
+	        
+	        StartCoroutine(GenerateDungeon());
+        }
+
+        private IEnumerator GenerateDungeon()
+        {
+	        // Generate rooms
+	        yield return StartCoroutine(GenerateLevel());
+	        // Spawn player
+	        SpawnPlayer();
+	        yield return null;
+            
+	        // Generate room interior and units
+	        yield return StartCoroutine(FillRooms());
+
+	        GameManager.Instance.UpdateAStar();
+        }
+        
+        private void SpawnPlayer()
+        {
+	        int x = Random.Range(1, 16);
+	        int y = Random.Range(1, 15);
+	        int num = Random.Range(0, DungeonRooms.Count);
+            
+	        while (!DungeonRooms[num].IsTileEmpty(x, y))
+	        {
+		        x = Random.Range(1, 16);
+		        y = Random.Range(1, 15);
+	        }
+
+	        Vector2 spawn = DungeonRooms[num].position;
+            
+	        Vector3 movePos = new Vector3(spawn.x + x + 0.5f, spawn.y + y + 0.5f,-1);
+	        GameManager.Instance.player.transform.position = movePos;
+            
+	        GameManager.Instance.MoveCamera(movePos);
+            
+	        DungeonRooms[num].hasSpawnedPlayer = true;
+
+	        SpawnLevelEnter(num);
+        }
+        
+        private void SpawnLevelEnter(int roomNum)
+        {
+	        DungeonRooms[roomNum].SpawnEnter();
         }
 
         public IEnumerator GenerateLevel()

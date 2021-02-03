@@ -85,9 +85,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerUIController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Units/PlayerUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/RoomManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" />
       </list>
     </option>
   </component>
@@ -178,6 +178,7 @@
       <workItem from="1612162119088" duration="327000" />
       <workItem from="1612275267157" duration="2525000" />
       <workItem from="1612344211710" duration="4748000" />
+      <workItem from="1612372645984" duration="2798000" />
     </task>
     <servers />
   </component>
@@ -276,24 +277,5 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="616" y="213" width="670" height="676" key="search.everywhere.popup/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1607367449822" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs</url>
-          <line>100</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator/LevelGeneration.cs" initialLine="94">
-            <startOffsets>
-              <option value="3195" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3196" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

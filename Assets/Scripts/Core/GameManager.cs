@@ -12,8 +12,7 @@ namespace SellBro.Core
 {
     public class GameManager : MonoBehaviour
     {
-        [Header("Game Manager Settings")] 
-        [SerializeField] private bool shouldGenerateLevel = true;
+        [Header("Game Manager Settings")]
         [SerializeField] private GameObject cam;
         
         [Header("Managing Components")]
@@ -28,8 +27,7 @@ namespace SellBro.Core
         [Header("Level settings")]
         public bool playerTurn = true;
         public int level = 1;
-        public Vector2 spawn;
-        
+
         [Header("Player")]
         public GameObject player;
         
@@ -44,31 +42,13 @@ namespace SellBro.Core
 
         private void Awake()
         {
-            if (Instance == null)
-                Instance = this;
-            else if(Instance != this)
-                Destroy(gameObject);
-            
-            DontDestroyOnLoad(gameObject);
+            Instance = this;
 
             AstarPath.active = GetComponent<AstarPath>();
             blockManager = GetComponent<BlockManager>();
             units = new List<EnemyController>();
 
             InitGame();
-        }
-
-
-        private void Start()
-        {
-            if (shouldGenerateLevel)
-            {
-                StartCoroutine(GenerateDungeon());
-            }
-            else
-            {
-                GenerateTestScene();
-            }
         }
 
         private void Update()
@@ -85,17 +65,8 @@ namespace SellBro.Core
             units.Clear();
         }
 
-        private IEnumerator GenerateDungeon()
+        public void UpdateAStar()
         {
-            // Generate rooms
-            yield return StartCoroutine(LevelGeneration.Instance.GenerateLevel());
-            // Spawn player
-            SpawnPlayer();
-            yield return null;
-            
-            // Generate room interior and units
-            yield return StartCoroutine(LevelGeneration.Instance.FillRooms());
-
             // Create A*
             AstarPath.active.Scan();
             
@@ -110,57 +81,7 @@ namespace SellBro.Core
             traversalProvider = new BlockManager.TraversalProvider(blockManager, BlockManager.BlockMode.OnlySelector, obstacles);
         }
 
-        private void GenerateTestScene()
-        {
-            SpawnTestPlayer();
-            AstarPath.active.Scan();
-                
-            foreach (var unit in units)
-            {
-                SingleNodeBlocker unitNode = unit.GetComponent<SingleNodeBlocker>();
-                obstacles.Add(unitNode);
-            }
-            
-            traversalProvider = new BlockManager.TraversalProvider(blockManager, BlockManager.BlockMode.OnlySelector, obstacles);
-        }
-
-        private void SpawnPlayer()
-        {
-            int x = Random.Range(1, 16);
-            int y = Random.Range(1, 15);
-            int num = Random.Range(0, LevelGeneration.DungeonRooms.Count);
-            
-            while (!LevelGeneration.DungeonRooms[num].IsTileEmpty(x, y))
-            {
-                x = Random.Range(1, 16);
-                y = Random.Range(1, 15);
-            }
-
-            spawn = LevelGeneration.DungeonRooms[num].position;
-            
-            Vector3 movePos = new Vector3(spawn.x + x + 0.5f, spawn.y + y + 0.5f,-1);
-            player.transform.position = movePos;
-            
-            MoveCamera(movePos);
-            
-            LevelGeneration.DungeonRooms[num].hasSpawnedPlayer = true;
-
-            SpawnLevelEnter(num);
-        }
-
-        private void SpawnTestPlayer()
-        {
-            Vector3 spawnPos = new Vector3(0.5f, 0.5f,-1);
-            player = Instantiate(player, spawnPos, Quaternion.identity);
-            MoveCamera(spawnPos);
-        }
-
-        private void SpawnLevelEnter(int roomNum)
-        {
-            LevelGeneration.DungeonRooms[roomNum].SpawnEnter();
-        }
-
-        private void MoveCamera(Vector3 pos)
+        public void MoveCamera(Vector3 pos)
         {
             _camera = Instantiate(cam, new Vector3(pos.x, pos.y, -10), Quaternion.identity)
                 .GetComponentInChildren<CinemachineVirtualCamera>();

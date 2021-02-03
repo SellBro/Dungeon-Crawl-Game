@@ -511,7 +511,8 @@ PrefabInstance:
         type: 3}
       propertyPath: levelStart
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4479994033888139272, guid: 7c896e59b5c75244ab9b34a6b40e0d71,
+        type: 3}
     - target: {fileID: 6779329662964114474, guid: 202fba8856f00aa46b1dce12775844d3,
         type: 3}
       propertyPath: m_LocalPosition.x
