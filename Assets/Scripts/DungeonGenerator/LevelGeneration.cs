@@ -12,8 +12,6 @@ namespace SellBro.DungeonGenerator
 	    public static List<RoomManager> DungeonRooms;
 	    public static int FilledRooms = 0;
 
-	    public bool isExitSpawned = false;
-
 	    [Header("Settings")] 
 	    [Range(1, 10)] 
 	    [SerializeField] private int worldX = 3;

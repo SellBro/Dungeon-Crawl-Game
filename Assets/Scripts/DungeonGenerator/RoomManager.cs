@@ -75,13 +75,11 @@ namespace SellBro.DungeonGenerator
                 Quaternion.identity,transform.parent);
             _tiles[x, y] = false;
             _tiles[x+1, y] = false;
-
-            LevelGeneration.Instance.isExitSpawned = true;
         }
         
         private void SpawnExit()
         {
-            if(LevelGeneration.Instance.isExitSpawned) return;
+            if(IsExitSpawned) return;
 
 
             float chance = Random.Range(0, LevelGeneration.FilledRooms);
@@ -106,7 +104,7 @@ namespace SellBro.DungeonGenerator
             _tiles[x, y] = false;
             _tiles[x+1, y] = false;
 
-            LevelGeneration.Instance.isExitSpawned = true;
+            IsExitSpawned = true;
         }
 
         private void SpawBoxes()

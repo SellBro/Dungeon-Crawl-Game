@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5287077861698876640}
   - component: {fileID: 2133125115065447329}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enter
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524193911394833752}
   - component: {fileID: 1300587024291656868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enter Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
