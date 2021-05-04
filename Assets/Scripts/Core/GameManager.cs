@@ -122,7 +122,7 @@ namespace SellBro.Core
         }
         
         
-        public Path ConstuctPath(Transform position, Transform target)
+        public Path ConstructPath(Transform position, Transform target)
         {
             var path = ABPath.Construct(position.position, target.position, null);
             _traversalProvider = new BlockManager.TraversalProvider(blockManager, BlockManager.BlockMode.OnlySelector, _obstacles);
